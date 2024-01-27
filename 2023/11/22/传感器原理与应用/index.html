@@ -1,0 +1,1372 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/xiaoxin.jpg">
+  <link rel="icon" href="/img/xiaoxin.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="a_hao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1、传感器与组成、基本特性（静态特性指标）；定义：  从广义来说，传感器是一种能把物理量、化学量或生物量等按照一定规律转换为与之有确定对应关系的、便于应用的某种物理量的器件或者装置。包含以下几层意思。 （1）  传感器是测量器件或装置，能完成一定的检测任务 （2）  它的输入量是某一被测量，可能时物理量，也可能是化学量、生物量等 （3）  他的输出量是某种物理量，这种量要便于传输、转换、处理、显">
+<meta property="og:type" content="article">
+<meta property="og:title" content="传感器原理与应用">
+<meta property="og:url" content="https://ahaostillcoding.github.io/2023/11/22/%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="阿豪博客">
+<meta property="og:description" content="1、传感器与组成、基本特性（静态特性指标）；定义：  从广义来说，传感器是一种能把物理量、化学量或生物量等按照一定规律转换为与之有确定对应关系的、便于应用的某种物理量的器件或者装置。包含以下几层意思。 （1）  传感器是测量器件或装置，能完成一定的检测任务 （2）  它的输入量是某一被测量，可能时物理量，也可能是化学量、生物量等 （3）  他的输出量是某种物理量，这种量要便于传输、转换、处理、显">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20231122085148784.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/clip_image002.jpg">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20231126223905376.png">
+<meta property="article:published_time" content="2023-11-22T01:33:33.000Z">
+<meta property="article:modified_time" content="2024-01-07T09:07:13.361Z">
+<meta property="article:author" content="a_hao">
+<meta property="article:tag" content="传感器">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20231122085148784.png">
+  
+  
+  
+  <title>传感器原理与应用 - 阿豪博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ahaostillcoding.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阿豪</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="传感器原理与应用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-22 09:33" pubdate>
+          2023年11月22日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          95 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">传感器原理与应用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20231122085148784.png" srcset="/img/loading.gif" lazyload alt="image-20231122085148784"></p>
+<h2 id="1、传感器与组成、基本特性（静态特性指标）；"><a href="#1、传感器与组成、基本特性（静态特性指标）；" class="headerlink" title="1、传感器与组成、基本特性（静态特性指标）；"></a>1、传感器与组成、基本特性（静态特性指标）；</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a><strong>定义：</strong></h3><p>  从广义来说，传感器是一种能把物理量、化学量或生物量等按照一定规律转换为与之<strong>有确定对应关系的</strong>、<strong>便于应用的</strong>某种<strong>物理量</strong>的<strong>器件或者装置</strong>。包含以下几层意思。</p>
+<p>（1）  传感器是测量器件或装置，<strong>能完成一定的检测任务</strong></p>
+<p>（2）  它的<strong>输入量是某一被测量</strong>，可能时物理量，也可能是化学量、生物量等</p>
+<p>（3）  他的<strong>输出量是某种物理量</strong>，这种量要便于传输、转换、处理、显示等，这种量可以是气、光、电量等，一般情况下是电量</p>
+<h3 id="组成："><a href="#组成：" class="headerlink" title="组成："></a><strong>组成：</strong></h3><p>  通常传感器由<strong>敏感元件</strong>、<strong>转换元件</strong>及<strong>信息调理电路</strong>三部分组成。有时候还需要加<strong>辅助电源。</strong></p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/clip_image002.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="基本特性："><a href="#基本特性：" class="headerlink" title="基本特性："></a><strong>基本特性：</strong></h3><blockquote>
+<p> 传感器的基本特性是指传感器的<strong>输入-输出关系特性</strong>，是传感器的<strong>内部结构参数作用关系的外部特性表现</strong>。不同的传感器有不同的内部结构参数，决定了他们具有不同的外部特性</p>
+</blockquote>
+<p>  传感器所测量的物理量基本上有两种特性，<strong>静态特性和动态特性。</strong>静态特性的信号<strong>不随时间变化</strong>(或变化很缓慢)；动态特性的信号是<strong>随时间变化而变化的。</strong></p>
+<h4 id="一．-静态特性指标"><a href="#一．-静态特性指标" class="headerlink" title="一．  静态特性指标"></a><strong>一．  静态特性指标</strong></h4><p><strong>1.</strong> <strong>测量范围</strong></p>
+<p><strong>2.</strong> <strong>灵敏度</strong></p>
+<p><strong>3.</strong> <strong>精确度</strong></p>
+<p><strong>4.</strong> <strong>线性度</strong></p>
+<ul>
+<li>传感器的输出量与输入量之间的关系曲线<strong>偏移理想直线的程度</strong>。越小越好(越小即静态特性越接近于拟合直线)</li>
+</ul>
+<p><strong>5.</strong> <strong>分辨力与分辨率</strong></p>
+<ul>
+<li><p>分辨力：传感器能检测到的最小的输入增量。</p>
+</li>
+<li><p>分辨力用绝对值表示，其与满量程的百分比表示时称为分辨率</p>
+</li>
+</ul>
+<p><strong>6.</strong> <strong>阈值</strong></p>
+<ul>
+<li>传感器输入从零增加到传感器给出<strong>可分辨输出量</strong>称为阈值</li>
+</ul>
+<p><strong>7.</strong> <strong>迟滞</strong></p>
+<ul>
+<li>传感器在正(输入量增大)反(输入量减少)行程期间其输出-输入特性曲线<strong>不重合的现象</strong></li>
+</ul>
+<p><strong>8.</strong> <strong>重复性</strong></p>
+<ul>
+<li>在<strong>同一个工作条件</strong>下，输入量按<strong>同一个方向</strong>在全测量范围内<strong>连续变动多次</strong>所得特性曲线的<strong>不一致性</strong></li>
+</ul>
+<p><strong>9.</strong> <strong>稳定性</strong></p>
+<ul>
+<li>在较长的时间内保持其性能参数的能力</li>
+</ul>
+<p><strong>10.</strong> <strong>漂移</strong></p>
+<ul>
+<li>在外界的<strong>干扰</strong>下，<strong>在一定时间间隔内</strong>，传感器输出量发生与输入流无关或不需要的变化。<ul>
+<li>包括零点漂移和灵敏度漂移</li>
+</ul>
+</li>
+</ul>
+<p><strong>11.</strong> <strong>可靠性</strong></p>
+<ul>
+<li>传感器或者检测系统在规定的工作条件和规定的时间内，具有正常工作性能的能力</li>
+</ul>
+<h4 id="二．-动态特性分析"><a href="#二．-动态特性分析" class="headerlink" title="二．  动态特性分析"></a><strong>二．</strong>  <strong>动态特性分析</strong></h4><p><strong>1.</strong> <strong>时域</strong></p>
+<p>​    a)    采用<strong>瞬态响应法</strong>分析</p>
+<p>​    b)    采用<strong>阶跃函数</strong></p>
+<p><strong>2.</strong> <strong>频域</strong></p>
+<p>​    a)    采用<strong>频率响应法</strong>分析</p>
+<p>​    b)    采用<strong>正弦函数</strong>    </p>
+<hr>
+<h2 id="2、电阻应变式传感器工作原理（应变效应、压阻效应）、测量电路（平衡电桥）；"><a href="#2、电阻应变式传感器工作原理（应变效应、压阻效应）、测量电路（平衡电桥）；" class="headerlink" title="2、电阻应变式传感器工作原理（应变效应、压阻效应）、测量电路（平衡电桥）；"></a>2、电阻应变式传感器工作原理（应变效应、压阻效应）、测量电路（平衡电桥）；</h2><h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><p>​    电阻式传感器是一种把非电量(力、压力、位移、扭矩)转换成与之有对应关系的电阻值，再经过<strong>测量电桥</strong>把电阻值转换成便于传送和记录的电压(电流)的装置</p>
+<p>​    电阻式传感器只要分为<strong>电位器式和电阻应变式</strong>。电阻应变式传感器是应用最广泛的传感器</p>
+<ul>
+<li>电位器式主要用于非电量变化较大的测量场合</li>
+<li>电阻应变式主要用于<strong>测量变化量相对较小的场合。</strong></li>
+</ul>
+<h3 id="电阻应变式传感器："><a href="#电阻应变式传感器：" class="headerlink" title="电阻应变式传感器："></a>电阻应变式传感器：</h3><h4 id="核心元件："><a href="#核心元件：" class="headerlink" title="核心元件："></a>核心元件：</h4><p>​    金属应变片，它可以将应变片上的应变变化转换成电阻变化</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ol>
+<li>精度高，测量范围广</li>
+<li>频率响应特性较好</li>
+<li>结构简单，尺寸小，质量轻</li>
+<li>可在恶虐条件下正常工作</li>
+<li>易于实现小型化、固态化</li>
+<li>价格低廉，品种多样，便于选择</li>
+</ol>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ol>
+<li>具有<strong>非线性</strong>，输出信号微弱，抗干扰能力差，需要<strong>信号线采取屏蔽措施。</strong></li>
+<li>只能测量一点或应变范围内的<strong>平均应变</strong>，不能显示应变场中应变梯度的变化</li>
+<li>是将非电量转换成电阻值的变化，再经过转换电路变换成电量(电流、电压)输出</li>
+</ol>
+<h4 id="应变效应："><a href="#应变效应：" class="headerlink" title="应变效应："></a>应变效应：</h4><h5 id="定义：-2"><a href="#定义：-2" class="headerlink" title="定义："></a>定义：</h5><p>​    导体或半导体材料在<strong>外界力</strong>的作用下，会产生<strong>机械形变</strong>，其<strong>电阻值也会随之变化</strong>，这种现象称为应变效应</p>
+<h4 id="压阻效应："><a href="#压阻效应：" class="headerlink" title="压阻效应："></a>压阻效应：</h4><h5 id="定义：-3"><a href="#定义：-3" class="headerlink" title="定义："></a>定义：</h5><p>​    半导体材料当<strong>某一轴向受外力作用</strong>时，其<strong>电阻率发生变化</strong>的现象</p>
+<h4 id="半导体应变片的灵敏系数"><a href="#半导体应变片的灵敏系数" class="headerlink" title="半导体应变片的灵敏系数"></a>半导体应变片的灵敏系数</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="应变片分类："><a href="#应变片分类：" class="headerlink" title="应变片分类："></a>应变片分类：</h4><p>​    <strong>金属丝式</strong></p>
+<ul>
+<li>价格便宜，多用于要求不高的应变、应力的大量或者一次性实验</li>
+</ul>
+<p>​    <strong>金属箔式</strong></p>
+<ul>
+<li>散热性好，可以通过较大电流</li>
+<li>长时间测量的蠕动较小</li>
+</ul>
+<p>​    <strong>薄膜式</strong></p>
+<h3 id="测量电路"><a href="#测量电路" class="headerlink" title="测量电路"></a>测量电路</h3><p>​    应变式电阻传感器中最常用的转换电路是电桥电路，作用是<strong>将应变片电阻的变化转换成电压的变化</strong>。</p>
+<h4 id="一。直流电桥电路"><a href="#一。直流电桥电路" class="headerlink" title="一。直流电桥电路"></a>一。直流电桥电路</h4><h5 id="电桥平衡"><a href="#电桥平衡" class="headerlink" title="电桥平衡"></a>电桥平衡</h5><blockquote>
+<p>电桥输出电压U = 0时，电桥处于平衡状态</p>
+</blockquote>
+<p>要让电桥平衡，需要<br>$$<br>R_1<em>R_4 = R_2</em>R_3<br>$$</p>
+<p>(1)单臂半桥形式电桥电路</p>
+<p>​    R1为应变片，R2,R3,R4为普通电阻</p>
+<p>​    U0 = E/4 * Ke(e为应变)</p>
+<p>(2)双臂半桥形式电桥电路</p>
+<p>​    R1,R2为应变片，R3,R4为普通电阻</p>
+<p>​    U0 = E/2 * Ke</p>
+<p>(3)全桥式电桥电路</p>
+<p>​    R1,R2,R3,R4全为应变片</p>
+<p>​    U0 = E * Ke</p>
+<ul>
+<li>灵敏度最高，双臂的两倍，<strong>单臂的四倍</strong></li>
+</ul>
+<h5 id="二。交流电桥电路"><a href="#二。交流电桥电路" class="headerlink" title="二。交流电桥电路"></a>二。交流电桥电路</h5><h5 id="三。直流电桥、交流电桥比较"><a href="#三。直流电桥、交流电桥比较" class="headerlink" title="三。直流电桥、交流电桥比较"></a>三。直流电桥、交流电桥比较</h5><p><strong>直流电桥</strong></p>
+<p>优点：</p>
+<ul>
+<li><strong>电源稳定</strong>、平衡电路简单，是主要测量电路</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>直流放大器较复杂，<strong>存在零漂和工频干扰</strong></li>
+</ul>
+<p><strong>交流电桥</strong></p>
+<p>优点：</p>
+<ul>
+<li>放大电路简答无零漂，不受干扰，为特定传感器带来方便</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><strong>需要专用测量仪器或电路</strong>，不易取得高精度</li>
+</ul>
+<h3 id="温度补偿"><a href="#温度补偿" class="headerlink" title="温度补偿"></a>温度补偿</h3><h3 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h3><ul>
+<li>测力传感器</li>
+<li>压阻式传感器的压力测量</li>
+<li>液位测量</li>
+</ul>
+<h2 id="3、电容传感器工作原理（画图、公式）及分类；"><a href="#3、电容传感器工作原理（画图、公式）及分类；" class="headerlink" title="3、电容传感器工作原理（画图、公式）及分类；"></a>3、电容传感器工作原理（画图、公式）及分类；</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><h4 id="定义：-4"><a href="#定义：-4" class="headerlink" title="定义："></a>定义：</h4><p>​    利用电容器的原理，将非电量转换成电容量，进而实现非电量到电量的转换的器件或装置，叫做电容传感器</p>
+<h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><ul>
+<li>测量范围大</li>
+<li>灵敏度高</li>
+<li>结构简单、适应性强</li>
+<li>动态响应时间短、易实现非接触测量</li>
+</ul>
+<p><strong>电容量：</strong><br>$$<br>C = A / d<br>$$</p>
+<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ul>
+<li><strong>变面积式</strong></li>
+<li><strong>变极距式</strong></li>
+<li><strong>变介电常数式</strong></li>
+</ul>
+<h4 id="一。变面积式电容传感器"><a href="#一。变面积式电容传感器" class="headerlink" title="一。变面积式电容传感器"></a>一。变面积式电容传感器</h4><p>1.平板形直线位移式</p>
+<p>2.半圆形角位移式</p>
+<p>3.同心圆筒式</p>
+<h4 id="二。变极距式电容传感器"><a href="#二。变极距式电容传感器" class="headerlink" title="二。变极距式电容传感器"></a>二。变极距式电容传感器</h4><h4 id="三。变介电常数式电容传感器"><a href="#三。变介电常数式电容传感器" class="headerlink" title="三。变介电常数式电容传感器"></a>三。变介电常数式电容传感器</h4><p>1.平板结构</p>
+<ol>
+<li>串联结构</li>
+<li>并联结构</li>
+</ol>
+<p>2.圆筒结构</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li>电容压力传感器</li>
+<li>电容位移传感器</li>
+<li>电容加速度传感器</li>
+<li>电容厚度传感器</li>
+<li>电容液位传感器</li>
+</ul>
+<h2 id="4、电感传感器原理（画图、公式）及分类；两种传感器区别"><a href="#4、电感传感器原理（画图、公式）及分类；两种传感器区别" class="headerlink" title="4、电感传感器原理（画图、公式）及分类；两种传感器区别"></a>4、电感传感器原理（画图、公式）及分类；两种传感器区别</h2><h3 id="概念：-1"><a href="#概念：-1" class="headerlink" title="概念："></a>概念：</h3><h4 id="定义：-5"><a href="#定义：-5" class="headerlink" title="定义："></a>定义：</h4><p>​    电感式传感器建立在电磁感应的基础上，利用线圈自感或者互感来实现非电量的检测。</p>
+<h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4><ul>
+<li>结构简单、工作可靠、灵敏度高</li>
+<li>测量精度高、输出功率大</li>
+<li>可实现信息的远距离传输、记录、显示和控制</li>
+<li>灵敏度、线性度和测量范围相互制约，传感器本身频率响应低，不适应快速动态测量</li>
+</ul>
+<h3 id="一。自感式电感传感器："><a href="#一。自感式电感传感器：" class="headerlink" title="一。自感式电感传感器："></a>一。自感式电感传感器：</h3><h4 id="1-变气隙式电感传感器"><a href="#1-变气隙式电感传感器" class="headerlink" title="1.变气隙式电感传感器"></a>1.变气隙式电感传感器</h4><h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>​    在铁芯和衔铁之间有气隙，传感器的运动部分与衔铁相连，当衔铁移动时，气隙厚度发生改变，引起磁路中磁阻变化，从而导致电感线圈的电感值变化，只要测出这种电感量的变化，就能确定衔铁位移量的大小和方向</p>
+<h4 id="2-变截面式电感传感器"><a href="#2-变截面式电感传感器" class="headerlink" title="2.变截面式电感传感器"></a>2.变截面式电感传感器</h4><h5 id="原理：-1"><a href="#原理：-1" class="headerlink" title="原理："></a>原理：</h5><p>​    磁路气隙的截面积变化，使传感器的电感发生相应变化。若保持气隙厚度为常数，则电感L是气隙截面积A的函数，A和L之间是线性关系</p>
+<p>灵敏度<br>$$<br>K = dL / dA =<br>$$</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h5><p>与变气隙式电感传感器相比</p>
+<ul>
+<li>灵敏度低</li>
+<li>被测位移量很小，工业中应用少</li>
+</ul>
+<h4 id="3-螺线管式电感传感器"><a href="#3-螺线管式电感传感器" class="headerlink" title="3.螺线管式电感传感器"></a>3.螺线管式电感传感器</h4><h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>​    主要元件为一只螺线管和一根圆柱形铁芯。传感器工作时，铁芯在线圈中伸入长度的变化引起螺管线圈自感值的变化。当用恒流源激励时，线圈的输出电压与铁芯的位移量有关</p>
+<p>$$<br>电感值 L_0 =<br>$$</p>
+<h5 id="特点：-1"><a href="#特点：-1" class="headerlink" title="特点："></a>特点：</h5><ul>
+<li>结构简单，制造装配容易</li>
+<li>因为空气间隙大，磁路的磁阻高，因此灵敏度低，线性范围大</li>
+<li>磁路大部分为空气，因此易受外部磁场干扰</li>
+<li>由于磁阻高，为了达到某一自感量，需要的线圈匝数多，因而线圈分布电容大</li>
+<li>要求线圈框架的尺寸和形状必须稳定，否则会影响其线性和稳定性</li>
+</ul>
+<h3 id="二。互感式传感器-差动变压器式传感器-："><a href="#二。互感式传感器-差动变压器式传感器-：" class="headerlink" title="二。互感式传感器(差动变压器式传感器)："></a>二。互感式传感器(差动变压器式传感器)：</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h5 id="定义：-6"><a href="#定义：-6" class="headerlink" title="定义："></a>定义：</h5><p>​    把被测的非电量变化转换为线圈互感量变化的传感器叫做互感式传感器。根据变压器的基本原理制成</p>
+<h5 id="分类：-1"><a href="#分类：-1" class="headerlink" title="分类："></a>分类：</h5><ul>
+<li>变隙式</li>
+<li>变截面式</li>
+<li>螺线管式</li>
+</ul>
+<p>​    三种方式工作原理基本一致，在非电量测量中，<strong>螺线管式差动变压器应用最多</strong></p>
+<h5 id="螺线管式差动变压器组成"><a href="#螺线管式差动变压器组成" class="headerlink" title="螺线管式差动变压器组成"></a>螺线管式差动变压器组成</h5><p>​    基本元件有衔铁、初级线圈、次级线圈和线圈框架等</p>
+<ul>
+<li>初级线圈作为差动变压器激励，相当于<strong>变压器的原边</strong></li>
+<li>次级线圈由结构尺寸和参数相同的两个线圈反向串接而成，相当于<strong>变压器的副边</strong></li>
+</ul>
+<h5 id="特点：-2"><a href="#特点：-2" class="headerlink" title="特点："></a>特点：</h5><ul>
+<li>测量精度高、灵敏度高</li>
+<li>结构简单、性能可靠</li>
+</ul>
+<h3 id="三。自感式传感器和互感式传感器的区别"><a href="#三。自感式传感器和互感式传感器的区别" class="headerlink" title="三。自感式传感器和互感式传感器的区别"></a>三。自感式传感器和互感式传感器的区别</h3><p>​    主要区别在于其测量原理不同。</p>
+<p><strong>自感式传感器</strong>利用被测量物体上<strong>自己产生的电磁场来实现测量</strong>。在自感式传感器中，线圈中的<strong>电流会产生一个磁场</strong>，该磁场与被测物体产生的电磁场相互作用，从而产生电压信号。因此，自感式传感器的测量范围通常比较局限，只适用于测量接近或贴近线圈的物体。</p>
+<p><strong>互感式传感器</strong>则利用被测量物体上<strong>周围环境中的电磁场变化情况来实现测量</strong>。在互感式传感器中，线圈所处的<strong>环境中存在着外部的电磁场</strong>，该电磁场会改变线圈中的电感值，从而产生电压信号。因此，互感式传感器的测量范围通常比较广泛，可以测量较远距离的物体。</p>
+<h3 id="四。应用："><a href="#四。应用：" class="headerlink" title="四。应用："></a>四。应用：</h3><ul>
+<li>差动压力传感器</li>
+<li>加速度测量</li>
+</ul>
+<h2 id="5、电涡流传感器工作原理与分类；"><a href="#5、电涡流传感器工作原理与分类；" class="headerlink" title="5、电涡流传感器工作原理与分类；"></a>5、电涡流传感器工作原理与分类；</h2><h3 id="概念：-2"><a href="#概念：-2" class="headerlink" title="概念："></a>概念：</h3><h4 id="定义：-7"><a href="#定义：-7" class="headerlink" title="定义："></a>定义：</h4><p>​    利用电涡流效应进行工作。</p>
+<p>​    根据<strong>法拉第电磁感应定律</strong>，将<strong>金属</strong>导体置于<strong>变化的磁场中</strong>，<strong>导体表面就会有感应电流产生</strong>。电流的流线在金属体内自行闭合，这种由电磁感应原理产生的漩涡状感应电流就称为电涡流，这种现象叫做<strong>电涡流效应</strong> 。</p>
+<p>​    电涡流只集中在金属导体的表面，这一现象称为<strong>趋肤效应</strong></p>
+<p>形成电涡流必须具备两个条件</p>
+<ul>
+<li>存在交变磁场</li>
+<li>导电体处于交变磁场中</li>
+</ul>
+<p>​    </p>
+<h4 id="特点：-3"><a href="#特点：-3" class="headerlink" title="特点："></a>特点：</h4><ul>
+<li>结构简单</li>
+<li>灵敏度高</li>
+<li>频响范围宽</li>
+<li>不受油污等介质影响</li>
+<li><strong>能进行非接触测量、使用范围广</strong>(无损探伤)</li>
+</ul>
+<h3 id="分类：-2"><a href="#分类：-2" class="headerlink" title="分类："></a>分类：</h3><h4 id="一。高频放射式电涡流传感器"><a href="#一。高频放射式电涡流传感器" class="headerlink" title="一。高频放射式电涡流传感器"></a>一。高频放射式电涡流传感器</h4><p>​    结构简单，主要是一个安置在框架上的线圈，线圈可以绕成一个扁平圆形黏贴在框架上，也可以在框架上开一条槽，导线绕制在槽内形成一个线圈。</p>
+<h4 id="二。低频透射式电涡流传感器"><a href="#二。低频透射式电涡流传感器" class="headerlink" title="二。低频透射式电涡流传感器"></a>二。低频透射式电涡流传感器</h4><h5 id="原理：-2"><a href="#原理：-2" class="headerlink" title="原理："></a>原理：</h5><p>​    由于趋肤效应，金属导体产生的电涡流的贯穿深度与传感器线圈激磁电流的频率有关</p>
+<p>​    <strong>频率越低，电涡流的贯穿深度越厚</strong>。</p>
+<p>​    利用此原理制成的低频透射涡流传感器适合<strong>测量金属材料的厚度</strong></p>
+<h5 id="影响因素："><a href="#影响因素：" class="headerlink" title="影响因素："></a>影响因素：</h5><p>​    金属板中电涡流的大小除了受金属板厚度影响外，还与其电阻率有关(电阻率与温度有关)</p>
+<ul>
+<li>测薄金属板时，频率应略高<ul>
+<li>在测电阻率较大材料时，应选用较高频率(2kHz)</li>
+</ul>
+</li>
+<li>测厚金属板时，频率应低些<ul>
+<li>在测量电阻率较小的材料时，应该选用较低频率(500Hz)</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用：-1"><a href="#应用：-1" class="headerlink" title="应用："></a>应用：</h3><ul>
+<li>电涡流转速传感器</li>
+<li>振动的测量</li>
+<li>电涡流探伤</li>
+<li>位移测量</li>
+<li>温度测量</li>
+<li>电涡流安全通道检查门</li>
+</ul>
+<h2 id="6、霍尔效应及霍尔传感器的应用；"><a href="#6、霍尔效应及霍尔传感器的应用；" class="headerlink" title="6、霍尔效应及霍尔传感器的应用；"></a>6、霍尔效应及霍尔传感器的应用；</h2><h3 id="磁电感应式传感器"><a href="#磁电感应式传感器" class="headerlink" title="磁电感应式传感器"></a>磁电感应式传感器</h3><blockquote>
+<p>磁电感应式传感器是利用电磁感应原理将被测量转换成电信号的一种传感器。</p>
+</blockquote>
+<p>​    当导体和磁场发生相对运动时，在导体两端有感应电动势输出，磁电感应式传感器工作时不需要外加电源(将被测物体的机械能转换成电量)，是有源传感器</p>
+<p>​    导体在磁场中运动切割磁力线，或者通过闭合线圈的磁通发生变化时，导体两端或线圈将产生感应电动势</p>
+<h3 id="霍尔传感器"><a href="#霍尔传感器" class="headerlink" title="霍尔传感器"></a>霍尔传感器</h3><h4 id="概念：-3"><a href="#概念：-3" class="headerlink" title="概念："></a>概念：</h4><p>​    是目前国内外应用最广泛的一种磁敏传感器，它利用磁场作为媒介</p>
+<p>​    它可以实现非接触测量，多数情况下，可以用永磁铁来产生磁场，不需要附加能源</p>
+<p>​    霍尔传感器属于半导体磁敏元件，磁敏元件也是基于磁电转换原理，把磁学物理量转换成电信号的传感器</p>
+<p>​    霍尔传感器有<strong>霍尔元件</strong>和<strong>霍尔集成电路</strong>两种类型</p>
+<ul>
+<li>霍尔集成电路是把霍尔元件、放大器、温度补偿电路以及稳压电源等集成在一个芯片上的集成电路型结构</li>
+</ul>
+<h4 id="霍尔效应"><a href="#霍尔效应" class="headerlink" title="霍尔效应"></a>霍尔效应</h4><p>​    霍尔效应的产生是由于运动电荷受到磁场中洛伦兹力作用，霍尔元件中的电流是金属中自由电子在电场作用下的定向运动。</p>
+<h4 id="集成霍尔传感器分类："><a href="#集成霍尔传感器分类：" class="headerlink" title="集成霍尔传感器分类："></a>集成霍尔传感器分类：</h4><p>​    根据输出信号的形式不同，分为开关型和线性两种</p>
+<p><strong>开关型集成霍尔传感</strong>器根据检测的磁感应强度大小输出高低两个电压电平</p>
+<p><strong>线性集成霍尔传感器</strong>输出一个与检测的磁感应强度信号成正比的电压信号</p>
+<h4 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h4><ul>
+<li><strong>霍尔转速表</strong><ul>
+<li>齿盘的转动使磁路的磁阻随气隙的改变而周期性变化</li>
+</ul>
+</li>
+<li><strong>霍尔式无触点点火装置</strong><ul>
+<li>产生很高的感应电压，火花塞产生火花放电点火</li>
+</ul>
+</li>
+<li><strong>霍尔式功率计</strong></li>
+<li><strong>霍尔式无刷直流电机</strong><ul>
+<li>采用霍尔传感器驱动的无触点直流电动机。</li>
+</ul>
+</li>
+<li><strong>钳型电流表</strong><ul>
+<li>根据安培定律，在载流导体周围产生正比于该电流的磁场。用霍尔元件测量这一磁场，可得到正比于该磁场的霍尔电动势。通过测量霍尔点当时的大小来间接测量电流的大小</li>
+</ul>
+</li>
+</ul>
+<h2 id="7、压电效应，逆压电效应及应用；"><a href="#7、压电效应，逆压电效应及应用；" class="headerlink" title="7、压电效应，逆压电效应及应用；"></a>7、压电效应，逆压电效应及应用；</h2><h3 id="概念：-4"><a href="#概念：-4" class="headerlink" title="概念："></a>概念：</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>​    压电式传感器是以某些电介质的压电效应为基础，在外力作用下，电介质的表面上会产生电荷，从而实现非电量的测量</p>
+<p>​    压电式传感元件是力敏感元件，所以它能测量最终能变换为力的那些物理量，例如力、压力、加速度等</p>
+<h4 id="特点：-4"><a href="#特点：-4" class="headerlink" title="特点："></a>特点：</h4><ul>
+<li>响应频带宽高、灵敏度高</li>
+<li>信噪比大、结构简单、工作可靠、质量轻</li>
+</ul>
+<h3 id="压电效应："><a href="#压电效应：" class="headerlink" title="压电效应："></a>压电效应：</h3><h4 id="正压电效应"><a href="#正压电效应" class="headerlink" title="正压电效应"></a>正压电效应</h4><h5 id="概念：-5"><a href="#概念：-5" class="headerlink" title="概念："></a>概念：</h5><p>​    当某些电介质，<strong>沿着一定方向对其施力而使它变形时</strong>，<strong>内部发生了极化现象</strong>，同时在它<strong>表面上产生电荷</strong>，当外力去掉后，又<strong>重新恢复</strong>不带电状态的现象。</p>
+<p>​    当作用力方向改变时，电荷极性也随着改变</p>
+<h4 id="逆压电效应"><a href="#逆压电效应" class="headerlink" title="逆压电效应"></a>逆压电效应</h4><h5 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h5><p>​    当在电介质的<strong>极化方向施加电场</strong>，这些电介质就在一定方向上<strong>产生机械变形或机械压力</strong>，当外加电场撤去时，这些变形或应力也随之消失的现象</p>
+<h3 id="应用：-2"><a href="#应用：-2" class="headerlink" title="应用："></a>应用：</h3><ul>
+<li><p><strong>玻璃打碎报警装置</strong></p>
+<ul>
+<li>用胶黏贴在玻璃上，当玻璃遭到暴力打碎时，压电薄膜感受到剧烈振动。在两个输出引脚之间产生窄脉冲信号，信号经过放大后，用电缆输送到集中报警装置，产生报警信号</li>
+</ul>
+</li>
+<li><p>压电式加速度计的原理与设计</p>
+</li>
+<li><p><strong>压电式传感器测表面粗糙度</strong></p>
+</li>
+<li><p><strong>压电式煤气炉电子点火装置</strong></p>
+</li>
+<li><p><strong>压电式流量计</strong></p>
+</li>
+<li><p><strong>压电式水漏探测仪</strong></p>
+</li>
+<li><p><strong>压电式压力传感器</strong></p>
+</li>
+</ul>
+<h2 id="8、热电偶的工作原理（作图及公式）、热电偶的基本定律，二次查表法；"><a href="#8、热电偶的工作原理（作图及公式）、热电偶的基本定律，二次查表法；" class="headerlink" title="8、热电偶的工作原理（作图及公式）、热电偶的基本定律，二次查表法；"></a>8、热电偶的工作原理（作图及公式）、热电偶的基本定律，二次查表法；</h2><h3 id="概念：-6"><a href="#概念：-6" class="headerlink" title="概念："></a>概念：</h3><h4 id="定义：-8"><a href="#定义：-8" class="headerlink" title="定义："></a>定义：</h4><blockquote>
+<p>热电式传感器是将温度变化转换为电量变化的装置，它利用敏感元件的电磁参数随温度变化的特性来实现温度的测量</p>
+</blockquote>
+<h4 id="主要构成："><a href="#主要构成：" class="headerlink" title="主要构成："></a>主要构成：</h4><p>​    主要包括热电偶、热电阻和热敏电阻</p>
+<h3 id="热电偶传感器："><a href="#热电偶传感器：" class="headerlink" title="热电偶传感器："></a>热电偶传感器：</h3><h4 id="热电效应："><a href="#热电效应：" class="headerlink" title="热电效应："></a>热电效应：</h4><p>​    在两种<strong>不同材料</strong>的导体A和导体B组成的闭合回路中，<strong>当两个结点温度不相同时</strong>，回路中<strong>将产生电动势</strong>。</p>
+<ul>
+<li>两种不同材料的导体所组成的回路称为<strong>热电偶</strong></li>
+<li>热电偶所产生的电动势称为热电动势<ul>
+<li>热电偶的两个结点中，置于温度T的被测对象中的结点称之为**测量端(**工作端或热端)</li>
+<li>而置于<strong>参考温度T0</strong>的另一端结点称为参考端(自由端或冷端)</li>
+</ul>
+</li>
+</ul>
+<h4 id="接触电动势"><a href="#接触电动势" class="headerlink" title="接触电动势"></a>接触电动势</h4><p>​    由于不同金属材料所具有的自由电子密度不同，<strong>当A和B两种不同材料的导体接触时</strong>，在A和B两导体的接触处所产生的电位差</p>
+<ul>
+<li>温度越高，接触电动势越大</li>
+<li>两种导体电子密度的比值越大，接触电动势越大</li>
+</ul>
+<h4 id="温度电动势"><a href="#温度电动势" class="headerlink" title="温度电动势"></a>温度电动势</h4><p>​    高温端(T)的电子向低温端扩散，致使高温端因失去电子带正电，低温端因获得电子而带负电</p>
+<ul>
+<li>导致同一导体两端也产生了电位差，并阻止电子从高温端扩散到低温端，<strong>形成动态平衡</strong></li>
+<li><strong>此时建立的电位差即温差电势</strong><ul>
+<li>温差电动势的大小与导体的<strong>电子密度</strong>以及<strong>两端温度</strong>有关</li>
+</ul>
+</li>
+</ul>
+<h4 id="热电偶的基本定理"><a href="#热电偶的基本定理" class="headerlink" title="热电偶的基本定理"></a>热电偶的基本定理</h4><h5 id="1-均质导体定律"><a href="#1-均质导体定律" class="headerlink" title="1.均质导体定律"></a>1.均质导体定律</h5><p>​    <strong>同一种均质导体</strong>组成的闭合回路，不会产生电动势</p>
+<h5 id="2-参考电极定律"><a href="#2-参考电极定律" class="headerlink" title="2.参考电极定律"></a>2.参考电极定律</h5><p>​    导体A、B分别与参考电极C组成热电偶</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cos">热端<span class="hljs-number">100</span>°C，冷端<span class="hljs-number">0</span>°C，镍铬合金与铂组成的热电偶的热电动势为<span class="hljs-number">2</span>，<span class="hljs-number">95</span><span class="hljs-keyword">mv</span>,考铜与铂组成的热电偶的热电动势为-<span class="hljs-number">4.0</span><span class="hljs-keyword">mv</span>，求镍铬和考铜组合的热电偶的热电动势<br>	<span class="hljs-number">2.95</span><span class="hljs-keyword">mv</span> - (-<span class="hljs-number">4.0</span>) = <span class="hljs-number">6.95</span><span class="hljs-keyword">mv</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-中间导体定律"><a href="#3-中间导体定律" class="headerlink" title="3.中间导体定律"></a>3.中间导体定律</h5><p>​    在热电偶回路中接入第三种导体，<strong>只要第三种导体和原导体的两结点温度相同</strong>，则回路的热电动势不变。</p>
+<ul>
+<li>可以将第三根导线换乘测试仪表或连接导线，只要保持两结点的温度相同，就可与对热电势进行测量而不影响原热电势的数值</li>
+</ul>
+<h5 id="4-中间温度定律"><a href="#4-中间温度定律" class="headerlink" title="4.中间温度定律"></a>4.中间温度定律</h5><p>​    热电偶在两结点温度T、T0时的热电势等于该热电偶在结点温度为T、Tn和Tn、T0时的相应热电势的代数和</p>
+<h3 id="应用-2"><a href="#应用-2" class="headerlink" title="应用"></a>应用</h3><ul>
+<li><strong>炉温测量</strong></li>
+<li><strong>管道温度测量</strong></li>
+</ul>
+<h2 id="9、热敏电阻传感器原理；"><a href="#9、热敏电阻传感器原理；" class="headerlink" title="9、热敏电阻传感器原理；"></a>9、热敏电阻传感器原理；</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><blockquote>
+<p>热电阻温度传感器是利用导体的电阻值随温度变化的特性，对温度和与温度有关的参数进行检测的装置</p>
+</blockquote>
+<h3 id="金属热电阻"><a href="#金属热电阻" class="headerlink" title="金属热电阻"></a>金属热电阻</h3><p>​    金属热电阻是利用电阻与温度呈一定函数关系的特性，由金属材料制成的感温元件。通过测量电阻值的变化大小而得到温度变化的情况及数值大小</p>
+<h4 id="材料要求"><a href="#材料要求" class="headerlink" title="材料要求"></a>材料要求</h4><ul>
+<li>电阻温度系数要大，电阻温度系数越大，热电阻的灵敏度越高；纯金属的电阻温度系数比合金的高，一般采用纯金属做热电阻元件</li>
+<li>在测温范围内，材料的物理、化学物质应稳定</li>
+<li>在测温范围内，电阻温度系数保持常数，便于实现温度表的线性刻度特性</li>
+<li>具有比较大的电阻率，以利于减少热电阻的体积，减少热惯性</li>
+<li>特性复现性好，容易复制</li>
+</ul>
+<h3 id="热敏电阻："><a href="#热敏电阻：" class="headerlink" title="热敏电阻："></a>热敏电阻：</h3><h4 id="构成："><a href="#构成：" class="headerlink" title="构成："></a>构成：</h4><p>​    主要由热敏探头、引线、壳体构成，热敏电阻一般做成二端器件，也可以做成三端、四端器件</p>
+<ul>
+<li>二端和三端器件为直热式<ul>
+<li>热敏电阻直接由连接的电路中获得功率</li>
+</ul>
+</li>
+<li>四端器件是旁热式</li>
+</ul>
+<h4 id="分类：-3"><a href="#分类：-3" class="headerlink" title="分类："></a>分类：</h4><blockquote>
+<p>分为负温度系数(NTC)和正温度系数(PTC)之分。</p>
+</blockquote>
+<p><strong>NTF：</strong></p>
+<ul>
+<li>第一类用于测量温度<ul>
+<li>电阻值与温度呈负指数关系</li>
+</ul>
+</li>
+<li>第二类为突变型(CTR)<ul>
+<li>当温度上升到某临界值时，电阻值突然下降</li>
+<li>用于作温度开关</li>
+</ul>
+</li>
+</ul>
+<p><strong>PTC:</strong></p>
+<p>​    既可以作为温度敏感元件，又可以在电子线路中起<strong>限流、保护作用</strong></p>
+<ul>
+<li>PTC突变型热敏电阻主要用作温度开关</li>
+<li>PTC缓变型主要用于在较宽的温度范围内进行<strong>温度补偿和温度测量</strong></li>
+</ul>
+<h4 id="应用：-3"><a href="#应用：-3" class="headerlink" title="应用："></a>应用：</h4><ul>
+<li>热敏电阻测温</li>
+<li>管道流量测量</li>
+</ul>
+<hr>
+<h3 id="热敏电阻和热电偶的区别"><a href="#热敏电阻和热电偶的区别" class="headerlink" title="热敏电阻和热电偶的区别"></a>热敏电阻和热电偶的区别</h3><ol>
+<li>测温原理不同。热电偶是热电效应，热电阻是阻值变化</li>
+<li>测温范围不同。热电偶连续测量范围宽，</li>
+<li>种类和结构不同</li>
+<li>应用不同。热电偶适用于高温工作，电势反应灵敏，需要补偿导线，造价高</li>
+</ol>
+<p>​    </p>
+<h2 id="10、光电效应与光电元件；"><a href="#10、光电效应与光电元件；" class="headerlink" title="10、光电效应与光电元件；"></a>10、光电效应与光电元件；</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>​    光由光子构成，每一个光子具有的能力E正比于光的频率f    E = hf</p>
+<ul>
+<li>光子的频率越高，光子的能力越大</li>
+</ul>
+<p>​    光电传感器是将光信号转换成电信号的一种传感器</p>
+<h3 id="光电效应"><a href="#光电效应" class="headerlink" title="光电效应"></a>光电效应</h3><h4 id="定义：-9"><a href="#定义：-9" class="headerlink" title="定义："></a>定义：</h4><blockquote>
+<p>用光照射一个物体，可以看作物体受到一连串能力hf的光子轰击，组成这个物体的材料吸收光子能力而发生相应的电效应的物理现象称为光电效应</p>
+</blockquote>
+<p>​    因光照引起电学特性改变的现象，包括光照射到物体上使物体发射电子，电导率发生变化，产生光生电动势</p>
+<p>​    </p>
+<p>​    光电效应传感器是应用光敏材料的光电效应制成的光敏器件</p>
+<h4 id="光电效应分类"><a href="#光电效应分类" class="headerlink" title="光电效应分类"></a>光电效应分类</h4><p>​    <strong>外光电效应</strong>：在光线作用下能使电子<strong>逸出物体表面</strong>的光电效应</p>
+<ul>
+<li><p><strong>光电管</strong></p>
+</li>
+<li><p><strong>光电倍增管</strong></p>
+</li>
+</ul>
+<p>​    <strong>内光电效应</strong>：在光线作用下能使物体的<strong>电阻率改变</strong>的光电效应</p>
+<ul>
+<li>光敏电阻</li>
+<li>光敏二极管</li>
+</ul>
+<p>​    <strong>光生伏特效应：</strong>在光线的作用下，物体产生<strong>一定方向电动势的光电效应</strong>(光电池、光敏晶体管)</p>
+<ul>
+<li>光电池</li>
+<li>光敏晶体管</li>
+</ul>
+<h4 id="光源分类"><a href="#光源分类" class="headerlink" title="光源分类"></a>光源分类</h4><p>​    热辐射光源</p>
+<p>​    气体放电光源</p>
+<p>​    发光二极管</p>
+<p>​    激光</p>
+<h3 id="光电元件"><a href="#光电元件" class="headerlink" title="光电元件"></a>光电元件</h3><h4 id="一。基于外光电效应的光电元件"><a href="#一。基于外光电效应的光电元件" class="headerlink" title="一。基于外光电效应的光电元件"></a>一。基于外光电效应的光电元件</h4><h4 id="光电管"><a href="#光电管" class="headerlink" title="光电管"></a><strong>光电管</strong></h4><p>​    由一个阴极和一个阳极构成，密封在一支真空玻璃管内。</p>
+<p>​    阳极通常用金属丝弯曲成矩形或者圆形，置于玻璃管中央，阴极装在玻璃管内壁，徒有光电发射材料。</p>
+<ul>
+<li>光电管的特性主要取决于<strong>光电管阴极材料</strong></li>
+</ul>
+<p>$$<br>E = 1/2mv^2 + A<br>$$<br><strong>光电效应方程</strong></p>
+<ul>
+<li>只有当光子能力E大于电子逸出功A时，物质内的电子才能脱离原子核的吸引力向外逸出</li>
+</ul>
+<p><strong>红限极限</strong></p>
+<p>​    不同材料具有不同逸出功，对某种材料而言便有一个频率限</p>
+<ul>
+<li>当入射光频率低于红限频率时，无论入射光多强，照射时间多久，都不能激发出光电子</li>
+<li>当入射高频率高于红限频率时，无论它多为若，也能激发电子。光越强，单位时间内入射光子数越多，激发的电子数目越大，光电流越大</li>
+</ul>
+<p><strong>光电管的基本特性</strong></p>
+<p>1）伏安特性</p>
+<p>​    在一定光照下，对光电管阴极所加的电压与阳极所产生的电流之间的关系称为伏安特性</p>
+<p>2）光照特性</p>
+<p>​    当光电管的阴极与阳极之间<strong>所加的电压一定时</strong>，光通量与光电流之间的关系称之为光照特性</p>
+<p>3）光谱特性</p>
+<p>​    光电管的光谱特性通常指阳极与阴极之间<strong>所加的电压不变时</strong>，入射光的波长与其相对灵敏度之间的关系</p>
+<ul>
+<li>主要取决于阴极材料</li>
+<li>阴极材料不同的光电管适用于不同的光谱范围</li>
+</ul>
+<h4 id="光电倍增管"><a href="#光电倍增管" class="headerlink" title="光电倍增管"></a>光电倍增管</h4><p>​    有<strong>放大光电流的作用</strong>，有增益高、灵敏度高、超低噪声、光敏区面积大等特点。<strong>还可以用于微光测量</strong></p>
+<h4 id="二。基于内光电效应的光电元件"><a href="#二。基于内光电效应的光电元件" class="headerlink" title="二。基于内光电效应的光电元件"></a>二。基于内光电效应的光电元件</h4><h4 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h4><p>​    入射光强改变物质导电率的现象称为光电导效应</p>
+<ul>
+<li>几乎所有高电阻率半导体都有光电导效应</li>
+</ul>
+<h4 id="光敏电阻"><a href="#光敏电阻" class="headerlink" title="光敏电阻"></a>光敏电阻</h4><p>​    几乎都是半导体材料制成，为纯电阻元件。</p>
+<ul>
+<li>当无光照时，光敏电阻具有很高的阻值</li>
+<li>当光敏电阻受到一定波长范围的光照射时，光子的能量大于材料的禁带宽度。光照越强，电阻值越低</li>
+</ul>
+<h4 id="光敏晶体管"><a href="#光敏晶体管" class="headerlink" title="光敏晶体管"></a>光敏晶体管</h4><p>​    当二极管和三极管的PN结受到光照射时，通过PN结的电流将增大。</p>
+<ul>
+<li>光敏二极管结构与一般二极管不同之处在于他的PN结装在透明管壳的顶部，可以直接接收到光的照射</li>
+</ul>
+<h4 id="三。基于光生伏特效应的光电元件"><a href="#三。基于光生伏特效应的光电元件" class="headerlink" title="三。基于光生伏特效应的光电元件"></a>三。基于光生伏特效应的光电元件</h4><h4 id="光电池"><a href="#光电池" class="headerlink" title="光电池"></a>光电池</h4><p>​    在光线照射下，直接将光量转变成电动势的光电元件，实质上是电压源</p>
+<ul>
+<li>实质上时一个大面积的PN结</li>
+</ul>
+<h2 id="11、气敏传感器原理"><a href="#11、气敏传感器原理" class="headerlink" title="11、气敏传感器原理"></a>11、气敏传感器原理</h2><h3 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p> 气体传感器的定义是能够感知环境中某种气体及其浓度的一种敏感器件。将气体种类与其浓度有关的信息转换成电信号</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th>原理</th>
+<th align="center">检测对象</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">半导体式</td>
+<td>若气体接触到加热的金属氧化物,电阻值会增大或减少</td>
+<td align="center">还原性气体、城市排放气体、丙烷气等</td>
+<td>灵敏度高，构造简单，但输出与气体浓度不成比例</td>
+</tr>
+<tr>
+<td align="center">接触燃烧式</td>
+<td>可燃性气体接触到氧气会燃烧，使得作为气敏材料的铂丝温度升高，电阻值相应增大</td>
+<td align="center">可燃气体</td>
+<td>输出与气体浓度成比例，灵敏度较低</td>
+</tr>
+<tr>
+<td align="center">化学反应式</td>
+<td>利用化学溶剂与气体反应产生的电流、颜色、电导率的增加等</td>
+<td align="center">CO、氢气、甲烷、乙醇、二氧化硫</td>
+<td>气体选择性好，但不能重复使用</td>
+</tr>
+<tr>
+<td align="center">光干涉式</td>
+<td>利用与空气的折射率不同而产生的干涉现象</td>
+<td align="center">与空气折射率不同的气体(二氧化碳等)</td>
+<td>寿命长，但选择性差</td>
+</tr>
+<tr>
+<td align="center">热传导式</td>
+<td>根据热传导率而放热的发热元件的温度降低进行检测</td>
+<td align="center">与空气热传导率不同的气体(氢气等)</td>
+<td>构造简单，灵敏度低、选择性差</td>
+</tr>
+<tr>
+<td align="center">红外线吸收散射式</td>
+<td>根据红外线照射气体分子谐振而产生的吸收或散射进行检测</td>
+<td align="center">一氧化碳、二氧化碳</td>
+<td>能定性检测，但是装置大，价格高</td>
+</tr>
+</tbody></table>
+<h2 id="12-湿敏电阻传感器的基本原理与应用；"><a href="#12-湿敏电阻传感器的基本原理与应用；" class="headerlink" title="12.湿敏电阻传感器的基本原理与应用；"></a>12.湿敏电阻传感器的基本原理与应用；</h2><h3 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p>利用器件电阻值随适度变化的基本原理来进行工作，其感湿特征量为电阻值</p>
+</blockquote>
+<h3 id="电阻式湿敏传感器分类"><a href="#电阻式湿敏传感器分类" class="headerlink" title="电阻式湿敏传感器分类"></a>电阻式湿敏传感器分类</h3><p>​    根据感湿材料的不同而分类</p>
+<h4 id="1-电解质式电阻湿敏传感器"><a href="#1-电解质式电阻湿敏传感器" class="headerlink" title="1.电解质式电阻湿敏传感器"></a>1.<strong>电解质式电阻湿敏传感器</strong></h4><p><strong>原理：</strong></p>
+<p>​    电解质具有强烈的吸水性，且电导率又随其吸水量的多少而发生变化。</p>
+<ul>
+<li>电解质：有些物质的水溶液是能够导电的<ul>
+<li>无机物中的酸、碱、盐绝大部分属于电解质</li>
+<li>导电能力既与电解质本身的性质有关，又与电解质溶液的浓度有关。</li>
+</ul>
+</li>
+<li>用<strong>当量电导</strong>来描述溶液的导电能力<ul>
+<li>当量电导就是溶液中含有一当量电解质时的溶液的导电能力</li>
+</ul>
+</li>
+</ul>
+<p><strong>典型代表：</strong></p>
+<p>​    氯化锂湿敏电阻，利用吸湿性盐类潮解，使离子导电率发生变化而制成</p>
+<ul>
+<li>优点<ul>
+<li>滞后肖，不受测试环境影响</li>
+<li>精度高</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>耐热性差</li>
+<li>重复性差，寿命短</li>
+<li>不能用于露点一下测量</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-陶瓷式电阻湿敏传感器"><a href="#2-陶瓷式电阻湿敏传感器" class="headerlink" title="2.陶瓷式电阻湿敏传感器"></a>2.<strong>陶瓷式电阻湿敏传感器</strong></h4><p>​    利用陶瓷湿度材料烧结制备时形成的多孔结构，吸附或凝聚水分子用作导电通路，从而改变陶瓷本身的电导率或电容量</p>
+<ul>
+<li>通常由两种以上的金属氧化物混合烧结而成的多孔陶瓷</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>传感器表面与水蒸气的接触面积大，易于水蒸气的吸收与脱离</li>
+<li>陶瓷烧结体能耐高温，物理，化学性质稳定，适合采用加热去污的方法来恢复材料的湿敏特性</li>
+<li>可以通过调节烧结体的表面晶粒、晶粒界和细微气孔的构造，改善传感器湿敏特性</li>
+</ul>
+<h4 id="3-高分子式电阻湿敏传感器"><a href="#3-高分子式电阻湿敏传感器" class="headerlink" title="3.高分子式电阻湿敏传感器"></a>3.<strong>高分子式电阻湿敏传感器</strong></h4><p>​    利用高分子电解质吸湿而导致电阻率发生变化的基本原理进行测量</p>
+<ul>
+<li>通常含强极性基的高分子电解质以及其盐类等高分子材料制成的感湿电阻膜</li>
+<li>随着湿度的增加吸附量增大，吸附水分子凝聚成液态。低湿度下电阻值很高</li>
+</ul>
+<h4 id="4-电容式湿敏传感器"><a href="#4-电容式湿敏传感器" class="headerlink" title="4.电容式湿敏传感器"></a>4.<strong>电容式湿敏传感器</strong></h4><p>​    利用湿敏元件的电容量随湿度变化的特性进行测量</p>
+<ul>
+<li>属于变介电常数电容式传感器</li>
+<li>当湿度变化时，由湿敏材料构成的电介质的介电常数发生改变，相应的电容量也随之发生改变</li>
+</ul>
+<h3 id="应用-3"><a href="#应用-3" class="headerlink" title="应用"></a>应用</h3><ul>
+<li>汽车后窗玻璃的自动祛湿装置</li>
+<li>高湿度显示仪</li>
+</ul>
+<h2 id="13、智能传感器的定义、特点与现场总线分类；"><a href="#13、智能传感器的定义、特点与现场总线分类；" class="headerlink" title="13、智能传感器的定义、特点与现场总线分类；"></a>13、智能传感器的定义、特点与现场总线分类；</h2><h3 id="概念-6"><a href="#概念-6" class="headerlink" title="概念"></a>概念</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>​    将一个或者多个敏感元件和信号处理器集成在同一块硅或者砷化锌芯片上的装置</p>
+<p>​    智能传感器可以对信号进行检测、分析、处理、储存和通信，具备人类的记忆、分析、思考和交流能力，即具备人类的智能，所有称为智能传感器</p>
+<p>​    <strong>智能传感器是一种带有微处理器，兼有信号检测、信号处理、信号记忆、逻辑思维与判断等智能化功能，是传感器和通信技术结合的产物</strong> </p>
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><p>​    主要由传感器、微处理器及相关电路组成</p>
+<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ol>
+<li>自校零、自标定、自校正功能</li>
+<li>自动补偿功能</li>
+<li>自动采集数据，并对数据进行预处理</li>
+<li>自动进行校验、自选量程、自寻故障</li>
+<li>数据存储、记忆和信息处理</li>
+<li>双向通信、标准化数字输出或者符号输出功能</li>
+<li>判断、决策处理功能</li>
+</ol>
+<h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><ol>
+<li>精度高</li>
+<li>高可靠性与高稳定性</li>
+<li>高信噪比与高分辨力</li>
+<li>自适应性强</li>
+<li>性能价格比高</li>
+</ol>
+<h3 id="现场总线分类"><a href="#现场总线分类" class="headerlink" title="现场总线分类"></a>现场总线分类</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><blockquote>
+<p> 现场总线是指连接智能现场设备和自动化系统的数字式、双向传输、多分支结构的通信网络</p>
+</blockquote>
+<p>​    现场总线时近年迅速发展的一种工业数据总线，主要解决现场的智能化仪器仪表、控制器、执行机构等现场设备的数字通信以及这些现场控制设备与高级控制系统之间的信息传递问题。</p>
+<p>​    </p>
+<h4 id="现场通信网络"><a href="#现场通信网络" class="headerlink" title="现场通信网络"></a>现场通信网络</h4><p>​    现场总线是用于过程自动化和制造自动化的现场设备或现场仪表互连的现场通信网络，把通信线一致延伸到生产现场或生产设备</p>
+<h3 id="总线标准"><a href="#总线标准" class="headerlink" title="总线标准"></a>总线标准</h3><ol>
+<li><p>1-Wire总线</p>
+<p>通过单条连接线解决了控制、通信与供电问题</p>
+</li>
+<li><p>IIC总线</p>
+<p>用于器件之间的二线制串行扩展总线</p>
+</li>
+<li><p>SMBus总线</p>
+<p>以IIC总线为基础，面向不同系统组成芯片与系统其他部分间的通信，与IIC类似(通用性不好)</p>
+</li>
+<li><p>SPI总线</p>
+<p>一种同步串行外设接口技术。主要应用与CPU与各种外围器件之间通信</p>
+</li>
+<li><p>USB总线</p>
+<p>由4条线构成，用以传送信号和提供电源</p>
+<p>对地电源电压为4.75~5.25V，设备能吸入的最大电流值为500mA</p>
+</li>
+</ol>
+<h2 id="14、RFID的结构与组成、典型案例；"><a href="#14、RFID的结构与组成、典型案例；" class="headerlink" title="14、RFID的结构与组成、典型案例；"></a>14、RFID的结构与组成、典型案例；</h2><h3 id="概念-7"><a href="#概念-7" class="headerlink" title="概念"></a>概念</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>​         射频识别(RFID)技术是无线电广播技术和雷达技术的结合，又称为电子标签技术。</p>
+<p>​            RFID技术通过<strong>无线射频信号</strong>实现非接触方式下的<strong>双向通信</strong>，完成对目标对象的<strong>自动识别和数据的读写操作</strong>，是物流过程中实施货品跟踪的一种很有效的技术。</p>
+<h4 id="构成：-1"><a href="#构成：-1" class="headerlink" title="构成："></a>构成：</h4><p>​    典型的RFID系统主要由<strong>读写器</strong>、<strong>电子标签</strong>、<strong>应用系统软件</strong>组成。</p>
+<p><strong>读写器</strong></p>
+<p>​    <strong>读写器主要负责与电子标签的双向通信，同时接收来自主机系统的控制指令。</strong>读写器的频率决定了RFID系统工作的频段，其功率决定了射频识别的有效距离。根据结构和技术的不同，读写器可以是读或读写装置，是RFID系统<strong>信息控制和处理中心</strong>。</p>
+<p><strong>电子标签</strong></p>
+<p>​    电子标签(Electronic Tag)也称为智能标签 (Smart Tag) ，是<strong>由IC芯片和无线通信天线组成的超微型的小标签，其内置的射频天线用于和读写器进行通信。</strong>电子标签是RFID系统中真正的<strong>数据载体</strong>。系统工作时读写器发出查询信号，若为无源标签，接收到的查询信号的部分能量被整流为直流电能，供标签内的电路工作；部分能量则被电子标签内保存的数据信息调制后反射回读写器。</p>
+<p><strong>应用系统软件</strong></p>
+<p>​    应用系统软件包括<strong>中间件和应用软件</strong>。应用软件的主要作用是<strong>对阅读器上报的标签数据进行管理</strong>，针对应用需要，<strong>发送指令给阅读器以实现对标签的操作</strong>。在通信过程中，必须保证整体射频系统的通畅，正确和迅速地采集数据，确保数据读取内容的可靠性，以及有效地将数据传送到后端系统。传统的数据采集系统中数据采集与后端应用程序之间的数据分发是通过中间件架构解决，并发展出各种应用服务器软件。</p>
+<p>​    中间件（middleware）是<strong>基础软件的一大类</strong>，属于<strong>可复用软件的范畴</strong>。中间件是一类<strong>连接软件组件和应用程序</strong>的<strong>计算机软件</strong>，它包括一组服务，以便运行在一台或多台机器上的多个软件<strong>通过网络进行交互</strong>。中间件位于客户机/服务器的操作系统之上，管理计算机资源和网络通讯，<strong>连接两个独立应用程序或独立系统的软件</strong>。相连接的系统，即使它们具有不同的接口，但通过中间件相互之间仍能交换信息。执行中间件的一个关键途径是<strong>信息传递</strong>。</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20231126223905376.png" srcset="/img/loading.gif" lazyload alt="image-20231126223905376"></p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="按频率分类"><a href="#按频率分类" class="headerlink" title="按频率分类"></a>按频率分类</h4><ul>
+<li>低频系统<ul>
+<li>工作频率30~300kHz</li>
+<li>标签的成本较低、标签内保存的数据量较少、阅读距离较短</li>
+<li>门禁考勤管理、动物识别等。</li>
+</ul>
+</li>
+<li>中高频系统<ul>
+<li>工作频率3~30MHz</li>
+<li>电子标签及读写器成本均较高，标签内保存的数据量较大，阅读距离较远</li>
+<li>电子票证、电子身份证、小区物业管理等。</li>
+</ul>
+</li>
+<li>特高频和微波系统<ul>
+<li>300MHz～3GHz或大于3GHz</li>
+<li>铁路车辆自动识别，还可用于公路车辆识别系统中。</li>
+</ul>
+</li>
+</ul>
+<h4 id="按照供电方式分类"><a href="#按照供电方式分类" class="headerlink" title="按照供电方式分类"></a><strong>按照供电方式分类</strong></h4><ul>
+<li>无源供电系统<ul>
+<li>无源系统内标签所需的工作能量需要从<strong>读写器发出的射频波束中获取</strong></li>
+</ul>
+</li>
+<li>有源供电系统<ul>
+<li>有源标签本身带有微型电池，由于不需要射频供电，其识别距离更远，读写器需要的功率较小。</li>
+</ul>
+</li>
+</ul>
+<h4 id="按照工作方式分类"><a href="#按照工作方式分类" class="headerlink" title="按照工作方式分类"></a><strong>按照工作方式分类</strong></h4><ul>
+<li>全双工系统<ul>
+<li>数据在<strong>读写器和电子标签</strong>之间的<strong>双向传输是同时进行的</strong>，并且从读写器到电子标签的能量传输是<strong>连续</strong>的，与传输的方向无关</li>
+</ul>
+</li>
+<li>半双工系统<ul>
+<li>从读写器到电子标签的数据传输和从电子标签到读写器的数据传输是<strong>交替进行</strong>的，并且从读写器到电子标签的能量传输是<strong>连续的</strong>，与传输方向无关</li>
+</ul>
+</li>
+<li>时序系统<ul>
+<li>从电子标签到读写器的数据传输是在电子标签的<strong>能量供应间歇****时进行的，而从读写器到电子标签的能量传输</strong>总是在限定的时间间隔内进行**。</li>
+<li>要求系统必须有足够大容量的<strong>辅助电容器</strong>或<strong>辅助电池</strong>对电子标签进行能量补偿。</li>
+</ul>
+</li>
+</ul>
+<h4 id="按照技术方式分类"><a href="#按照技术方式分类" class="headerlink" title="按照技术方式分类"></a><strong>按照技术方式分类</strong></h4><ul>
+<li><p><strong>主动广播式</strong></p>
+<ul>
+<li><strong>实现起来最简单</strong>。电子标签采用<strong>有源方式</strong>工作，并实时将储存的标识信息向外广播，读写器相当于一个只收不发的接收机。</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>电能充足、工作可靠性高、信号传输距离远</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>电子标签必须不停地向外发射信息，既费电，又对环境造成电磁污染。</li>
+</ul>
+</li>
+<li><p><strong>被动倍频式</strong></p>
+<ul>
+<li><strong>实现起来有一定难度</strong>。读写器<strong>发出射频查询信号</strong>，电子标签<strong>返回的信号</strong>载频为读写器发出射频的倍频。</li>
+</ul>
+</li>
+<li><p><strong>反射调制式</strong></p>
+<ul>
+<li><strong>实现起来要解决同频收发问题</strong></li>
+<li>读写器发出<strong>微波查询（能量）信号</strong>，电子标签（无源）将部分接收到的微波查询能量信号整流为直流电<strong>供电</strong>子标签内的电路工作，另一部分微波能量信号被电子标签<strong>内保存的数据信号调制（ASK）后反射回读写器</strong>。读写器接收到反射回的幅度调制信号后，从中解析出电子标签所保存的标识数据信息。</li>
+</ul>
+</li>
+</ul>
+<p>考试题型：问答（70分）、计算与分析（15分）、综合论述题（15分）</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E8%AF%95/" class="category-chain-item">考试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/">#传感器</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>传感器原理与应用</div>
+      <div>https://ahaostillcoding.github.io/2023/11/22/传感器原理与应用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>a_hao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/07/%E5%AE%89%E5%8D%93/" title="安卓">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">安卓</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/22/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" title="汇编语言">
+                        <span class="hidden-mobile">汇编语言</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

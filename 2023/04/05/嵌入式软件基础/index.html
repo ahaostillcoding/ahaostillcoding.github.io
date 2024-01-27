@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/xiaoxin.jpg">
+  <link rel="icon" href="/img/xiaoxin.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="a_hao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一。嵌入式软件的特点 规模较小 开发难度大 硬件资源有限 一般涉及到底层软件的开发，需要软硬件基础 开发环境与运行环境不同   实时性和可靠性要求高 要求固化存储   二。嵌入式软件1.分类 系统软件：控制和管理嵌入式系统资源，如嵌入式操作系统、驱动程序、中间件等 支撑软件：辅助软件开发的工具软件 应用软件：定义嵌入式设备的主要功能和用途，负责与用户进行交互   2.软件体系结构1)无操作系统阶段">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式软件基础">
+<meta property="og:url" content="https://ahaostillcoding.github.io/2023/04/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="阿豪博客">
+<meta property="og:description" content="一。嵌入式软件的特点 规模较小 开发难度大 硬件资源有限 一般涉及到底层软件的开发，需要软硬件基础 开发环境与运行环境不同   实时性和可靠性要求高 要求固化存储   二。嵌入式软件1.分类 系统软件：控制和管理嵌入式系统资源，如嵌入式操作系统、驱动程序、中间件等 支撑软件：辅助软件开发的工具软件 应用软件：定义嵌入式设备的主要功能和用途，负责与用户进行交互   2.软件体系结构1)无操作系统阶段">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230405220914250.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230408144401204.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230408144735814.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230408145816566.png">
+<meta property="article:published_time" content="2023-04-05T09:17:12.000Z">
+<meta property="article:modified_time" content="2023-04-22T09:22:28.519Z">
+<meta property="article:author" content="a_hao">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230405220914250.png">
+  
+  
+  
+  <title>嵌入式软件基础 - 阿豪博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ahaostillcoding.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阿豪</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="嵌入式软件基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-05 17:17" pubdate>
+          2023年4月5日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">嵌入式软件基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一。嵌入式软件的特点"><a href="#一。嵌入式软件的特点" class="headerlink" title="一。嵌入式软件的特点"></a>一。嵌入式软件的特点</h2><ul>
+<li>规模较小</li>
+<li>开发难度大<ul>
+<li>硬件资源有限</li>
+<li>一般涉及到底层软件的开发，需要软硬件基础</li>
+<li>开发环境与运行环境不同</li>
+</ul>
+</li>
+<li>实时性和可靠性要求高</li>
+<li>要求固化存储 </li>
+</ul>
+<h2 id="二。嵌入式软件"><a href="#二。嵌入式软件" class="headerlink" title="二。嵌入式软件"></a>二。嵌入式软件</h2><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h3><ul>
+<li>系统软件：控制和管理嵌入式系统资源，如嵌入式操作系统、驱动程序、中间件等</li>
+<li>支撑软件：辅助软件开发的工具软件</li>
+<li>应用软件：定义嵌入式设备的主要功能和用途，负责与用户进行交互</li>
+</ul>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230405220914250.png" srcset="/img/loading.gif" lazyload alt="image-20230405220914250"></p>
+<h3 id="2-软件体系结构"><a href="#2-软件体系结构" class="headerlink" title="2.软件体系结构"></a>2.软件体系结构</h3><h4 id="1-无操作系统阶段"><a href="#1-无操作系统阶段" class="headerlink" title="1)无操作系统阶段"></a>1)无操作系统阶段</h4><ul>
+<li>硬件配置较低，系统应用主要集中在控制领域</li>
+<li>嵌入式软件的设计以应用为核心，应用软件直接建立在硬件上</li>
+</ul>
+<p>两种实现方式</p>
+<ul>
+<li>循环轮转</li>
+<li>前后台系统(在循环轮转基础上增加了中断处理功能)</li>
+</ul>
+<h5 id="循环轮转"><a href="#循环轮转" class="headerlink" title="循环轮转"></a>循环轮转</h5><ul>
+<li>把系统分解成若干不同任务，包含在死循环的for语句中，按顺序逐一执行    </li>
+</ul>
+<p>​            优点：</p>
+<ul>
+<li>简答，直观，开销少</li>
+</ul>
+<p>​            缺点：</p>
+<ul>
+<li> 所有代码按顺序执行，无法处理异步事件，缺乏并行处理能力</li>
+</ul>
+<h5 id="前后台系统"><a href="#前后台系统" class="headerlink" title="前后台系统"></a>前后台系统</h5><ul>
+<li>前台程序(事件处理级)：中断服务程序。负责处理异步事件</li>
+<li>后台程序(任务级)：一个无限循环，负责资源分配、管理和系统调度<ul>
+<li>系统运行时，后台程序会检查每个任务是否具有运行条件，对实时性要求严格的操作通用由中断完成</li>
+</ul>
+</li>
+</ul>
+<p>​            注意：</p>
+<ul>
+<li>前后台系统认为所有的任务具有相同优先级，任务执行时通过队列排队</li>
+<li>实时性较差</li>
+</ul>
+<h4 id="2-有操作系统阶段"><a href="#2-有操作系统阶段" class="headerlink" title="2)有操作系统阶段"></a>2)有操作系统阶段</h4><ul>
+<li>开发应用在操作系统的基础上编写</li>
+</ul>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><ul>
+<li>提高系统可靠性</li>
+<li>提高系统开发效率，降低成本，缩短开发周期<ul>
+<li>可以按软件工程的思想，分解程序为多个任务模块，对每个任务模块调试</li>
+<li>商业软件提供了良好的多任务调试环境</li>
+</ul>
+</li>
+<li>有利于系统的扩展和移植</li>
+</ul>
+<h5 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h5><ul>
+<li>硬件层(最底层)</li>
+<li>设备驱动层(BSP)<ul>
+<li>包含了嵌入式系统中所有与硬件相关的代码</li>
+<li>它负责直接与硬件打交道，对硬件进行管理和控制，为上层软件提供所需的驱动支持(类似与BIOS和驱动)</li>
+</ul>
+</li>
+<li>操作系统层</li>
+<li>中间件层</li>
+<li>应用软件层</li>
+</ul>
+<h5 id="1-设备驱动层"><a href="#1-设备驱动层" class="headerlink" title="1)设备驱动层"></a>1)设备驱动层</h5><p>BSP(板级支持包 Board Support Package)</p>
+<ul>
+<li>把嵌入式系统与具体的硬件平台隔离开来</li>
+<li>BSP中，所有与硬件相关的代码都封装起来，向上提供一个虚拟的硬件平台，供操作系统运行</li>
+<li>操作系统用一组定义好的编程接口与BSP交互，通过BSP访问真正的硬件</li>
+</ul>
+<p>BSP包含两个方面内容</p>
+<ul>
+<li>引导加载程序Boot Loader(类似与BIOS)<ul>
+<li>嵌入式系统加电后运行的第一段软件代码，是在操作系统内核运行前运行的一段小程序<ul>
+<li>初始化硬件设备、建立内存空间的映射图</li>
+<li>将系统的软硬件设置到一个合适的状态，为调用操作系统内核做准备</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设备驱动程序<ul>
+<li>是一组库函数，用来对硬件进行初始化和管理，并向上层软件提供良好的访问接口</li>
+<li>基本功能：启动、关闭、停用、启用、读操作、写操作</li>
+</ul>
+</li>
+</ul>
+<p>Boot Loader的基本功能</p>
+<ul>
+<li>片级初始化<ul>
+<li>完成微处理器的初始化</li>
+<li>包括设置微处理器的核心寄存器和控制寄存器、微处理器的核心工作模式、局部总线模式等</li>
+<li>把微处理器从上电的默认状态设置成系统要求的工作状态。</li>
+<li>纯硬件初始化过程</li>
+</ul>
+</li>
+<li>板级初始化<ul>
+<li>设置各种硬件寄存器来完成微处理器以外的其他硬件设备的初始化</li>
+<li>设置某些软件的数据结构和参数</li>
+<li>同时有软件和硬件的初始化过程</li>
+</ul>
+</li>
+<li>加载内核<ul>
+<li>将操作系统和应用程序的映象从Flsh存储器复制到系统内存中，</li>
+<li>然后跳转到系统内核的第一条指令处继续执行。</li>
+</ul>
+</li>
+</ul>
+<p>设备驱动程序的组织结构</p>
+<ul>
+<li>分层结构<ul>
+<li>把设备驱动程序中的函数分为硬件接口函数喝调用接口函数</li>
+<li><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230408144401204.png" srcset="/img/loading.gif" lazyload alt="image-20230408144401204"><ul>
+<li>上层接口不直接与硬件打交道</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>与硬件相关的细节都封装在硬件接口中，硬件需要升级时，只需要改硬件接口中的函数即可</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>混合结构<ul>
+<li>没有明确层级关系</li>
+<li><h2 id="上层接口和硬件接口函数混在一起、相互调用"><a href="#上层接口和硬件接口函数混在一起、相互调用" class="headerlink" title="上层接口和硬件接口函数混在一起、相互调用"></a>上层接口和硬件接口函数混在一起、相互调用</h2></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230408144735814.png" srcset="/img/loading.gif" lazyload alt="image-20230408144735814"></p>
+<hr>
+<h5 id="2）中间件"><a href="#2）中间件" class="headerlink" title="2）中间件"></a>2）中间件</h5><p>定义：操作系统内核、设备驱动程序和应用软件之外的所有系统软件</p>
+<p>特点：</p>
+<ul>
+<li>可以有效实现软件的可重用，减低应用软件的复杂性、提高系统的开发效率、缩短开发周期，节约开发成本和维护费用，提高系统的高伸缩性、易升级性、稳定性</li>
+<li>缺点：带来额外的开销</li>
+</ul>
+<p>分类</p>
+<ul>
+<li>消息中间件 RM2</li>
+<li>对象中间件 CORBA</li>
+<li>远程过程调用、数据库访问中间件</li>
+<li>安全中间件</li>
+</ul>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230408145816566.png" srcset="/img/loading.gif" lazyload alt="image-20230408145816566"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">#嵌入式</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>嵌入式软件基础</div>
+      <div>https://ahaostillcoding.github.io/2023/04/05/嵌入式软件基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>a_hao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/24/mmap%E5%87%BD%E6%95%B0/" title="mmap函数">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mmap函数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%B7%A5%E7%A8%8B%E5%B8%88/" title="嵌入式工程师">
+                        <span class="hidden-mobile">嵌入式工程师</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

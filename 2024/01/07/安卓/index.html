@@ -1,0 +1,1405 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/xiaoxin.jpg">
+  <link rel="icon" href="/img/xiaoxin.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="a_hao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第一章  Android是Google公司基于Linux平台开发的手机及平板电脑的操作系统。  一。安卓体系的具体结构 分层结构，由高到低分别是应用程序层、应用程序框架层、核心类层、Linux内核  1.应用程序层(Applications)​    一个核心应用程序的集合，所有安装在手机上的应用程序都属于这一层，例如系统自带的联系人程序、短信程序等 2.应用程序框架层(Application F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓">
+<meta property="og:url" content="https://ahaostillcoding.github.io/2024/01/07/%E5%AE%89%E5%8D%93/index.html">
+<meta property="og:site_name" content="阿豪博客">
+<meta property="og:description" content="第一章  Android是Google公司基于Linux平台开发的手机及平板电脑的操作系统。  一。安卓体系的具体结构 分层结构，由高到低分别是应用程序层、应用程序框架层、核心类层、Linux内核  1.应用程序层(Applications)​    一个核心应用程序的集合，所有安装在手机上的应用程序都属于这一层，例如系统自带的联系人程序、短信程序等 2.应用程序框架层(Application F">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/activity_lifecycle.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/3ec6534aeaecba1eb2c6ba09f1abe6bb.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/20200512141503209.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20240106130326103.png">
+<meta property="article:published_time" content="2024-01-07T09:02:37.000Z">
+<meta property="article:modified_time" content="2024-01-07T09:07:28.559Z">
+<meta property="article:author" content="a_hao">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/activity_lifecycle.png">
+  
+  
+  
+  <title>安卓 - 阿豪博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ahaostillcoding.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阿豪</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="安卓"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-07 17:02" pubdate>
+          2024年1月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          145 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">安卓</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><blockquote>
+<p> Android是Google公司基于Linux平台开发的手机及平板电脑的操作系统。</p>
+</blockquote>
+<h2 id="一。安卓体系的具体结构"><a href="#一。安卓体系的具体结构" class="headerlink" title="一。安卓体系的具体结构"></a>一。安卓体系的具体结构</h2><blockquote>
+<p>分层结构，由高到低分别是应用程序层、应用程序框架层、核心类层、Linux内核</p>
+</blockquote>
+<h3 id="1-应用程序层-Applications"><a href="#1-应用程序层-Applications" class="headerlink" title="1.应用程序层(Applications)"></a>1.应用程序层(Applications)</h3><p>​    一个核心应用程序的集合，所有安装在手机上的应用程序都属于这一层，例如系统自带的联系人程序、短信程序等</p>
+<h3 id="2-应用程序框架层-Application-Framework"><a href="#2-应用程序框架层-Application-Framework" class="headerlink" title="2.应用程序框架层(Application Framework)"></a>2.应用程序框架层(Application Framework)</h3><p>​    主要提供了构建应用程序时用到的各种API</p>
+<h3 id="3-核心类层-Libraries"><a href="#3-核心类层-Libraries" class="headerlink" title="3.核心类层(Libraries)"></a>3.核心类层(Libraries)</h3><p>​    包含了系统库及Android运行时库。系统层这一层主要通过CC++库来位Android系统提供主要的特性支持。</p>
+<h3 id="4-Linux内核"><a href="#4-Linux内核" class="headerlink" title="4.Linux内核"></a>4.Linux内核</h3><p>​    为Android设备的各种硬件提供了底层的驱动</p>
+<h2 id="二。Dalvik虚拟机"><a href="#二。Dalvik虚拟机" class="headerlink" title="二。Dalvik虚拟机"></a>二。Dalvik虚拟机</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>​    Google自己设计用于Android平台的虚拟机，可以简单地完成进程隔离和线程管理，并可以提高内存的使用效率。每个Android应用程序在底层都会对应一个独立的Dalvik虚拟机实例。</p>
+<h3 id="2-与Java虚拟机的不同"><a href="#2-与Java虚拟机的不同" class="headerlink" title="2.与Java虚拟机的不同"></a>2.与Java虚拟机的不同</h3><p>Java虚拟机: <strong>基于栈的架构</strong></p>
+<p>​    栈是连续的内存空间，取出存入的速度比较慢</p>
+<ul>
+<li>编译后文件：.java -&gt; .class -&gt; .jar</li>
+</ul>
+<hr>
+<p>Dalvik虚拟机： <strong>基于寄存器的架构</strong></p>
+<p>​    寄存器是CPU上的一块缓存，存取速度比从内存中快很多</p>
+<ul>
+<li>编译后文件: .java -&gt; .class -&gt; .dex -&gt; .odex</li>
+</ul>
+<h2 id="三。Android程序结构"><a href="#三。Android程序结构" class="headerlink" title="三。Android程序结构"></a>三。Android程序结构</h2><h3 id="1-manifests"><a href="#1-manifests" class="headerlink" title="1.manifests"></a>1.manifests</h3><p>思考题：<strong>清单文件的作用功能</strong></p>
+<p>​    存放<strong>AndroidManifest.xml</strong>文件(清单文件)，是整个项目的配置文件。四大组件都需要在这个文件中注册。</p>
+<p>​    还可以在该文件中给程序添加权限。</p>
+<p>​    清单文件中的配置的信息会添加到安卓系统中，程序运行时，系统会找到清单文件中的配置信息</p>
+<h4 id="四大组件注册"><a href="#四大组件注册" class="headerlink" title="四大组件注册"></a>四大组件注册</h4><h5 id="1-activity注册方法"><a href="#1-activity注册方法" class="headerlink" title="1.activity注册方法"></a>1.activity注册方法</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">activity</span></span><br><span class="hljs-tag">           <span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;@string/app_name&quot;</span></span><br><span class="hljs-tag">           <span class="hljs-attr">android:launchMode</span>=<span class="hljs-string">&quot;singleInstance&quot;</span></span><br><span class="hljs-tag">           <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.Day21_03_SmsActivity&quot;</span> &gt;</span><br>    <br><span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span> &gt;</span><br>               <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span><br>               <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br>    <br>   <span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-BroadcastReceiver静态注册方法"><a href="#2-BroadcastReceiver静态注册方法" class="headerlink" title="2.BroadcastReceiver静态注册方法"></a>2.BroadcastReceiver静态注册方法</h5><p>​    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.SmsReceiver&quot;</span> &gt;</span><br>    <br>        <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span> &gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.BOOT_COMPLETED&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="3-ContentProvider注册方法"><a href="#3-ContentProvider注册方法" class="headerlink" title="3.ContentProvider注册方法"></a>3.ContentProvider注册方法</h5><p>​        </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">provider</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:authorities</span>=<span class="hljs-string">&quot;com.aile.provider.student&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.StudentProvider&quot;</span> &gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">provider</span>&gt;</span>  <br><br></code></pre></td></tr></table></figure>
+
+<h5 id="4-Service服务-IntentService和service注册方法"><a href="#4-Service服务-IntentService和service注册方法" class="headerlink" title="4.Service服务(IntentService和service注册方法)"></a>4.Service服务(IntentService和service注册方法)</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">service</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyService&quot;</span> &gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">service</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-java"><a href="#2-java" class="headerlink" title="2.java"></a>2.java</h3><p>​    存放所有Java代码，可以创建多个包，每个包里可以存放不同文件或者Activity</p>
+<h3 id="3-res"><a href="#3-res" class="headerlink" title="3.res"></a>3.res</h3><p>​    存放资源。</p>
+<ul>
+<li>drawable目录用于存放图片以及xml文件</li>
+<li>layout存放布局文件</li>
+<li>mipmap存放应用程序图标</li>
+</ul>
+<h3 id="4-Gradle-Scripts"><a href="#4-Gradle-Scripts" class="headerlink" title="4.Gradle Scripts"></a>4.Gradle Scripts</h3><p>​    存放项目创建的相关文件，无需修改</p>
+<hr>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="一。布局"><a href="#一。布局" class="headerlink" title="一。布局"></a>一。布局</h2><h3 id="1-线性布局LinearLayout"><a href="#1-线性布局LinearLayout" class="headerlink" title="1.线性布局LinearLayout"></a>1.线性布局LinearLayout</h3><h4 id="1-orientation属性"><a href="#1-orientation属性" class="headerlink" title="1)orientation属性:"></a>1)orientation属性:</h4><ul>
+<li>控制控件的排列方向</li>
+<li>有vertical和horizontal(默认)<ul>
+<li>vertical为线性垂直显示</li>
+<li>horizontal为线性布局水平显示</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>&gt;</span><br>	<br><span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-wrap-content和match-parent"><a href="#2-wrap-content和match-parent" class="headerlink" title="2)wrap_content和match_parent"></a>2)wrap_content和match_parent</h4><ul>
+<li>wrap_content:包括内容让当前控件<strong>根据内容大小自动伸缩</strong></li>
+<li>match_parent:填充父窗体<strong>由父容器大小决定控件大小</strong><ul>
+<li>水平排列时不可用</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-layout-weight权重"><a href="#3-layout-weight权重" class="headerlink" title="3)layout_weight权重"></a>3)layout_weight权重</h4><ul>
+<li>按钮1的权重值为1<ul>
+<li>计算方法： 1/(1+1+2) = 1/4</li>
+<li>所以按钮1占一行的1/4</li>
+</ul>
+</li>
+<li>设置android:layout_width=”match_parent”后Button中的layout_width会失去作用，所以设置为0dp作为规范写法，不会影响效果</li>
+</ul>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;LinearLayout xmlns:android=<span class="hljs-string">&quot;&quot;</span><br>	android:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span><br>	android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>&lt;Button<br>	android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/btn_one</span><br><span class="hljs-string">	android:layout_width=&quot;</span><span class="hljs-number">0</span>dp<br>	android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>	android:layout_weight=<span class="hljs-string">&quot;1&quot;</span><br>	android:<span class="hljs-built_in">text</span>=<span class="hljs-string">&quot;按钮1&quot;</span>&gt;<br>&lt;Button<br>	android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/btn_two</span><br><span class="hljs-string">	android:layout_width=&quot;</span><span class="hljs-number">0</span>dp<br>	android:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span><br>	android:layout_weight=<span class="hljs-string">&quot;1&quot;</span><br>	android:<span class="hljs-built_in">text</span>=<span class="hljs-string">&quot;按钮2&quot;</span>&gt;<br>&lt;Button<br>	android:<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;@+id/btn_three&quot;</span><br>	android:layout_width=<span class="hljs-string">&quot;0dp</span><br><span class="hljs-string">	android:layout_height=&quot;</span>wrap_content<span class="hljs-string">&quot;</span><br><span class="hljs-string">	android:layout_weight=&quot;</span><span class="hljs-number">2</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">	android:text=&quot;</span>按钮<span class="hljs-number">3</span><span class="hljs-string">&quot;&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">&lt;/LinearLayout&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-相对布局RelativeLayout"><a href="#2-相对布局RelativeLayout" class="headerlink" title="2.相对布局RelativeLayout"></a>2.相对布局RelativeLayout</h3><p>​    <strong>默认采用的是相对布局</strong></p>
+<ul>
+<li>px: 像素</li>
+<li>pt: 磅数</li>
+<li>dp: 基于屏幕密度的抽象单位，不同设备希纳是效果不同</li>
+<li>sp: 可伸缩像素</li>
+</ul>
+<h3 id="3-帧布局FrameLayout"><a href="#3-帧布局FrameLayout" class="headerlink" title="3.帧布局FrameLayout"></a>3.帧布局FrameLayout</h3><ul>
+<li><p>所有控件默认显示在左上角。</p>
+</li>
+<li><p>按先后放入顺序重叠摆放，先放入的控件显示在最底层，后放入的控件显示在最顶层</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">布局属性</th>
+<th align="center">功能</th>
+<th align="center">属性值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">android:foreground</td>
+<td align="center">设置前景图片(始终在所有子控件之上)</td>
+<td align="center">图片路径</td>
+</tr>
+<tr>
+<td align="center">android:foregroundGravity</td>
+<td align="center">前景图片显示位置</td>
+<td align="center">left right center</td>
+</tr>
+</tbody></table>
+<h3 id="4-表格布局TableLayout"><a href="#4-表格布局TableLayout" class="headerlink" title="4.表格布局TableLayout"></a>4.表格布局TableLayout</h3><table>
+<thead>
+<tr>
+<th align="center">布局属性</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">android:stretchColumns</td>
+<td align="center">设置该列被拉伸</td>
+</tr>
+<tr>
+<td align="center">android:shrinkColumns</td>
+<td align="center">设置该列被收缩</td>
+</tr>
+<tr>
+<td align="center">android:collapseColumns</td>
+<td align="center">设置该列被隐藏</td>
+</tr>
+</tbody></table>
+<ul>
+<li>所有列号都是从“0”开始</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">控件属性</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">android:layout_column</td>
+<td align="center">设置该单元显示位置</td>
+</tr>
+<tr>
+<td align="center">android:layout_span</td>
+<td align="center">设置该单元占据几列，默认为1</td>
+</tr>
+</tbody></table>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">TableLayout</span> <span class="hljs-attr">xmln:android</span>=<span class="hljs-string">&quot;&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:stetchColumns</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>   //拉伸第三列<br>        <span class="hljs-tag">&lt;<span class="hljs-name">TableRow</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:layout_column</span>=<span class="hljs-string">&quot;0&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;按钮1&quot;</span> /&gt;</span><br>             <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:layout_column</span>=<span class="hljs-string">&quot;1&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;按钮2&quot;</span> /&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">TableRow</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">TableLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-绝对布局AbsoluteLayout"><a href="#5-绝对布局AbsoluteLayout" class="headerlink" title="5.绝对布局AbsoluteLayout"></a>5.绝对布局AbsoluteLayout</h3><h2 id="二。常用控件"><a href="#二。常用控件" class="headerlink" title="二。常用控件"></a>二。常用控件</h2><h3 id="1-TextView"><a href="#1-TextView" class="headerlink" title="1.TextView"></a>1.TextView</h3><table>
+<thead>
+<tr>
+<th align="center">控件属性</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">android:text</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:textColor</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:textSize</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:textStyle</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:height</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:width</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:maxLength</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:password</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">android:gravity</td>
+<td align="center">设置文本位置</td>
+</tr>
+</tbody></table>
+<h4 id="layout-width、layout-height和width-、height区别"><a href="#layout-width、layout-height和width-、height区别" class="headerlink" title="layout_width、layout_height和width 、height区别"></a>layout_width、layout_height和width 、height区别</h4><p>1.</p>
+<ul>
+<li>对于带layout前缀属性通常是相对父控件而言</li>
+<li>不带是相对与控件本身而言</li>
+</ul>
+<p>2.layout的可以单独使用，不带的不能单独使用</p>
+<p>3.不带的只能设置为固定值</p>
+<p>4.要使用不带的，就必须同时设置layout_width和layout_height属性</p>
+<h3 id="2-EditText"><a href="#2-EditText" class="headerlink" title="2.EditText"></a>2.EditText</h3><table>
+<thead>
+<tr>
+<th align="center">控件属性</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">android:hint</td>
+<td align="center">没有输入内容时显示的提示文本</td>
+</tr>
+<tr>
+<td align="center">android:lines</td>
+<td align="center">固定行数决定EditText高度</td>
+</tr>
+<tr>
+<td align="center">android:editable</td>
+<td align="center">是否可编辑</td>
+</tr>
+<tr>
+<td align="center">android:scrollHorizontally</td>
+<td align="center">是否出现横拉条</td>
+</tr>
+</tbody></table>
+<p>可以设置android:maxLines来设置最大行数，超过行数会显示滚动条</p>
+<h3 id="3-Button的3种常用的点击方式"><a href="#3-Button的3种常用的点击方式" class="headerlink" title="3.Button的3种常用的点击方式"></a>3.Button的3种常用的点击方式</h3><h4 id="1-布局中指定onClick属性"><a href="#1-布局中指定onClick属性" class="headerlink" title="1.布局中指定onClick属性"></a>1.布局中指定onClick属性</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:id</span> = <span class="hljs-string">&quot;@id/btn_one&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:text</span> = <span class="hljs-string">&quot;按钮1&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_width</span> = <span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_height</span> = <span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:onClick</span> = <span class="hljs-string">&quot;click&quot;</span>  /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span>  &#123;<br>    <span class="hljs-keyword">private</span> Button myBtn_one;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-comment">//初始化控件</span><br>        myBtn_one = (Button) findViewById(R.id.btn_one)<br>    &#125;<br>        <span class="hljs-comment">//实现onClick()方法，实现按钮1点击事件</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">click</span><span class="hljs-params">(View v)</span>&#123;<br>        	myBtn_one.setText(<span class="hljs-string">&quot;按钮1点击&quot;</span>)<br>    &#125;<br>&#125;<br>        <br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-使用匿名内部类"><a href="#2-使用匿名内部类" class="headerlink" title="2.使用匿名内部类"></a>2.使用匿名内部类</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:id</span> = <span class="hljs-string">&quot;@id/btn_two&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android::text</span> = <span class="hljs-string">&quot;按钮2&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_width</span> = <span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:layout_height</span> = <span class="hljs-string">&quot;wrap_content&quot;</span>  /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> &#123;<br>    <span class="hljs-keyword">private</span> Button myBtn_two;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-comment">//初始化控件</span><br>        myBtn_two = (Button) findViewById(R.id.btn_two);<br>        <br>      <span class="hljs-comment">//匿名内部类的方法实现按钮2点击事件</span><br>            myBtn_two.setOnclickListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">View</span>.OnClickListener() &#123;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-comment">//重写onClick方法</span><br>                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">(View v)</span> &#123;<br>                    myBtn_two.setText(<span class="hljs-string">&quot;按钮2点击&quot;</span>);<br>                &#125;<br>            &#125;)<br>    &#125;<br>&#125;<br>          <br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-在当前Activity中实现OnClickListener接口"><a href="#3-在当前Activity中实现OnClickListener接口" class="headerlink" title="3.在当前Activity中实现OnClickListener接口"></a>3.在当前Activity中实现OnClickListener接口</h4><ul>
+<li>按钮较多时使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">View</span>.OnClickListener &#123;<br>    <span class="hljs-keyword">private</span> Button myBtn_two;<br>    <span class="hljs-keyword">private</span> Button myBtn_one;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-comment">//初始化控件</span><br>        myBtn_two = (Button) findViewById(R.id.btn_two);<br>   	   myBtn_one = (Button) findViewById(R.id.btn_one);<br>        myBtn_one.setOnClickListener(<span class="hljs-built_in">this</span>);<br>        myBtn_two.setOnClickListener(<span class="hljs-built_in">this</span>);<br>    &#125;<br><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">(View v)</span> &#123;<br>        <span class="hljs-keyword">switch</span>(v.getId() )&#123;<br>            <span class="hljs-keyword">case</span> R.id.btn_one:<br>            	myBtn_one.setText(<span class="hljs-string">&quot;按钮1&quot;</span>);<br>            	<span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> R.id.btn_two:<br>            	myBtn_two.setText(<span class="hljs-string">&quot;按钮2&quot;</span>);<br>            	<span class="hljs-keyword">break</span>;<br>        	&#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-RadioButton"><a href="#4-RadioButton" class="headerlink" title="4.RadioButton"></a>4.RadioButton</h3><blockquote>
+<p>RadioGrop是单选组合框，可容纳多个RadioButton</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">RadioGroup</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rdg&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">RadioButton</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/r_btn&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;25dp&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;女&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">RadioButton</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">RadioButton</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;25dp&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;男&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:checked</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">RadioButton</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">RadioGroup</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>checked属性：设置为true则默认选中</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">View</span>.OnClickListener &#123;<br>    <span class="hljs-keyword">private</span> RadioGroup radioGroup<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-comment">//初始化控件</span><br>        radioGroup = (RadioGroup)  findViewById(R.id.rdg);<br>        <br>      <span class="hljs-comment">//匿名内部类的方法</span><br>            radioGroup.setOnCheckChangeListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">RadioGroup</span>.OnCheckChangeListener() &#123;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-comment">//重写方法</span><br>                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">OnCheckChange</span><span class="hljs-params">(RadioGroup group)</span> &#123;<br>			<span class="hljs-keyword">if</span>(checkedId == R.id.r_btn) &#123;<br>			<br>			&#125;<span class="hljs-keyword">else</span> &#123;<br>			<br>			&#125;<br>                &#125;<br>            &#125;)<br>            <br>          <br></code></pre></td></tr></table></figure>
+
+<h3 id="5-消息对话框"><a href="#5-消息对话框" class="headerlink" title="5.消息对话框"></a>5.消息对话框</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs scala">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> void onCreate(<span class="hljs-type">Bundle</span> savedInstanceState) &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>        setContentView(<span class="hljs-type">R</span>.layout.activity_main);<br>        <span class="hljs-comment">//创建Toast</span><br>        <span class="hljs-type">Toast</span>.makeText(<span class="hljs-keyword">this</span> , <span class="hljs-string">&quot;Hello,Toast&quot;</span>, <span class="hljs-type">Toast</span>.<span class="hljs-type">LENGTH_SHORT</span>).show();<br><br>            &#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="三。LogCat的使用"><a href="#三。LogCat的使用" class="headerlink" title="三。LogCat的使用"></a>三。LogCat的使用</h2><p>​    Android中的命令行工具，用于获取程序成启动到关闭的日志信息。</p>
+<h3 id="等级"><a href="#等级" class="headerlink" title="等级"></a>等级</h3><p>​    <strong>等级由低到高排</strong></p>
+<blockquote>
+<p>import android.util.Log</p>
+</blockquote>
+<p>1.Verbose     全部消息 (黑色)</p>
+<ul>
+<li>Log.v()</li>
+</ul>
+<p>2.Debug       调试信息(蓝色)</p>
+<ul>
+<li>Log.d()</li>
+</ul>
+<p>3.Info        一般信息(绿色)</p>
+<ul>
+<li>Log.i()</li>
+</ul>
+<p>4.Warning     警告信息(橙色)</p>
+<ul>
+<li>Log.w()</li>
+</ul>
+<p>5.Error           错误信息(红色)</p>
+<ul>
+<li>Log.e()</li>
+</ul>
+<p>6.Assert</p>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>1.Filter Name 过滤器的名称</p>
+<p>2.by Log Tag 根据定义的Tag过滤，通常使用类名</p>
+<p>3.by Log Message 根据输出内容过滤信息</p>
+<p>4.by PID 根据进程id</p>
+<p>5.by Application Name 根据应用名称过滤信息</p>
+<p>6.by Log Level 根据日志的级别过滤信息</p>
+<h2 id="四。单元测试"><a href="#四。单元测试" class="headerlink" title="四。单元测试"></a>四。单元测试</h2><p>​    单元测试是指应用程序开发过程中对最小的功能模块进行测试，可以在完成某个功能之后对该功能进行单独测试，而不需要把应用程序安装到手机或启动模拟器再对各项功能进行测试，可以提高开发效率和质量</p>
+<blockquote>
+<p>Android Studio在创建项目时就默认创建了一个androidTest包和ApplicationTest类，把测试的功能模块写入此类即可</p>
+</blockquote>
+<h3 id="进行单元测试时的步骤"><a href="#进行单元测试时的步骤" class="headerlink" title="进行单元测试时的步骤"></a>进行单元测试时的步骤</h3><h4 id="1-在ApplicationTest类中添加一个test-测试方法"><a href="#1-在ApplicationTest类中添加一个test-测试方法" class="headerlink" title="1.在ApplicationTest类中添加一个test()测试方法"></a>1.在ApplicationTest类中添加一个test()测试方法</h4><ul>
+<li>所有测试方法必须以test开头，否则没有测试选项</li>
+</ul>
+<p>2.单独选择test方法进行运行查看结果</p>
+<hr>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="一。Activity创建"><a href="#一。Activity创建" class="headerlink" title="一。Activity创建"></a>一。Activity创建</h2><blockquote>
+<p>包名处右键—&gt;new—-&gt;Activity—-&gt;Empty Activity</p>
+</blockquote>
+<p>输入Activity Name和Layout Name、Package name</p>
+<p>创建的activity.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShopActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_shop);<br>    &#125;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>手动注册</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">在AndroidManifest.xml中添加<br><span class="hljs-tag">&lt;<span class="hljs-name">activity</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.ActivityExample&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="二。生命周期"><a href="#二。生命周期" class="headerlink" title="二。生命周期"></a>二。生命周期</h2><p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/activity_lifecycle.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="1-生命周期状态"><a href="#1-生命周期状态" class="headerlink" title="1.生命周期状态"></a>1.生命周期状态</h3><blockquote>
+<p>onCreate() —&gt; onStart() —&gt; onResume() —&gt; onPause() —&gt; onStop() —&gt; onDestroy()</p>
+</blockquote>
+<p>1）启动状态</p>
+<p>2）运行状态</p>
+<p>3）暂停状态</p>
+<p>4）停止状态</p>
+<p>5）销毁状态</p>
+<h3 id="2-生命周期方法"><a href="#2-生命周期方法" class="headerlink" title="2.生命周期方法"></a>2.生命周期方法</h3><h4 id="1-onCreate-方法"><a href="#1-onCreate-方法" class="headerlink" title="1.onCreate()方法"></a>1.onCreate()方法</h4><blockquote>
+<p>创建时调用</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>	<span class="hljs-built_in">super</span>.onCreate(saveInstanceState);<br>	setContentView(R.layout.activity_main);<br>&#125;	<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-onStart-方法"><a href="#2-onStart-方法" class="headerlink" title="2.onStart()方法"></a>2.onStart()方法</h4><blockquote>
+<p>在Activity即将可见时调用</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStart</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">super</span>.onStart();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-onResume-方法"><a href="#3-onResume-方法" class="headerlink" title="3.onResume()方法"></a>3.onResume()方法</h4><blockquote>
+<p>在Activity<strong>获取焦点</strong>开始与用户交互时调用</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onResume</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">super</span>.onResume();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-onPause-方法"><a href="#4-onPause-方法" class="headerlink" title="4.onPause()方法"></a>4.onPause()方法</h4><blockquote>
+<p>当前Activity被<strong>其他Activity覆盖或锁屏时调用</strong></p>
+<p>当执行到onPause()方法失去焦点 , 重新回到前台会执行onResume()方法</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onPause</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">super</span>.onPause();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-onStop-方法"><a href="#5-onStop-方法" class="headerlink" title="5.onStop()方法"></a>5.onStop()方法</h4><blockquote>
+<p>Activity对用户不可见时</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStop</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">super</span>.onStop();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-onDestroy-方法"><a href="#6-onDestroy-方法" class="headerlink" title="6.onDestroy()方法"></a>6.onDestroy()方法</h4><blockquote>
+<p>Activity销毁</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onDestroy</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">super</span>.onDestroy();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="7-onRestart-方法"><a href="#7-onRestart-方法" class="headerlink" title="7.onRestart()方法"></a>7.onRestart()方法</h4><blockquote>
+<p>Activity从停止状态再次启动</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">onRestart</span>(<span class="hljs-params"></span>) &#123;<br>	<span class="hljs-variable language_">super</span>.<span class="hljs-title function_">onRestart</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="三。Activity之间的跳转"><a href="#三。Activity之间的跳转" class="headerlink" title="三。Activity之间的跳转"></a>三。Activity之间的跳转</h2><p>​    Intent称为意图，是程序中各组件进行交互的一种重要方式，不仅可以将指定当前组件要执行的动作，还可以在不同组件之间进行数据传递。一般用于启动Activity、Service以及发送广播等</p>
+<h3 id="1-打开浏览器"><a href="#1-打开浏览器" class="headerlink" title="1.打开浏览器"></a>1.打开浏览器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">(View v)</span> &#123;<br>        <span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>();<br>        intent.setAction(<span class="hljs-string">&quot;android.intent.action.VIEW&quot;</span>);<br>        intent.setData(Uri.parse(<span class="hljs-string">&quot;http://www.baidu.com&quot;</span>));<br>        startActivity(intent);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-数据传递"><a href="#2-数据传递" class="headerlink" title="2.数据传递"></a>2.数据传递</h3><blockquote>
+<p>将要传递的数据暂存到Intent中，启动另外一个Activity后从Intent中取出数据即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//传递数据</span><br><br><span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>(<span class="hljs-built_in">this</span>,Activity.class);<br>intent.putExtra(<span class="hljs-string">&quot;extra_data&quot;</span>,<span class="hljs-string">&quot;hello&quot;</span>);  <span class="hljs-comment">//第一个参数为name，第二个参数为value</span><br>startActivity(intent);<br><br><span class="hljs-comment">//Activity中取数据</span><br><br><span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> getIntent();<br><span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> intent.getStringExtra(<span class="hljs-string">&quot;extra_data&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-数据回传"><a href="#3-数据回传" class="headerlink" title="3.数据回传"></a>3.数据回传</h3><blockquote>
+<p>startActivityForResult(Intent intent,int requestCode)</p>
+<p>setResult(int resultCode,Intent data)方法</p>
+<p>不过现在已经弃用</p>
+<p>代替为registerForActivityResult()</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java">Activity01中<br><br><span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>(<span class="hljs-built_in">this</span>,Activity02.class);<br>startActivityForResult(intent,<span class="hljs-number">1</span>)  <span class="hljs-comment">//第一个参数是Intent对象，第二个参数是请求码，输入一个唯一值即可</span><br><br><br>Activity02中返回数据<br><br><span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>();<br>intent.putExtra(<span class="hljs-string">&quot;extra_data&quot;</span>,<span class="hljs-string">&quot;hello&quot;</span>); <br>setResult(<span class="hljs-number">1</span>,intent);  <span class="hljs-comment">//第一个参数用于向Activity返回处理结果，一般使用0或1</span><br><br><br>Activity02被销毁时会回调Activity01的onActivityResult()方法，Activity01中需要重写一下接收数据<br><br><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onActivityResult</span><span class="hljs-params">(<span class="hljs-type">int</span> requestCode,<span class="hljs-type">int</span> resultCode,Intent data)</span>&#123;<br>        <span class="hljs-built_in">super</span>.onActivityResult(requestCode,resultCode,data);<br>        <span class="hljs-keyword">if</span> (requestCode == <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">if</span> (resultCode == <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> data.getStringExtra(<span class="hljs-string">&quot;extra_data&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="一。五种存储方式"><a href="#一。五种存储方式" class="headerlink" title="一。五种存储方式"></a>一。五种存储方式</h2><h3 id="1-文件存储"><a href="#1-文件存储" class="headerlink" title="1.文件存储"></a>1.文件存储</h3><p>​    读取/写入文件，通过openFileInput()和openFileOutput()方法读取设备上的文件。与Java中实现I/O程序一致</p>
+<p>存储位置</p>
+<ul>
+<li>默认存储在 data/data/<packagename>/files/ 目录下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fos</span> <span class="hljs-operator">=</span> openFileOutput(String name,<span class="hljs-type">int</span> mode);  <span class="hljs-comment">//输出流</span><br><span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fis</span> <span class="hljs-operator">=</span> openFileInput(String name);  <span class="hljs-comment">//输入流</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>“name” 表示文件名</li>
+<li>“mode” 表示文件的操作模式<ul>
+<li>MODE_PRIVATE: 文件只能被当前程序读写<ul>
+<li>默认模式</li>
+</ul>
+</li>
+<li>MODE_APPEND: 文件内容可以追加</li>
+<li>MODE_WORLD_READABLE: 文件的内容可以被其他程序读</li>
+<li>MODE_WORLD_WRITEABLE: 文件的内容可以被其他程序写</li>
+</ul>
+</li>
+</ul>
+<p>数据存储到文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;data.txt&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br>        FileOutputStream fos;<br>        <span class="hljs-keyword">try</span> &#123;<br>            fos = openFileOutput(name,MODE_PRIVATE);<br>            fos.write(data.getBytes());;<br>            fos.close();<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>数据读取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br>        FileInputStream fis;<br>        <span class="hljs-keyword">try</span> &#123;<br>            fis = openFileInput(<span class="hljs-string">&quot;data.txt&quot;</span>);<br>            <span class="hljs-type">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[fis.available()]; <span class="hljs-comment">//创建缓冲区，获取文件长度</span><br>            fis.read(buffer);  <span class="hljs-comment">//内容读入buffer缓冲区</span><br>            content = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(buffer) <span class="hljs-comment">//转换成字符串</span><br>            fis.close();<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-SharedPreferences"><a href="#2-SharedPreferences" class="headerlink" title="2.SharedPreferences"></a>2.SharedPreferences</h3><p>​    用XML格式将数据存储到设备中，可以存储应用程序的各种配置信息(用户名、密码等)</p>
+<h4 id="存储位置"><a href="#存储位置" class="headerlink" title="存储位置"></a><strong>存储位置</strong></h4><ul>
+<li>data/data/<packagename>/shared_prefs文件夹中</li>
+</ul>
+<h4 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a><strong>存储方式</strong></h4><ul>
+<li>通过key/value(键值对)的形式将数据保存在XML文件中</li>
+<li>value值的类型只能是Float,Int,Long,Boolean,String,StringSet类型数据</li>
+</ul>
+<h4 id="1-存储数据"><a href="#1-存储数据" class="headerlink" title="1.存储数据"></a><strong>1.存储数据</strong></h4><blockquote>
+<p>1.调用getSharedPreferences(String name,int mode)方法获取实例对象</p>
+<p>2.调用SharedPreferences的edit方法获取到可编辑的Editor对象</p>
+<p>3.通过putString(),putInt()方法存储数据</p>
+<p>4.通过commit()方法提交数据</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">SharedPreferences</span> <span class="hljs-variable">sp</span> <span class="hljs-operator">=</span> getSharedPreferences(<span class="hljs-string">&quot;data&quot;</span>,MODE_PRIVATE);<br>SharedPreferences.<span class="hljs-type">Editor</span> <span class="hljs-variable">editor</span> <span class="hljs-operator">=</span> sp.edit();<br>editor.putString(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;hello&quot;</span>);<br>editor.putInt(<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-number">9</span>);<br>editor.commit(); <span class="hljs-comment">//提交</span><br><br><span class="hljs-comment">//删除数据</span><br>editor.remove(<span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">//删除一条数据</span><br>editor.clear(); <span class="hljs-comment">//删除所有数据</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-获取数据"><a href="#2-获取数据" class="headerlink" title="2.获取数据"></a>2.获取数据</h4><blockquote>
+<p>1.获取SharedPreferences对象</p>
+<p>2.通过getxxx()方法获取到对应的key值</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">SharedPreferences</span> <span class="hljs-variable">sp</span> <span class="hljs-operator">=</span> getSharedPreferences(<span class="hljs-string">&quot;data&quot;</span>,MODE_PRIVATE);<br><span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span>getSring(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;&quot;</span>) <span class="hljs-comment">//第二个参数为缺省值，如果name不存在，则返回空字符串</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-SQLite数据库"><a href="#3-SQLite数据库" class="headerlink" title="3.SQLite数据库"></a>3.SQLite数据库</h3><p>​    Android自带的一个轻量级数据库，支持基本SQL语法，一般使用它作为复杂数据的存储引擎。</p>
+<p>​    <strong>详细见第五章</strong></p>
+<h3 id="4-ContentProvider"><a href="#4-ContentProvider" class="headerlink" title="4.ContentProvider"></a>4.ContentProvider</h3><p>​    四大组件之一，主要用于<strong>应用程序之间的数据交换</strong>，可以将自己的数据共享给其他应用程序使用</p>
+<h3 id="5-网络存储"><a href="#5-网络存储" class="headerlink" title="5.网络存储"></a>5.网络存储</h3><p>​    将数据存储在服务器上</p>
+<h3 id="二。XML解析"><a href="#二。XML解析" class="headerlink" title="二。XML解析"></a>二。XML解析</h3><h5 id="1-DOM解析"><a href="#1-DOM解析" class="headerlink" title="1.DOM解析"></a>1.DOM解析</h5><h5 id="2-SAX解析"><a href="#2-SAX解析" class="headerlink" title="2.SAX解析"></a>2.SAX解析</h5><h5 id="3-PULL解析"><a href="#3-PULL解析" class="headerlink" title="3.PULL解析"></a>3.PULL解析</h5><h3 id="三。JSON解析"><a href="#三。JSON解析" class="headerlink" title="三。JSON解析"></a>三。JSON解析</h3><hr>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h2 id="考编程题查询数据并展示在listview中"><a href="#考编程题查询数据并展示在listview中" class="headerlink" title="考编程题查询数据并展示在listview中"></a>考编程题查询数据并展示在listview中</h2><blockquote>
+<p>看p138的绿豆通讯录</p>
+</blockquote>
+<h2 id="一。数据库的创建"><a href="#一。数据库的创建" class="headerlink" title="一。数据库的创建"></a>一。数据库的创建</h2><blockquote>
+<p>1.创建一个类继承SQLiteOpenHelper</p>
+<p>2.重写onCreate()和onUpgrade()方法</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyHelper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">SQLiteOpenHelper</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyHelper</span><span class="hljs-params">(Context context)</span> &#123;<br>        <span class="hljs-built_in">super</span>(context, <span class="hljs-string">&quot;ahao&quot;</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">2</span>);<br>        <span class="hljs-comment">//上下文对象 数据库名称 游标工厂(通常为null) 数据库版本</span><br>    &#125;<br>    <span class="hljs-comment">//数据库第一次创建时调用</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(SQLiteDatabase db)</span> &#123;<br>        <span class="hljs-comment">//初始化数据库的库结构</span><br>        db.execSQL(<span class="hljs-string">&quot;CREATE TABLE information(_id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(20), price Integer)&quot;</span>);<br>        <span class="hljs-comment">//表名为information,数值_id,name,price</span><br>    &#125;<br>        <span class="hljs-comment">//数据库的版本号增加时调用</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onUpgrade</span><span class="hljs-params">(SQLiteDatabase db,<span class="hljs-type">int</span> oldVersion,<span class="hljs-type">int</span> newVersion)</span> &#123;<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="二。增删改查"><a href="#二。增删改查" class="headerlink" title="二。增删改查"></a>二。增删改查</h2><h3 id="1-增加数据"><a href="#1-增加数据" class="headerlink" title="1.增加数据"></a>1.增加数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(String name,String price)</span> &#123;<br>    <span class="hljs-type">SQLiteDatabase</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> helper.getWritableDatabase();  <span class="hljs-comment">//获取可读写SQLiteDatabase对象</span><br>    <span class="hljs-type">ContentValues</span> <span class="hljs-variable">values</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ContentValues</span>();  <span class="hljs-comment">//创建 ContentValues 对象</span><br>    values.put(<span class="hljs-string">&quot;name&quot;</span>,name);    <span class="hljs-comment">//添加数据到 ContentValues对象</span><br>    values.put(<span class="hljs-string">&quot;price&quot;</span>,price);<br>    <span class="hljs-type">long</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> db.insert(<span class="hljs-string">&quot;information&quot;</span>,<span class="hljs-literal">null</span>,values);  <span class="hljs-comment">//插入一条数据到information表</span><br>    <span class="hljs-comment">// 第一个参数是表名 第二个参数是要插入的行为空行时，将这个列名的值设为null 第三个参数为 ContentValues 对象 通过键值对的形式存入数据</span><br>    db.close();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-修改数据"><a href="#2-修改数据" class="headerlink" title="2.修改数据"></a>2.修改数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">update</span><span class="hljs-params">(String name, String price)</span> &#123;<br>    <span class="hljs-type">SQLiteDatabase</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> helper.getWritableDatabase();<br>    <span class="hljs-type">ContentValues</span> <span class="hljs-variable">values</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ContentValues</span>();<br>    values.put(<span class="hljs-string">&quot;price&quot;</span>,price);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> db.update(<span class="hljs-string">&quot;information&quot;</span>,values,<span class="hljs-string">&quot;name=?&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;name&#125;);<br>    <span class="hljs-comment">//第一个参数表示表名，第二个参数接收一个ContentValues对象 第三个参数为可选的where语句， 第四个参数表示whereClause语句中表达式的占位参数列表，会替换where中的&quot;?&quot;</span><br>    db.close();<br>    <span class="hljs-keyword">return</span> number;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-删除数据"><a href="#3-删除数据" class="headerlink" title="3.删除数据"></a>3.删除数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(<span class="hljs-type">long</span> id)</span> &#123;<br>    <span class="hljs-type">SQLiteDatabase</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> helper.getWritableDatabase();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> db.delete(<span class="hljs-string">&quot;information&quot;</span>,<span class="hljs-string">&quot;_id=?&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;id+<span class="hljs-string">&quot;&quot;</span>&#125;);<br>    db.close();<br>    <span class="hljs-keyword">return</span>  number;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-查询数据"><a href="#4-查询数据" class="headerlink" title="4.查询数据"></a>4.查询数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">long</span> id)</span> &#123;<br>    <span class="hljs-type">SQLiteDatabase</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> helper.getWritableDatabase();<br>    <span class="hljs-type">Cursor</span> <span class="hljs-variable">cursor</span> <span class="hljs-operator">=</span> db.query(<span class="hljs-string">&quot;information&quot;</span>,<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;_id=?&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;id+<span class="hljs-string">&quot;&quot;</span>&#125;,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>);<br>   <span class="hljs-comment">// 第一个参数表示表名称 </span><br>  <span class="hljs-comment">// 第二个参数表示查询的列名 </span><br>  <span class="hljs-comment">// 第三个参数表示接收查询条件子句 </span><br>  <span class="hljs-comment">//第四个参数接收查询子句对应的条件值 </span><br>  <span class="hljs-comment">//第五个参数表示分组方式   第六个参数表示接收having条件(定义组的过滤器)   第七个参数表示排序方式</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> cursor.moveToNext();<br>    cursor.close();  <span class="hljs-comment">//关闭游标</span><br>    db.close();<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用execSQL-方法操作"><a href="#使用execSQL-方法操作" class="headerlink" title="使用execSQL()方法操作"></a>使用execSQL()方法操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//插入</span><br>db.execSQL(<span class="hljs-string">&quot;insert into information (name,price) values (?,?)&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;name,price&#125;);<br><span class="hljs-comment">//修改</span><br>db.execSQL(<span class="hljs-string">&quot;update information set name=? where price =?&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;name,price&#125;);<br><span class="hljs-comment">//删除</span><br>db.execSQL(<span class="hljs-string">&quot;delete from information where _id = 1&quot;</span>);<br><span class="hljs-comment">//查询</span><br><span class="hljs-type">Cursor</span> <span class="hljs-variable">cursor</span> <span class="hljs-operator">=</span> db.rawQuery(<span class="hljs-string">&quot;select * from person where name=?&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;name&#125;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="三。SQLite中的事务"><a href="#三。SQLite中的事务" class="headerlink" title="三。SQLite中的事务"></a>三。SQLite中的事务</h2><blockquote>
+<p>事务时一个对数据库执行工作的单元，是针对数据库的一组操作，可以由一条或多条SQL语句构成。</p>
+<p>事务是以逻辑顺序完成的工作单位或序列，可以由用户手动操作完成，也可以由某种数据库程序自动完成</p>
+<p>同一事务的操作具备同步的特点，一条语句无法执行，所有语句都不会执行</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">db.beginTransaction();  <span class="hljs-comment">//开始事务</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            db.execSQL();<br>            db.setTransactionSuccessful();<span class="hljs-comment">//标志事务执行完成</span><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            Log.i(<span class="hljs-string">&quot;处理失败&quot;</span>,e.toString());<br>        &#125;<span class="hljs-keyword">finally</span> &#123;<br>            db.endTransaction(); <span class="hljs-comment">//关闭事务</span><br>            db.close();<br>        &#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>当执行到endTransaction()方法时，首先会检查是否有事务执行完成标记，有则提交数据，无则回滚数据</li>
+</ul>
+<h2 id="四。ListView控件"><a href="#四。ListView控件" class="headerlink" title="四。ListView控件"></a>四。ListView控件</h2><blockquote>
+<p>ListView是一个列表视图，由很多Item(条目)组成，每个Item的布局时相同的，Item布局单独使用一个XML定义</p>
+</blockquote>
+<h3 id="1-数据适配器"><a href="#1-数据适配器" class="headerlink" title="1.数据适配器"></a>1.数据适配器</h3><h4 id="1）BaseAdapter"><a href="#1）BaseAdapter" class="headerlink" title="1）BaseAdapter"></a>1）BaseAdapter</h4><p>​    基本的适配器，实际上是一个抽象类，通常在使用自定义适配器时需要继承BaseAdapter。有四个抽象方法</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public int getCount()</td>
+<td align="center">得到Item条目的总数</td>
+</tr>
+<tr>
+<td align="center">public Object getItem(int position)</td>
+<td align="center">根据position(位置)得到某个Item的对象</td>
+</tr>
+<tr>
+<td align="center">public long getItemId(int postion)</td>
+<td align="center">根据position得到某个Item的id</td>
+</tr>
+<tr>
+<td align="center">public View getView(int position, View converView, ViewGroup parent)</td>
+<td align="center">得到相应position对应的Item视图，position是当前Item的位置，converView用于复用旧视图，parent用于加载XML布局</td>
+</tr>
+</tbody></table>
+<h4 id="2）SimpleAdapter"><a href="#2）SimpleAdapter" class="headerlink" title="2）SimpleAdapter"></a>2）SimpleAdapter</h4><p>​    继承自BaseAdapter,实现对四个抽象方法进行了封装。使用SimpleAdapter进行数据适配时，只需要在构造方法中传入相应的参数即可</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">public <span class="hljs-constructor">SimpleAdapter(Context <span class="hljs-params">context</span>, List&lt;? <span class="hljs-params">extends</span> Map&lt;String,?&gt;&gt; <span class="hljs-params">data</span>, <span class="hljs-params">int</span> <span class="hljs-params">resource</span>, String[] <span class="hljs-params">from</span>,<span class="hljs-params">int</span>[] <span class="hljs-params">to</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Context context: Context上下文对象</li>
+<li>List<? extends Map<String,?>&gt; data: 数据集合，data中每一项对应ListView中每一项数据</li>
+<li>int resource: Item布局的资源id</li>
+<li>String[] from: Map集合里面的key值</li>
+<li>int[] to: Item布局相应的控件id</li>
+</ul>
+<h4 id="3）ArrayAdapter"><a href="#3）ArrayAdapter" class="headerlink" title="3）ArrayAdapter"></a>3）ArrayAdapter</h4><p>​    BaseAdapter的子类，只需要在构造方法中传入相应参数即可。通常用于设配TextView控件。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>activity_main.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.ShopFragment&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ListView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/list_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_below</span>=<span class="hljs-string">&quot;@id/shop_image&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:divider</span>=<span class="hljs-string">&quot;#d0d0d0&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:dividerHeight</span>=<span class="hljs-string">&quot;1dp&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>item.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center_vertical&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;48dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;48dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/image&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;@drawable/shop&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ImageView</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/item_tv&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;我的item布局&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;18sp&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">TextView</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>MainActivity.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShopActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatActivity</span> &#123;<br>    <span class="hljs-keyword">private</span> ListView listView;<br>    <span class="hljs-keyword">private</span> String[] name = &#123;<span class="hljs-string">&quot;京东&quot;</span>, <span class="hljs-string">&quot;pdd&quot;</span>&#125;;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] icons = &#123;R.drawable.apple,&#125;;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_shop);<br><br><span class="hljs-comment">//设置ListView</span><br>        <span class="hljs-comment">//1、绑定控件</span><br>        <span class="hljs-type">ListView</span> <span class="hljs-variable">listView</span> <span class="hljs-operator">=</span> (ListView) findViewById(R.id.list_view);<br>        <span class="hljs-comment">//2.创建一个Adapter实例</span><br>        <span class="hljs-type">MyBaseAdapter</span> <span class="hljs-variable">myBaseAdapter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyBaseAdapter</span>();<br>        <span class="hljs-comment">//设置Adapter</span><br>        listView.setAdapter(myBaseAdapter);<br>    &#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBaseAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseAdapter</span> &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCount</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-keyword">return</span> name.length;<br>        &#125;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">getItem</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> &#123;<br>            <span class="hljs-keyword">return</span> name[position];<br>        &#125;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">getItemId</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> &#123;<br>            <span class="hljs-keyword">return</span> position;<br>        &#125;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> View <span class="hljs-title function_">getView</span><span class="hljs-params">(<span class="hljs-type">int</span> position, View convertView, ViewGroup parent)</span> &#123;<br>            <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> View.inflate(MainActivity.<span class="hljs-built_in">this</span>, R.layout.item, <span class="hljs-literal">null</span>);   <span class="hljs-comment">//从item.xml中找到并转换成View对象</span><br>            <span class="hljs-type">TextView</span> <span class="hljs-variable">textView</span> <span class="hljs-operator">=</span> (TextView) findViewById(R.id.item_tv);<br>            textView.setText(name[position]);<br>            <span class="hljs-type">ImageView</span> <span class="hljs-variable">image</span> <span class="hljs-operator">=</span> (ImageView) findViewById(R.id.shop_image);<br>            image.setBackground(icons[position]);<br>            <span class="hljs-keyword">return</span> view;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<hr>
+<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><blockquote>
+<p>当产生一个广播事件时，可以有多个BroadcastReceiver 接收并处理数据。</p>
+<p>广播接收者只需要在清单文件或代码中进行注册并指定要接收的广播事件，创建一个类继承自BroadcastReceiver类，重写onReceive()方法，在方法中处理广播事件即可</p>
+</blockquote>
+<h2 id="一。基础"><a href="#一。基础" class="headerlink" title="一。基础"></a>一。基础</h2><h3 id="1-创建"><a href="#1-创建" class="headerlink" title="1.创建"></a>1.创建</h3><p>new —-&gt; other —-&gt; Broadcast Receiver</p>
+<h4 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h4><h5 id="1）静态注册"><a href="#1）静态注册" class="headerlink" title="1）静态注册"></a>1）静态注册</h5><p>AndroidMainfest.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">receiver</span></span><br><span class="hljs-tag">		<span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyReceiver&quot;</span></span><br><span class="hljs-tag">		<span class="hljs-attr">android:enable</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">		<span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>MyReceiver.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BroadcastReceivver</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">MyReceier</span><span class="hljs-params">()</span> &#123;<br>        <br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> &#123;<br>        <span class="hljs-comment">//用于实现广播接收者的相关操作</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2）动态注册"><a href="#2）动态注册" class="headerlink" title="2）动态注册"></a>2）动态注册</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_shop);<br>        <span class="hljs-comment">//实例化广播接收者</span><br>        <span class="hljs-type">MyReceiver</span> <span class="hljs-variable">receiver</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyReceiver</span>();<br>        <span class="hljs-comment">//实例化过滤器并设置要过滤的广播</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">action</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;android.provider.Telephony.SMS_RECEIVED&quot;</span>;<br>        <span class="hljs-type">IntentFilter</span> <span class="hljs-variable">intentFilter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IntentFilter</span>(action);<br>        <span class="hljs-comment">//注册广播</span><br>        registerReceiver(receiver, intentFilter);<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onDestroy</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">super</span>.onDestroy();<br>        <span class="hljs-comment">//Activity销毁时取消注册BroadcastReceiver</span><br>        unregisterReceiver(receiver);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2-拦截电话案例"><a href="#2-拦截电话案例" class="headerlink" title="2.拦截电话案例"></a>2.拦截电话案例</h3><h5 id="广播接收者OutCallReceiver"><a href="#广播接收者OutCallReceiver" class="headerlink" title="广播接收者OutCallReceiver"></a>广播接收者OutCallReceiver</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OutCallReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BroadcastReceiver</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> &#123;<br>        <span class="hljs-comment">//获取拨打的电话号码</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> getResultData();<br>        <span class="hljs-comment">//创建SharedPreferences对象，拦截号码</span><br>        <span class="hljs-type">SharedPreferences</span> <span class="hljs-variable">sp</span> <span class="hljs-operator">=</span> context.getSharedPreferences(<span class="hljs-string">&quot;config&quot;</span>,Context.MODE_PRIVATE);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">number2</span> <span class="hljs-operator">=</span> sp.getString(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);<br>        <span class="hljs-keyword">if</span>(number.equals(number2))&#123;<br>            <span class="hljs-comment">//清除电话</span><br>            setResultData(<span class="hljs-literal">null</span>);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            .................<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>AndroidManifest.xml中添加权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.OutCallReceiver&quot;</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.NEW_OUTGOING_CALL&quot;</span>/&gt;</span> //权限<br>		<span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="二-广播类型"><a href="#二-广播类型" class="headerlink" title="二.广播类型"></a>二.广播类型</h2><h3 id="1-有序广播"><a href="#1-有序广播" class="headerlink" title="1.有序广播"></a>1.有序广播</h3><blockquote>
+<p>可以被拦截</p>
+</blockquote>
+<p>​    按照接收者声明的优先级别依次接收，发送广播时，只有一个广播接收者能够接收此消息，当此广播接收者中逻辑执行完毕后，广播才会继续传递。</p>
+<hr>
+<h4 id="优先级设置"><a href="#优先级设置" class="headerlink" title="优先级设置"></a>优先级设置</h4><ul>
+<li>在注册广播接收者时，在<intent-filter>标签中使用priority属性设置优先级</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span> <span class="hljs-attr">android:priority</span>=<span class="hljs-string">&quot;100&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>属性值越大，优先级越高</li>
+<li>优先级相同时，先注册的优先级高</li>
+</ul>
+<h3 id="2-无序广播"><a href="#2-无序广播" class="headerlink" title="2.无序广播"></a>2.无序广播</h3><p>​    完全异步执行，发送广播时，所有监听这个广播的广播接收者都会接收到此广播消息，但接收和执行的顺序不确定</p>
+<h3 id="拦截广播案例"><a href="#拦截广播案例" class="headerlink" title="拦截广播案例"></a>拦截广播案例</h3><p>发送有序广播</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span>  <span class="hljs-title function_">send</span><span class="hljs-params">(View view)</span> &#123;<br>        <span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>();<br>        <span class="hljs-comment">//定义广播的事件类型</span><br>        intent.setAction(<span class="hljs-string">&quot;Intercept_Stitch&quot;</span>);<br>        <span class="hljs-comment">//发送广播</span><br>        sendOrderedBroadcast(intent,<span class="hljs-literal">null</span>);<br>    <br>    <span class="hljs-comment">//第二个参数指定接收者的权限</span><br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>添加广播接收者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBroadcastReceiverOne</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BroadcastReceiver</span> &#123;<br>	<span class="hljs-meta">@Override</span> <br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> &#123;<br>		Log.i(<span class="hljs-string">&quot;广播接收者1接收到广播事件&quot;</span>)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注册广播接收者</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyBroadReceiverTwo&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span> <span class="hljs-attr">android:priority</span>=<span class="hljs-string">&quot;1000&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;Intercept_Stitch&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">action</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>拦截有序广播</p>
+<blockquote>
+<p>优先级高的广播接收者可以拦截收到的广播</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBroadcastReceiverOne</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BroadcastReceiver</span> &#123;<br>	<span class="hljs-meta">@Override</span> <br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> &#123;<br>		Log.i(<span class="hljs-string">&quot;广播接收者1接收到广播事件&quot;</span>)<br>           	   abortBroadcast() <span class="hljs-comment">//比这个广播接收者优先级低的广播接收者都会被拦截</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>指定广播接收者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>();<br>        <span class="hljs-comment">//定义广播的事件类型</span><br>        intent.setAction(<span class="hljs-string">&quot;Intercept_Stitch&quot;</span>);<br>        <span class="hljs-comment">//发送有序广播</span><br>        <span class="hljs-type">MyBroadcastReceiverThree</span> <span class="hljs-variable">receiver</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyBroadcastReceiverThree</span><br>        sendOrderedBroadcast(intent,<span class="hljs-literal">null</span>,receiver,<span class="hljs-literal">null</span>,<span class="hljs-number">0</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h1 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h1><blockquote>
+<p>Service(服务)是一个长期运行在后台的用户组件，没有用户界面。因此服务更适合执行一段事件而又不需要显示界面的后台操作(下载数据、播放音乐等)</p>
+</blockquote>
+<h2 id="一。创建"><a href="#一。创建" class="headerlink" title="一。创建"></a>一。创建</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Service</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">MyService</span><span class="hljs-params">()</span> &#123;<br>	<br>	&#125;<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> IBinder <span class="hljs-title function_">onBind</span><span class="hljs-params">(Intent intent)</span> &#123;<br>		<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>默认包含一个构造方法和一个onBind()方法</li>
+<li>onBind()用于绑定服务，放回一个IBinder对象</li>
+</ul>
+<p>注册</p>
+<blockquote>
+<p>name中填的是服务的路径</p>
+<p>enabled:是否实例化该组件</p>
+<p>exported:该服务是否能够被其他应用程序调用或交互</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span>&gt;</span><br>	.........<br>    <span class="hljs-tag">&lt;<span class="hljs-name">service</span> </span><br><span class="hljs-tag">            <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyService&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">service</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="二。生命周期-1"><a href="#二。生命周期-1" class="headerlink" title="二。生命周期"></a>二。生命周期</h2><p>​    服务的启动方式有两种，分别是**startService()<strong>方法和</strong>bindService()**方法</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/3ec6534aeaecba1eb2c6ba09f1abe6bb.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><strong>onCreate()</strong>:第一次创建服务时执行</li>
+<li><strong>onDestory()</strong>:服务被销毁时执行</li>
+<li><strong>onStartCommand()</strong>: 通过startService()方式启动服务</li>
+<li><strong>onBind()</strong>: 通过bindService()方法启动服务</li>
+<li><strong>onUnbind()</strong>: 客户端调用unBindService()断开服务器绑定时执行</li>
+</ul>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><h4 id="1-startService-方式"><a href="#1-startService-方式" class="headerlink" title="1.startService 方式"></a>1.startService 方式</h4><h2 id="三。服务的通信"><a href="#三。服务的通信" class="headerlink" title="三。服务的通信"></a>三。服务的通信</h2><blockquote>
+<p>通过<strong>绑定方式</strong>开启服务后，服务与Activity可以通信。</p>
+<p>必须保证服务是以绑定方式开启的，否转无法进行通信和数据交换。</p>
+</blockquote>
+<h4 id="1-本地服务通信"><a href="#1-本地服务通信" class="headerlink" title="1.本地服务通信"></a>1.本地服务通信</h4><blockquote>
+<p>应用程序内部的通信</p>
+</blockquote>
+<h4 id="2-远程服务通信"><a href="#2-远程服务通信" class="headerlink" title="2.远程服务通信"></a>2.远程服务通信</h4><blockquote>
+<p>两个应用程序之间的通信</p>
+</blockquote>
+<h4 id="注意看p175"><a href="#注意看p175" class="headerlink" title="注意看p175"></a>注意看p175</h4><hr>
+<h1 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h1><h2 id="一。简介"><a href="#一。简介" class="headerlink" title="一。简介"></a>一。简介</h2><p>​    ContentProvicer内容提供者是四大组件之一，功能是在<strong>不同程序之间实现数据共享</strong>。</p>
+<ul>
+<li>文件存储、SharePreferences存储、数据库存储这些只能在当前应用程序中访问</li>
+</ul>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/20200512141503209.png" srcset="/img/loading.gif" lazyload alt="【Android】第十二周、内容提供者（ContentProvider）_内容提供者的工作原理__popo_的博客-CSDN博客"></p>
+<ul>
+<li>要访问ContentProvider中共享的数据，一定要借助ContentProvider类</li>
+</ul>
+<h3 id="Uri"><a href="#Uri" class="headerlink" title="Uri"></a>Uri</h3><blockquote>
+<p>为内容提供者的数据建立了唯一的标识符。主要由<strong>scheme、authoritied和path</strong>三部分组成</p>
+</blockquote>
+<h4 id="scheme"><a href="#scheme" class="headerlink" title="scheme:"></a>scheme:</h4><ul>
+<li>“content://“ 是一个标准前缀，表明这个数据被ContentProvider所控制</li>
+</ul>
+<h4 id="authority"><a href="#authority" class="headerlink" title="authority:"></a>authority:</h4><ul>
+<li>在创建内容提供者时指定的authorities属性值，用于区分不同的应用程序</li>
+<li>一般采用程序包名命名</li>
+</ul>
+<h4 id="path"><a href="#path" class="headerlink" title="path:"></a>path:</h4><ul>
+<li>代表资源(数据)</li>
+</ul>
+<h2 id="二。内容提供者的创建"><a href="#二。内容提供者的创建" class="headerlink" title="二。内容提供者的创建"></a>二。内容提供者的创建</h2><p>增删改查</p>
+<ul>
+<li>insert()</li>
+<li>delete()</li>
+<li>update()</li>
+<li>query()</li>
+</ul>
+<h4 id="注册-1"><a href="#注册-1" class="headerlink" title="注册"></a>注册</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span>&gt;</span><br>	...<br>    <span class="hljs-tag">&lt;<span class="hljs-name">provider</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:authorities</span>=<span class="hljs-string">&quot;cn.app&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyContentProvider&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">provider</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="三。使用"><a href="#三。使用" class="headerlink" title="三。使用"></a>三。使用</h2><h3 id="1-访问内容提供者"><a href="#1-访问内容提供者" class="headerlink" title="1.访问内容提供者"></a>1.访问内容提供者</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java">       <span class="hljs-comment">//获取相应操作的Uri</span><br><span class="hljs-type">Uri</span> <span class="hljs-variable">uri</span> <span class="hljs-operator">=</span> Uri.parse(<span class="hljs-string">&quot;content://cn.app/person&quot;</span>);<br><span class="hljs-comment">//获取到ContentResolver对象</span><br><span class="hljs-type">ContentResolver</span> <span class="hljs-variable">resolver</span> <span class="hljs-operator">=</span> context.getContentResolver();<br><br>       <span class="hljs-type">Cursor</span> <span class="hljs-variable">cursor</span> <span class="hljs-operator">=</span> resolver.query(uri, <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[] &#123; <span class="hljs-string">&quot;address&quot;</span>, <span class="hljs-string">&quot;date&quot;</span>, <span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;body&quot;</span>&#125;,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>)<br>        <br>       <span class="hljs-keyword">while</span> (cursor.moveToNext()) &#123;<br>           <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> cursor.getString(<span class="hljs-number">0</span>);<br>           <span class="hljs-type">long</span> <span class="hljs-variable">date</span> <span class="hljs-operator">=</span> cursor.getLong(<span class="hljs-number">1</span>);<br>           <span class="hljs-type">int</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> cursor.getInt(<span class="hljs-number">2</span>);<br>           <span class="hljs-type">String</span> <span class="hljs-variable">body</span> <span class="hljs-operator">=</span> cursor.getString(<span class="hljs-number">3</span>);<br>       &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java">       <span class="hljs-comment">//获取短信操作的Uri</span><br><span class="hljs-type">Uri</span> <span class="hljs-variable">uri</span> <span class="hljs-operator">=</span> Uri.parse(<span class="hljs-string">&quot;content://sms/&quot;</span>);<br><span class="hljs-comment">//获取到ContentResolver对象</span><br><span class="hljs-type">ContentResolver</span> <span class="hljs-variable">resolver</span> <span class="hljs-operator">=</span> context.getContentResolver();<br><br>       <span class="hljs-type">Cursor</span> <span class="hljs-variable">cursor</span> <span class="hljs-operator">=</span> resolver.query(uri, <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[] &#123; <span class="hljs-string">&quot;address&quot;</span>, <span class="hljs-string">&quot;date&quot;</span>, <span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;body&quot;</span>&#125;,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>)<br>        <span class="hljs-keyword">if</span>(cursor != <span class="hljs-literal">null</span> &amp;&amp; cursor.getCount() &gt; <span class="hljs-number">0</span>) &#123;<br>        	<span class="hljs-keyword">while</span> (cursor.moveToNext()) &#123;<br>          		 <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> cursor.getString(<span class="hljs-number">0</span>);<br>          		 <span class="hljs-type">long</span> <span class="hljs-variable">date</span> <span class="hljs-operator">=</span> cursor.getLong(<span class="hljs-number">1</span>);<br>          		 <span class="hljs-type">int</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> cursor.getInt(<span class="hljs-number">2</span>);<br>          		 <span class="hljs-type">String</span> <span class="hljs-variable">body</span> <span class="hljs-operator">=</span> cursor.getString(<span class="hljs-number">3</span>);<br>      		 &#125;<br>        &#125;<br>       <br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="四。内容观察者"><a href="#四。内容观察者" class="headerlink" title="四。内容观察者"></a>四。内容观察者</h2><blockquote>
+<p>观察指定Uri所代表的数据，数据变化时会触发ContentObserver的onChange()方法。</p>
+<p>在onChange()方法中使用ContentResovler可以查询到变化的数据</p>
+</blockquote>
+<hr>
+<h1 id="第九章"><a href="#第九章" class="headerlink" title="第九章"></a>第九章</h1><p>GET方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">path</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;http://192.168.1.1:8080/web?username=&quot;</span>+URLEncoder.encode(<span class="hljs-string">&quot;zhangsan&quot;</span>)+<span class="hljs-string">&quot;&amp;password=&quot;</span>+URLEncoder.encode(<span class="hljs-string">&quot;123&quot;</span>);<br><br><span class="hljs-comment">//创建URL对象</span><br><span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(path)<br><br><span class="hljs-type">HttpURLConnection</span> <span class="hljs-variable">conn</span> <span class="hljs-operator">=</span> (HttpURLConnection) url.openConnection();<br><br>conn.setRequestMethod(<span class="hljs-string">&quot;GET&quot;</span>);<br>conn.setConnectTimeout(<span class="hljs-number">5000</span>);<br><span class="hljs-type">int</span> <span class="hljs-variable">responsecode</span> <span class="hljs-operator">=</span> conn.getResponseCode;<br><span class="hljs-keyword">if</span>( responsecode == <span class="hljs-number">200</span>) &#123;<br>	<span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> conn.getInputStream<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>URL长度一般要小于1KB</li>
+</ul>
+<p>POST方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">path</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;http://192.168.1.1:8080/web&quot;</span>;<br><span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>();<br><span class="hljs-type">HttpURLConnection</span> <span class="hljs-variable">conn</span> <span class="hljs-operator">=</span> (HttpURLConnection) conn.openConnection();<br>conn.setRequestMethos(<span class="hljs-string">&quot;POST&quot;</span>);<br>conn.setConnectTime(<span class="hljs-number">5000</span>);<br><br><span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;username=&quot;</span>+URLEncoder.encode(<span class="hljs-string">&quot;zhangsan&quot;</span>)+<span class="hljs-string">&quot;&amp;password=&quot;</span>+URLEncoder.encoder(<span class="hljs-string">&quot;123&quot;</span>)<br><br><span class="hljs-comment">//设置请求头数据提交方式，以form表单方式提交</span><br>conn,setRequestProperty(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>)<br><span class="hljs-comment">//设置提交数据长度</span><br>conn.setRequestProperty(<span class="hljs-string">&quot;Content-Length&quot;</span>, data.length() + <span class="hljs-string">&quot;&quot;</span>);<br><br>conn.setDoOutput(<span class="hljs-literal">true</span>);  <span class="hljs-comment">//设置运行向外写数据</span><br><span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> conn.getOutputStream();  <span class="hljs-comment">//利用输出流向服务器写数据</span><br>os.write(data.getBytes());  <span class="hljs-comment">//将数据写给服务器</span><br><span class="hljs-type">int</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> conn.getRequestCode();<br><span class="hljs-keyword">if</span>( code == <span class="hljs-number">200</span> ) &#123;<br>	<span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> conn.getInputStream();<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<h1 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h1><h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><blockquote>
+<p>Fragment不能独立存在，必须嵌入到Activity中使用</p>
+</blockquote>
+<ul>
+<li>Activity暂停时，它所拥有的Fragment都暂停</li>
+<li>Activity销毁时，它所拥有的Activity都销毁</li>
+</ul>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20240106130326103.png" srcset="/img/loading.gif" lazyload alt="image-20240106130326103"></p>
+<h3 id="生命周期方法"><a href="#生命周期方法" class="headerlink" title="生命周期方法"></a>生命周期方法</h3><ul>
+<li>onAttach() : 当Fragment和Activity建立关联时调用</li>
+<li>onCreateView(): 创建视图</li>
+<li>onDetach(): 当Fragment和Activity解除关联时调用</li>
+</ul>
+<h4 id="注册-2"><a href="#注册-2" class="headerlink" title="注册"></a>注册</h4><ul>
+<li>在Activity的布局文件中引用即可</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag">	<span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/fragment&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">fragment</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> List&lt;Fragment&gt; fragmentList;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        List&lt;Fragment&gt; fragments = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(Fragment) ();<br>        fragments.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Fragment1</span>());<br>        fragments.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Fragment2</span>());<br>        fragments.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Fragment3</span>());<br>        <span class="hljs-type">FragAdapter</span> <span class="hljs-variable">adapter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FragAdapter</span>(getSupportFragmentManager(), fragments);<br>        <span class="hljs-comment">//设定设配器</span><br>        <span class="hljs-type">ViewPager</span> <span class="hljs-variable">vp</span> <span class="hljs-operator">=</span> (ViewPager) findViewById(R.id.viewpager);<br>        vp.setAdapter(adapter);<br>    &#125; <br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E8%AF%95/" class="category-chain-item">考试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>安卓</div>
+      <div>https://ahaostillcoding.github.io/2024/01/07/安卓/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>a_hao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/14/%E8%AE%A1%E7%BD%91%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%A6%82%E8%BF%B0/" title="计网第一章概述">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计网第一章概述</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/22/%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" title="传感器原理与应用">
+                        <span class="hidden-mobile">传感器原理与应用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

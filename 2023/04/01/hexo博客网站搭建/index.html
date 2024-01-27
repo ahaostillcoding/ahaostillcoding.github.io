@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/xiaoxin.jpg">
+  <link rel="icon" href="/img/xiaoxin.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="a_hao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Hexo简介​    Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装前提​    在安装Hexo之前需要安装以下应用  Node.js Git markdown语法编辑器(这里推荐typora)  可以通过在cmd中以下命令查看主机中是否安装了node.js和npm 12node --vers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo博客网站搭建">
+<meta property="og:url" content="https://ahaostillcoding.github.io/2023/04/01/hexo%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="阿豪博客">
+<meta property="og:description" content="Hexo简介​    Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装前提​    在安装Hexo之前需要安装以下应用  Node.js Git markdown语法编辑器(这里推荐typora)  可以通过在cmd中以下命令查看主机中是否安装了node.js和npm 12node --vers">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/Snipaste_2023-04-01_17-04-20.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401171034750.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401171140753.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401202831699.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401212906423.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401213202224.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401213255894.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401213448689.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401203801784.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401204210666.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210046613.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210158682.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210601584.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210659767.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210909207.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401211142823.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401211608778.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401212407612.png">
+<meta property="og:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401212309733.png">
+<meta property="article:published_time" content="2023-04-01T13:55:39.000Z">
+<meta property="article:modified_time" content="2023-04-01T13:56:52.972Z">
+<meta property="article:author" content="a_hao">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/Snipaste_2023-04-01_17-04-20.png">
+  
+  
+  
+  <title>hexo博客网站搭建 - 阿豪博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ahaostillcoding.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阿豪</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="hexo博客网站搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-01 21:55" pubdate>
+          2023年4月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">hexo博客网站搭建</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h1><p>​    Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>​    在安装Hexo之前需要安装以下应用</p>
+<ul>
+<li>Node.js</li>
+<li>Git</li>
+<li>markdown语法编辑器(这里推荐typora)</li>
+</ul>
+<p>可以通过在cmd中以下命令查看主机中是否安装了node.js和npm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">node --version    <span class="hljs-comment">#检查是否安装了node.js</span><br>npm --version     <span class="hljs-comment">#检查是否安装了npm</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><p>​    通过在cmd中输入以下命令使用npm安装Hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
+
+<p>​    安装完成后输入以下命令，查看hexo版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo -v<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h1><h2 id="1-新建文件夹"><a href="#1-新建文件夹" class="headerlink" title="1)新建文件夹"></a>1)新建文件夹</h2><p>​        此文件夹用于存放hexo所有代码、配置文件。放在自己能记住的地方就行</p>
+<hr>
+<h2 id="2-初始化"><a href="#2-初始化" class="headerlink" title="2)初始化"></a>2)初始化</h2><p>​        进入新建的文件夹，右键打开Git Bash Here，输入以下命令进行初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init<br></code></pre></td></tr></table></figure>
+
+<p>​    初始化完成后会出现以下的文件目录结构</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/Snipaste_2023-04-01_17-04-20.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2023-04-01_17-04-20"></p>
+<ul>
+<li>public     .github目录在后面步骤中才会出现</li>
+</ul>
+<hr>
+<h2 id="3-新建md文档"><a href="#3-新建md文档" class="headerlink" title="3)新建md文档"></a>3)新建md文档</h2><p>​        在当前目录，右键打开Git Bash Here，输入以下命令新建md文档</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;md文档名&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401171034750.png" srcset="/img/loading.gif" lazyload alt="image-20230401171034750"></p>
+<ul>
+<li>新建的md文档存放在<code>source\_posts</code>目录下</li>
+</ul>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401171140753.png" srcset="/img/loading.gif" lazyload alt="image-20230401171140753"></p>
+<ul>
+<li>新建的md文档中会自带一些文档信息，可以根据需求填写。不同主题中，头部信息的种类也有所不同。</li>
+</ul>
+<hr>
+<h2 id="4-网站生成和预览"><a href="#4-网站生成和预览" class="headerlink" title="4)网站生成和预览"></a>4)网站生成和预览</h2><p>​            首先执行下列命令生成相应的静态网页，生成的静态网页以及相关资源都会在<code>public</code>目录下</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br></code></pre></td></tr></table></figure>
+
+<p>​            然后输入下面命令可以开启本地网页预览服务</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401202831699.png" srcset="/img/loading.gif" lazyload alt="image-20230401202831699"></p>
+<p>​            访问<a href="https://link.zhihu.com/?target=http://localhost:4000/">http://localhost:4000</a>即可看到博客内容</p>
+<hr>
+<h2 id="5-更换博客网站主题"><a href="#5-更换博客网站主题" class="headerlink" title="5)更换博客网站主题"></a>5)更换博客网站主题</h2><p>​            在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官网</a>中提供了大量优质的主题，你可以任意挑选你喜欢的主题</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401212906423.png" srcset="/img/loading.gif" lazyload alt="image-20230401212906423"></p>
+<p>​            在主题介绍中往往有安装方法，一般以git clone和npm安装两种方法为主</p>
+<pre><code class="hljs">         主题文件将存放在themes文件夹中
+</code></pre>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401213202224.png" srcset="/img/loading.gif" lazyload alt="image-20230401213202224"></p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401213255894.png" srcset="/img/loading.gif" lazyload alt="image-20230401213255894"></p>
+<p>​            在_config.yml文件中你可以个性化配置你的主题</p>
+<p>​            然后在hexo头目录的_config.yml(注意不是themes中的_config.yml)文件中将<code>theme:</code>处填写上你下载的主题文件名，然后重新输入<code>hexo g   </code>        <code>hexo s</code> 查看修改效果</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401213448689.png" srcset="/img/loading.gif" lazyload alt="image-20230401213448689"></p>
+<hr>
+<h2 id="6-将博客网站部署到Github"><a href="#6-将博客网站部署到Github" class="headerlink" title="6)将博客网站部署到Github"></a>6)将博客网站部署到Github</h2><p>​            上面生成的网站只是部署在本地的静态网站，想要别人也能访问你的网站，需要使用GitHub Actions部署到GitHub Pages</p>
+<h3 id="1-注册GitHub账户"><a href="#1-注册GitHub账户" class="headerlink" title="1)注册GitHub账户"></a>1)注册GitHub账户</h3><p>​            你可以在<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>官网中注册账户，国内访问可能加载会比较慢</p>
+<h3 id="2-新建仓库用于存放网站文件"><a href="#2-新建仓库用于存放网站文件" class="headerlink" title="2)新建仓库用于存放网站文件"></a>2)新建仓库用于存放网站文件</h3><p>​        <img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401203801784.png" srcset="/img/loading.gif" lazyload alt="image-20230401203801784"></p>
+<p>​            这里仓库名的名字必须为”你的用户名.github.io”</p>
+<p>​            然后默认设置为公开模式，创建仓库即可</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401204210666.png" srcset="/img/loading.gif" lazyload alt="image-20230401204210666"></p>
+<h3 id="3-生成SSH添加到GitHub"><a href="#3-生成SSH添加到GitHub" class="headerlink" title="3)生成SSH添加到GitHub"></a>3)生成SSH添加到GitHub</h3><p>​                在网站文件目录中，右键打开Git Bash Here</p>
+<p>​                1.通过git config命令获取并设置存储库或全局选项。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;yourname&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;youremail&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>yourname处填写你GitHub用户名</li>
+<li>yourmail处填写你GitHub注册所用邮箱</li>
+</ul>
+<p>​                可以通过下面两条指令，检查你刚输入的信息</p>
+<p>​        </p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git config <span class="hljs-keyword">user</span>.name<br>git config <span class="hljs-keyword">user</span>.email<br></code></pre></td></tr></table></figure>
+
+<p>​                确实信息正确后，可以输入下面的指令创建SSH</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;youremail&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>yourmail处与上面填写的一致</li>
+<li>途中会询问你是否创建SSH，输入y回车即可</li>
+</ul>
+<p>​                创建SSH成功后，你可以在Git Bash中输入以下指令找到你生成的SSH</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210046613.png" srcset="/img/loading.gif" lazyload alt="image-20230401210046613"></p>
+<p>​                你也可以在<code>C:\Users\用户名\.ssh</code>目录下找到id_rsa.pub文件</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210158682.png" srcset="/img/loading.gif" lazyload alt="image-20230401210158682"></p>
+<p>​                 复制文件内所有内容待用</p>
+<ul>
+<li>git中复制快捷键为CTRL+Ins  粘贴为Shift+Ins</li>
+</ul>
+<p>​                然后回到GitHub中进入Settings中找到SSH and GPG keys新建SSH key</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210601584.png" srcset="/img/loading.gif" lazyload alt="image-20230401210601584"></p>
+<p>​                将你刚复制的SSH填入创建SSH key                <img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210659767.png" srcset="/img/loading.gif" lazyload alt="image-20230401210659767"></p>
+<p>​                然后在git bash中查看是否连接成功</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> -T git<span class="hljs-variable">@github</span>.com<br></code></pre></td></tr></table></figure>
+
+<p>​                <img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401210909207.png" srcset="/img/loading.gif" lazyload alt="image-20230401210909207"></p>
+<p>​                出现successfully即代表连接成功</p>
+<h3 id="4-将Hexo部署到GitHub"><a href="#4-将Hexo部署到GitHub" class="headerlink" title="4)将Hexo部署到GitHub"></a>4)将Hexo部署到GitHub</h3><p>​                首先安装deploy-git部署命令</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install hexo-deployer-git <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+
+<p>​                然后进入_config.yml文件，在配置文件最底下进行修改</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401211142823.png" srcset="/img/loading.gif" lazyload alt="image-20230401211142823"></p>
+<p>​                </p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span> <br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> git@github.com:ahaostillcoding/ahaostillcoding.github.io.git<br><span class="hljs-symbol">  branch:</span> main<br></code></pre></td></tr></table></figure>
+
+<p>​                    repo和branch处按你创建的仓库信息进行填写，如图所示<img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401211608778.png" srcset="/img/loading.gif" lazyload alt="image-20230401211608778"></p>
+<p>​                然后通过以下命令，实现部署</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>hexo d即hexo deploy部署文件</p>
+</li>
+<li><p>hexo g即为前文中提到的生成静态文件</p>
+</li>
+<li><p>另有hexo clean命令用于清楚你之前生成的文件</p>
+<p>部署成功后你可以在Actions看到部署进度，当部署完成后，你可以通过访问</p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401212407612.png" srcset="/img/loading.gif" lazyload alt="image-20230401212407612"></p>
+<p><img src="https://typoranote-picture.oss-cn-guangzhou.aliyuncs.com/typora%E5%9B%BE%E7%89%87/image-20230401212309733.png" srcset="/img/loading.gif" lazyload alt="image-20230401212309733"></p>
+</li>
+</ul>
+<hr>
+<p>到处为止，你的个人博客网站就搭建完成啦，愉快的写博客吧</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/hexo/">#hexo</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>hexo博客网站搭建</div>
+      <div>https://ahaostillcoding.github.io/2023/04/01/hexo博客网站搭建/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>a_hao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%B7%A5%E7%A8%8B%E5%B8%88/" title="嵌入式工程师">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">嵌入式工程师</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/01/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9(vm%EF%BC%89/" title="Ubuntu硬盘扩容">
+                        <span class="hidden-mobile">Ubuntu硬盘扩容</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
