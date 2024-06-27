@@ -1,0 +1,1185 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/xiaoxin.jpg">
+  <link rel="icon" href="/img/xiaoxin.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="a_hao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第一章1.物联网工程的概念 物联网工程是研究物联网系统的规划、设计、实施与管理的工程科学 要求物联网工程技术人员根据既定的目标，依照国家、行业或企业规范 制定物联网建设的方案，协助工程招投标 开展设计、实施、管理与维护等工程活动  2.物联网工程的内容1.数据感知系统 物联网的最基本组成部分  2.数据接入与传输系统   3.数据存储系统 1）用于存储数据的基础硬件 用硬盘组成的磁盘阵列   2）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物联网工程设计与实施">
+<meta property="og:url" content="https://ahaostillcoding.github.io/2024/06/27/%E7%89%A9%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E6%96%BD/index.html">
+<meta property="og:site_name" content="阿豪博客">
+<meta property="og:description" content="第一章1.物联网工程的概念 物联网工程是研究物联网系统的规划、设计、实施与管理的工程科学 要求物联网工程技术人员根据既定的目标，依照国家、行业或企业规范 制定物联网建设的方案，协助工程招投标 开展设计、实施、管理与维护等工程活动  2.物联网工程的内容1.数据感知系统 物联网的最基本组成部分  2.数据接入与传输系统   3.数据存储系统 1）用于存储数据的基础硬件 用硬盘组成的磁盘阵列   2）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-27T15:00:41.000Z">
+<meta property="article:modified_time" content="2024-06-27T15:01:11.011Z">
+<meta property="article:author" content="a_hao">
+<meta property="article:tag" content="物联网">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>物联网工程设计与实施 - 阿豪博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ahaostillcoding.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阿豪</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="物联网工程设计与实施"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-27 23:00" pubdate>
+          2024年6月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">物联网工程设计与实施</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="1-物联网工程的概念"><a href="#1-物联网工程的概念" class="headerlink" title="1.物联网工程的概念"></a>1.物联网工程的概念</h2><ul>
+<li>物联网工程是研究物联网系统的规划、设计、实施与管理的工程科学</li>
+<li>要求物联网工程技术人员根据既定的目标，依照国家、行业或企业规范</li>
+<li>制定物联网建设的方案，协助工程招投标</li>
+<li>开展设计、实施、管理与维护等工程活动</li>
+</ul>
+<h2 id="2-物联网工程的内容"><a href="#2-物联网工程的内容" class="headerlink" title="2.物联网工程的内容"></a>2.物联网工程的内容</h2><h3 id="1-数据感知系统"><a href="#1-数据感知系统" class="headerlink" title="1.数据感知系统"></a>1.数据感知系统</h3><ul>
+<li>物联网的最基本组成部分</li>
+</ul>
+<h3 id="2-数据接入与传输系统"><a href="#2-数据接入与传输系统" class="headerlink" title="2.数据接入与传输系统"></a>2.数据接入与传输系统</h3><ul>
+<li></li>
+</ul>
+<h3 id="3-数据存储系统"><a href="#3-数据存储系统" class="headerlink" title="3.数据存储系统"></a>3.数据存储系统</h3><ul>
+<li>1）用于存储数据的基础硬件<ul>
+<li>用硬盘组成的磁盘阵列</li>
+</ul>
+</li>
+<li>2）保存、管理数据的软件系统<ul>
+<li>使用数据库管理系统和高性能并行文件系统</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-数据处理系统"><a href="#4-数据处理系统" class="headerlink" title="4.数据处理系统"></a>4.数据处理系统</h3><ul>
+<li>为了有效处理、管理和利用收集到的大量原始数据</li>
+</ul>
+<h3 id="5-应用系统"><a href="#5-应用系统" class="headerlink" title="5.应用系统"></a>5.应用系统</h3><ul>
+<li>是最顶层的内容，<strong>是用户看到的物联网功能的集中体现</strong></li>
+<li>因建设目的的不同，而具有各不相同的功能和使用模式</li>
+</ul>
+<h3 id="6-控制系统"><a href="#6-控制系统" class="headerlink" title="6.控制系统"></a>6.控制系统</h3><ul>
+<li></li>
+</ul>
+<h3 id="7-安全系统"><a href="#7-安全系统" class="headerlink" title="7.安全系统"></a>7.安全系统</h3><ul>
+<li>保证信息系统安全、贯穿物联网各环节的特定功能系统</li>
+<li>任一物联网工程都需要设计有效的安全措施</li>
+</ul>
+<h3 id="8-机房"><a href="#8-机房" class="headerlink" title="8.机房"></a>8.机房</h3><ul>
+<li>信息汇聚、存储、处理、分发的核心</li>
+<li>任一物联网系统都需要一个或大或小的机房。</li>
+</ul>
+<h3 id="9-网络管理系统"><a href="#9-网络管理系统" class="headerlink" title="9.网络管理系统"></a>9.网络管理系统</h3><ul>
+<li>对物联网系统进行故障管理、性能管理、配置管理、安全管理、计费管理</li>
+</ul>
+<h2 id="3-物联网工程的组织"><a href="#3-物联网工程的组织" class="headerlink" title="3.物联网工程的组织"></a>3.物联网工程的组织</h2><h3 id="1-组织方式"><a href="#1-组织方式" class="headerlink" title="1.组织方式"></a>1.组织方式</h3><h4 id="1）政府工程"><a href="#1）政府工程" class="headerlink" title="1）政府工程"></a>1）政府工程</h4><ul>
+<li>政府拨款</li>
+</ul>
+<h4 id="2）普通商业工程"><a href="#2）普通商业工程" class="headerlink" title="2）普通商业工程"></a>2）普通商业工程</h4><h3 id="2-组织机构"><a href="#2-组织机构" class="headerlink" title="2.组织机构"></a>2.组织机构</h3><h4 id="1）领导小组"><a href="#1）领导小组" class="headerlink" title="1）领导小组"></a>1）领导小组</h4><h4 id="2）总体组"><a href="#2）总体组" class="headerlink" title="2）总体组"></a>2）总体组</h4><h4 id="3）技术开发组"><a href="#3）技术开发组" class="headerlink" title="3）技术开发组"></a>3）技术开发组</h4><h3 id="3-工程监理"><a href="#3-工程监理" class="headerlink" title="3.工程监理"></a>3.工程监理</h3><ul>
+<li>物联网建设过程中，为用户提供建设方案论证、系统集成商确定、物联网工程质量控制等服务</li>
+</ul>
+<h2 id="4-物联网工程设计的目标"><a href="#4-物联网工程设计的目标" class="headerlink" title="4.物联网工程设计的目标"></a>4.物联网工程设计的目标</h2><p>​    总体目标是在系统工程科学方法指导下，根据用户需求，设计完善的方案，优选各种技术和产品，科学组织工程实施，保证建设成一个可靠性高、性价比高、易于使用、满足用户需求的系统。</p>
+<h2 id="5-物联网工程设计的约束条件"><a href="#5-物联网工程设计的约束条件" class="headerlink" title="5.物联网工程设计的约束条件"></a>5.物联网工程设计的约束条件</h2><h3 id="1-政策约束"><a href="#1-政策约束" class="headerlink" title="1.政策约束"></a>1.政策约束</h3><p>​    目标是发现隐藏在项目背后的可能导致项目失败的事务安排、持续的争论、偏见、利益关系或历史等因素</p>
+<h3 id="2-预算约束"><a href="#2-预算约束" class="headerlink" title="2.预算约束"></a>2.预算约束</h3><p>​    预算是决定网络设计的关键因素</p>
+<p>对于预算不足情况</p>
+<ul>
+<li>将物联网建设工作划分成多个迭代周期，</li>
+<li>同时将建设目标分解成多个阶段性目标</li>
+<li>通过阶段性目标的实现，达到最终满足用户全部需求的目的</li>
+<li>当前预算仅用于完成当前迭代周期的建设目标。</li>
+</ul>
+<h3 id="3-时间约束"><a href="#3-时间约束" class="headerlink" title="3.时间约束"></a>3.时间约束</h3><p>​    项目进度表限定了项目最后的期限和重要的阶段。</p>
+<h3 id="4-技术约束"><a href="#4-技术约束" class="headerlink" title="4.技术约束"></a>4.技术约束</h3><h2 id="6-物联网工程设计应遵循的原则"><a href="#6-物联网工程设计应遵循的原则" class="headerlink" title="6.物联网工程设计应遵循的原则"></a>6.物联网工程设计应遵循的原则</h2><h3 id="1-应围绕设计目标开展设计工作"><a href="#1-应围绕设计目标开展设计工作" class="headerlink" title="1.应围绕设计目标开展设计工作"></a>1.应围绕设计目标开展设计工作</h3><h3 id="2-应充分考虑应用性要求"><a href="#2-应充分考虑应用性要求" class="headerlink" title="2.应充分考虑应用性要求"></a>2.应充分考虑应用性要求</h3><h3 id="3-应在需求、成本、时间、技术等多种因素之间寻求最好的平衡和折中"><a href="#3-应在需求、成本、时间、技术等多种因素之间寻求最好的平衡和折中" class="headerlink" title="3.应在需求、成本、时间、技术等多种因素之间寻求最好的平衡和折中"></a>3.应在需求、成本、时间、技术等多种因素之间寻求最好的平衡和折中</h3><h3 id="4-应优先选用最简单、最可行的解决方案"><a href="#4-应优先选用最简单、最可行的解决方案" class="headerlink" title="4.应优先选用最简单、最可行的解决方案"></a>4.应优先选用最简单、最可行的解决方案</h3><h3 id="5-应避免简单照抄其他设计方案和做法"><a href="#5-应避免简单照抄其他设计方案和做法" class="headerlink" title="5.应避免简单照抄其他设计方案和做法"></a>5.应避免简单照抄其他设计方案和做法</h3><h3 id="6-应具有可预见性和可扩展性"><a href="#6-应具有可预见性和可扩展性" class="headerlink" title="6.应具有可预见性和可扩展性"></a>6.应具有可预见性和可扩展性</h3><h3 id="7-应由有设计经验的人员主导设计工作"><a href="#7-应由有设计经验的人员主导设计工作" class="headerlink" title="7.应由有设计经验的人员主导设计工作"></a>7.应由有设计经验的人员主导设计工作</h3><h2 id="7-物联网工程的设计方法"><a href="#7-物联网工程的设计方法" class="headerlink" title="7.物联网工程的设计方法"></a>7.物联网工程的设计方法</h2><h3 id="网络系统生命周期"><a href="#网络系统生命周期" class="headerlink" title="网络系统生命周期"></a>网络系统生命周期</h3><blockquote>
+<p>四阶段周期</p>
+</blockquote>
+<ul>
+<li>至少包括网络系统的构思计划、分析设计、实时运行和维护的过程</li>
+</ul>
+<blockquote>
+<p>五阶段周期</p>
+</blockquote>
+<ul>
+<li>需求分析、通信分析、逻辑网络设计、物理网络设计、实施</li>
+</ul>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="1-需求分析和可行性研究定义"><a href="#1-需求分析和可行性研究定义" class="headerlink" title="1.需求分析和可行性研究定义"></a>1.需求分析和可行性研究定义</h2><p>​    <strong>需求分析</strong>是获取、确定支持物品联网和用户有效工作的系统需求的过程。物联网需求描述了物联网系统的行为、特性或属性，这是设计、实现的约束条件。</p>
+<p>​    <strong>可行性研究</strong>是在需求分析的基础上，对工程的意义、目标、功能、范围、需求及实施方案要点等内容进行研究和论证，确定工程是否可行。</p>
+<h2 id="2-需求分析的目标"><a href="#2-需求分析的目标" class="headerlink" title="2.需求分析的目标"></a>2.需求分析的目标</h2><blockquote>
+<p>需求分析是用来获取物联网系统需求并对其进行归纳整理的过程，是物联网开发的基础</p>
+</blockquote>
+<ol>
+<li><p>全面了解用户需求，包括应用背景、业务需求、物联网工程的安全性需求、通信量及其分布状况</p>
+</li>
+<li><p>编制可行性研究报告，为项目立项、审批及设计提供基础性素材</p>
+</li>
+<li><p>编制翔实的需求分析文档，为设计者提供设计依据，使得设计者：</p>
+<ol>
+<li>能够更好的评价现有的物联网体系</li>
+<li>能够更客观的做出决策</li>
+<li>提供良好的交互功能</li>
+<li>提供可移植、可扩展的功能</li>
+<li>合理利用用户资源</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-需求分析的收集"><a href="#3-需求分析的收集" class="headerlink" title="3.需求分析的收集"></a>3.需求分析的收集</h2><h3 id="1）收集方法"><a href="#1）收集方法" class="headerlink" title="1）收集方法"></a>1）收集方法</h3><ol>
+<li>实地考察</li>
+<li>用户访谈</li>
+<li>问卷调查</li>
+<li>向同行咨询</li>
+</ol>
+<h3 id="2）需求分析的实施"><a href="#2）需求分析的实施" class="headerlink" title="2）需求分析的实施"></a>2）需求分析的实施</h3><ol>
+<li><p>应用背景信息的收集</p>
+</li>
+<li><p>业务需求信息的收集</p>
+<ol>
+<li><p>业务需求</p>
+<ol>
+<li>收集业务方面需求</li>
+<li>制作业务需求清单</li>
+</ol>
+</li>
+<li><p>用户需求</p>
+<ol>
+<li>收集用户需求</li>
+<li>输出用户服务表</li>
+</ol>
+</li>
+<li><p>应用需求</p>
+<ol>
+<li>收集应用需求</li>
+<li>掌握应用对资源的存取和访问需求</li>
+<li>掌握其他需求</li>
+<li>制作应用需求表</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><blockquote>
+<p>物联网设计是物联网工程的重要内容之一，包括逻辑网络设计和物理网络设计。</p>
+</blockquote>
+<p>逻辑网络：实际网络的功能性、结果性抽象，用于描述用户的网络行为、性能等要求</p>
+<p>逻辑网络设计：根据用户的分类、分布，选定特定的技术，形成特定的逻辑网络结构</p>
+<p>物理网络设计：为逻辑网络设计特定的物理环境平台，主要包括布线系统设计、设备选型等。</p>
+<h2 id="1-逻辑网络设计"><a href="#1-逻辑网络设计" class="headerlink" title="1.逻辑网络设计"></a>1.逻辑网络设计</h2><ul>
+<li>确定逻辑网络设计的目标</li>
+<li>确定网络功能与服务</li>
+<li>确定网络结构</li>
+<li>进行技术决策</li>
+</ul>
+<h2 id="2-逻辑网络设计的目标"><a href="#2-逻辑网络设计的目标" class="headerlink" title="2.逻辑网络设计的目标"></a>2.逻辑网络设计的目标</h2><p>​    主要来自于需求分析说明书中的内容，尤其是网络需求部分，这部分内容直接体现了网络管理部门和人员对网络设计的要求。</p>
+<ul>
+<li>合适的应用运行环境</li>
+<li>成熟而稳定的技术选型</li>
+<li>合理的网络结构</li>
+<li>合适的运营成本</li>
+<li>逻辑网络的可扩充性</li>
+<li>逻辑网络的易用性</li>
+<li>逻辑网络的可管理性</li>
+<li>逻辑网络的安全性</li>
+</ul>
+<h2 id="3-网络方案设计的原则"><a href="#3-网络方案设计的原则" class="headerlink" title="3.网络方案设计的原则"></a>3.网络方案设计的原则</h2><ul>
+<li>先进性</li>
+<li>高可靠性</li>
+<li>标准化</li>
+<li>可扩展性</li>
+<li>易管理性</li>
+<li>安全性</li>
+<li>实用性</li>
+<li>开放性</li>
+</ul>
+<h2 id="4-需要关注的问题"><a href="#4-需要关注的问题" class="headerlink" title="4.需要关注的问题"></a>4.需要关注的问题</h2><ul>
+<li>设计要素<ul>
+<li>用户需求、设计限制、现有网络、设计目标</li>
+</ul>
+</li>
+<li>设计面临的冲突</li>
+<li>成本与性能</li>
+</ul>
+<h2 id="5-逻辑网络设计的具体工作内容"><a href="#5-逻辑网络设计的具体工作内容" class="headerlink" title="5.逻辑网络设计的具体工作内容"></a>5.逻辑网络设计的具体工作内容</h2><ul>
+<li>网络结构设计</li>
+<li>感知技术选择</li>
+<li>局域网技术选择</li>
+<li>广域网技术选择</li>
+<li>地址设计和命名模型</li>
+<li>路由方案设计</li>
+<li>网络管理策略设计</li>
+<li>网络安全策略设计</li>
+<li>测试方案设计</li>
+<li>逻辑网络设计文档编制</li>
+</ul>
+<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><blockquote>
+<p>数据中心是物联网系统完成数据收集、处理、存储、分发与利用的中枢。</p>
+<p>主要包括高性能计算机系统、海量存储系统、应用系统、云服务系统、信息安全系统，以及容纳这些信息系统的机房</p>
+<p>机房主要包括电源系统、制冷系统、消防系统、监控与报警系统</p>
+</blockquote>
+<h2 id="1-数据中心设计要点"><a href="#1-数据中心设计要点" class="headerlink" title="1.数据中心设计要点"></a>1.数据中心设计要点</h2><h4 id="1）人物和目标"><a href="#1）人物和目标" class="headerlink" title="1）人物和目标"></a>1）人物和目标</h4><ul>
+<li>设计高性能计算机系统，执行数据手机、处理、分发、利用等功能</li>
+<li>设计服务器系统，提供各种网络服务</li>
+<li>设计数据存储系统，用于保存海量数据</li>
+<li>设计核心网络，用于连接外部网络和数据中心内的各种设备</li>
+<li>设计机房，保证数据处理、存储设备政策运行</li>
+<li>设计机房装修方案</li>
+</ul>
+<h4 id="2）原则和方法"><a href="#2）原则和方法" class="headerlink" title="2）原则和方法"></a>2）原则和方法</h4><ul>
+<li><h2 id="分类设计"><a href="#分类设计" class="headerlink" title="分类设计"></a>分类设计</h2></li>
+<li>找有资质的公司帮忙进行设计</li>
+</ul>
+<h4 id="3）数据中心设计文档的编制"><a href="#3）数据中心设计文档的编制" class="headerlink" title="3）数据中心设计文档的编制"></a>3）数据中心设计文档的编制</h4><h2 id="2-高性能计算机"><a href="#2-高性能计算机" class="headerlink" title="2.高性能计算机"></a>2.高性能计算机</h2><h3 id="1）SMP-对称多处理"><a href="#1）SMP-对称多处理" class="headerlink" title="1）SMP(对称多处理)"></a>1）SMP(对称多处理)</h3><p>​    相对非对称多处理技术而言的、应用十分广泛的并行技术</p>
+<ul>
+<li><p>多个处理运行操作系统的单一副本，共享内存和一台计算机的其他资源</p>
+</li>
+<li><p>所有处理器都可以平等的访问内存、I/O和外部设备</p>
+</li>
+<li><p>系统资源被系统中所有CPU共享</p>
+</li>
+</ul>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>共享存储器系统</li>
+<li>对称性</li>
+<li>单地址空间</li>
+<li>每一个CPU具有本地缓存</li>
+<li>利用存储器实现CPU之间的通行</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<p>可扩展性有限</p>
+<ul>
+<li>目前没有超过64个CPU</li>
+<li>增加更多处理器的难点是系统不得不消耗资源来支持处理器抢占内存，以及内存同步两个主要问题。</li>
+</ul>
+<p>基本上采用<strong>增大Cache容量</strong>来减少抢占内存问题</p>
+<p>但是Cache又引起了内存同步问题。</p>
+<ul>
+<li>各CPU通过Cache访问内存数据时，要求系统保持内存中数据与Cache中数据一致。</li>
+<li>每次更新都要占用CPU</li>
+<li><strong>多采用侦听算法</strong></li>
+</ul>
+<blockquote>
+<p>主要用途是运行串性性很强的程序</p>
+</blockquote>
+<ul>
+<li>单个CPU的处理能力对最终性能的影响很大，应该选主频高、流水线多，可并行执行线程多的CPU。</li>
+</ul>
+<h3 id="2）MPP-大规模并行处理"><a href="#2）MPP-大规模并行处理" class="headerlink" title="2）MPP(大规模并行处理)"></a>2）MPP(大规模并行处理)</h3><blockquote>
+<p>利用大量的处理器实现大规模并行处理的计算机</p>
+</blockquote>
+<ul>
+<li>每个节点包含1个或多个CPU，数量众多的节点通过专用的高速网络互联在一起</li>
+</ul>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>分布式存储</li>
+<li>分布式I/O</li>
+<li>每隔节点有多个CPU和Cache及本地存存储器，节点内的CPU数一般小于4</li>
+<li>局部葫芦娃可以使用总线或Crossbar</li>
+<li>节点通过通用网卡或专用接口与高速网络相连</li>
+</ul>
+<p><strong>有较好的可扩展性</strong></p>
+<p>代表一个国家计算机产业的最高水平</p>
+<p><strong>主要用于科学与工程计算、网络计算</strong></p>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ul>
+<li>编程难度大</li>
+<li>价格昂贵</li>
+</ul>
+<h3 id="3）集群"><a href="#3）集群" class="headerlink" title="3）集群"></a>3）集群</h3><ul>
+<li>将一组相互独立的计算机(称为节点)，利用高速通信网络组成的一个单个的计算机系统，并以单一系统的模式加以管理</li>
+<li><strong>提供高可靠性、可扩充性和抗灾难性。</strong></li>
+</ul>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>一个集群包含多台拥有共享数据存储空间的计算机，通过内部局域网相互通信</li>
+<li>一台计算机故障时，它所运行的应用程序可以由其他计算机自动接管</li>
+<li>集群内任一系统上运行的服务都可以被所有网络客户使用。</li>
+</ul>
+<blockquote>
+<p>封装方式</p>
+</blockquote>
+<ul>
+<li>将独立计算机集成在一起叫做封装</li>
+</ul>
+<p><strong>1）机架式集群</strong></p>
+<ul>
+<li><p>像书架一样，独立计算机整体放机架，局域网连接</p>
+</li>
+<li><p>除个人或实验用，很少用</p>
+</li>
+</ul>
+<p><strong>2）机柜式集群</strong></p>
+<ul>
+<li>计算机封装成扁平状</li>
+</ul>
+<p><strong>3）刀片式集群</strong></p>
+<ul>
+<li><p>每台计算机称为一个刀片。体积小，集成多个CPU、内存、磁盘和网卡等</p>
+<ul>
+<li>每一块刀片实际上就是一块系统主板</li>
+</ul>
+</li>
+<li><p>不同板卡插入即可工作</p>
+</li>
+<li><p>高可用、高密度的低成本计算机平台</p>
+</li>
+<li><p>专门为特殊应用行业和高密度计算机环境设计的</p>
+</li>
+</ul>
+<blockquote>
+<p>使用领域</p>
+</blockquote>
+<ul>
+<li>高并行性的科学与工程计算</li>
+<li>高吞吐量的网络计算(各种网络服务器)</li>
+<li>不适合用于数据库服务器</li>
+</ul>
+<h2 id="3-RAID-独立磁盘冗余阵列-P91"><a href="#3-RAID-独立磁盘冗余阵列-P91" class="headerlink" title="3.RAID 独立磁盘冗余阵列  P91"></a>3.RAID 独立磁盘冗余阵列  P91</h2><ul>
+<li>由一个磁盘控制器来控制多个硬盘的相互连接，使多个磁盘的读写同步，减少错误，提高效率和可靠度、</li>
+</ul>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><blockquote>
+<p>物联网安全设计是物联网工程的基础性人物，是物联网具有可用性的保证</p>
+</blockquote>
+<h2 id="1-RFID"><a href="#1-RFID" class="headerlink" title="1.RFID"></a>1.RFID</h2><ul>
+<li>即射频识别：是一种利用无线电波与电子标签进行数据传输交换的技术</li>
+</ul>
+<h3 id="1）组成"><a href="#1）组成" class="headerlink" title="1）组成"></a>1）组成</h3><p><strong>RFID读写器</strong></p>
+<ul>
+<li>质询电子标签和处理标签信息</li>
+</ul>
+<p><strong>电子标签</strong></p>
+<ul>
+<li>主要部件是存储部件、逻辑处理电路、RFID收发器、天线和基底</li>
+</ul>
+<p><strong>后台支撑系统</strong></p>
+<h3 id="2）使用阶段"><a href="#2）使用阶段" class="headerlink" title="2）使用阶段"></a>2）使用阶段</h3><ol>
+<li>感应</li>
+<li>选中</li>
+<li>认证</li>
+<li>应用</li>
+</ol>
+<h3 id="3）良好RFID系统的特征"><a href="#3）良好RFID系统的特征" class="headerlink" title="3）良好RFID系统的特征"></a>3）良好RFID系统的特征</h3><ol>
+<li><p>正确性特征</p>
+<ul>
+<li>保证真实标签被认可</li>
+</ul>
+</li>
+<li><p>安全性特征</p>
+<ul>
+<li>伪造标签不被认可</li>
+</ul>
+</li>
+<li><p>隐私性特征</p>
+<ul>
+<li>没授权标签不可识别和跟踪</li>
+</ul>
+</li>
+</ol>
+<h3 id="4）分类"><a href="#4）分类" class="headerlink" title="4）分类"></a>4）分类</h3><h4 id="1-超轻量级"><a href="#1-超轻量级" class="headerlink" title="1.超轻量级"></a>1.超轻量级</h4><ul>
+<li>安全性基本可以忽略</li>
+</ul>
+<h4 id="2-轻量级"><a href="#2-轻量级" class="headerlink" title="2.轻量级"></a>2.轻量级</h4><ul>
+<li>内部实现了循环冗余校验CRC</li>
+</ul>
+<h4 id="3-简单"><a href="#3-简单" class="headerlink" title="3.简单"></a>3.简单</h4><ul>
+<li>内部实现了随机数或散列函数</li>
+<li>占用量最大</li>
+</ul>
+<h4 id="4-全功能"><a href="#4-全功能" class="headerlink" title="4.全功能"></a>4.全功能</h4><ul>
+<li>支持公钥算法的可应用实现<ul>
+<li>RSA和ECC</li>
+</ul>
+</li>
+<li>价格高</li>
+</ul>
+<h3 id="5）物理攻击和防护"><a href="#5）物理攻击和防护" class="headerlink" title="5）物理攻击和防护"></a>5）物理攻击和防护</h3><h4 id="1-攻击手段"><a href="#1-攻击手段" class="headerlink" title="1.攻击手段"></a>1.攻击手段</h4><ul>
+<li><strong>软件技术</strong><ul>
+<li>使用RFID通信接口，寻求安全协议、加密算法及其物理实现的弱点</li>
+</ul>
+</li>
+<li><strong>窃听技术</strong><ul>
+<li>高时域精度的方法</li>
+</ul>
+</li>
+<li><strong>故障产生技术</strong><ul>
+<li>通过产生异常的应用环境条件，使处理器产生故障，获得额外的访问途径</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-能窃听的范围"><a href="#2-能窃听的范围" class="headerlink" title="2.能窃听的范围"></a>2.能窃听的范围</h4><ul>
+<li>前后通道窃听范围</li>
+<li>后向通道窃听范围</li>
+<li>操作范围</li>
+<li>恶意扫描范围</li>
+</ul>
+<h3 id="6）安全识别和认证"><a href="#6）安全识别和认证" class="headerlink" title="6）安全识别和认证"></a>6）安全识别和认证</h3><p>常用的有</p>
+<h4 id="1-Hash锁协议"><a href="#1-Hash锁协议" class="headerlink" title="1.Hash锁协议"></a>1.Hash锁协议</h4><blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>电子标签的运算量很小，主要是一次Hash运算</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ul>
+<li>传输的数据不变，并以明文传输，标签可被跟踪、窃听</li>
+<li>不能防范重放攻击、中间人攻击</li>
+</ul>
+<h4 id="2-随机Hash锁协议"><a href="#2-随机Hash锁协议" class="headerlink" title="2.随机Hash锁协议"></a>2.随机Hash锁协议</h4><blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>采用了基于随机数的查询应答机制</li>
+<li>加入了随机数，标签每次响应都有变化</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ul>
+<li>要增加随机数产生模块</li>
+<li>成本高，增加了功耗</li>
+<li>需要读写器针对有所标签计算Hash</li>
+<li>不能防范重放攻击</li>
+</ul>
+<h4 id="3-LCAP协议"><a href="#3-LCAP协议" class="headerlink" title="3.LCAP协议"></a>3.LCAP协议</h4><blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>询问应答协议</li>
+<li>每次执行之后都要动态刷新标签的ID</li>
+</ul>
+<h4 id="4-Hash链协议"><a href="#4-Hash链协议" class="headerlink" title="4.Hash链协议"></a>4.Hash链协议</h4><blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>基于共享密钥的询问应答协议</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ul>
+<li>非常容易收到重传和假冒攻击</li>
+<li>制作成本高</li>
+</ul>
+<h1 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h1><blockquote>
+<p>工程实施是物联网工程的重要一环，通过工程实施，把设计方案变成可用的系统</p>
+</blockquote>
+<h2 id="1-物联网工程实施过程"><a href="#1-物联网工程实施过程" class="headerlink" title="1.物联网工程实施过程"></a>1.物联网工程实施过程</h2><h3 id="1）项目招投标阶段"><a href="#1）项目招投标阶段" class="headerlink" title="1）项目招投标阶段"></a>1）项目招投标阶段</h3><ul>
+<li>承建方寻标</li>
+<li>建设方招标</li>
+<li>购买标书</li>
+<li>现场调研</li>
+<li>招标咨询会</li>
+<li>承建方投标</li>
+<li>评标</li>
+<li>签订合同</li>
+</ul>
+<h3 id="2）项目启动阶段"><a href="#2）项目启动阶段" class="headerlink" title="2）项目启动阶段"></a>2）项目启动阶段</h3><ul>
+<li>承建方深入调研</li>
+<li>设计详细的技术方案和施工计划</li>
+</ul>
+<h3 id="3）项目具体实施阶段"><a href="#3）项目具体实施阶段" class="headerlink" title="3）项目具体实施阶段"></a>3）项目具体实施阶段</h3><ul>
+<li>场地准备</li>
+<li>采购工程所需设备和辅助材料</li>
+<li>组织施工</li>
+</ul>
+<h3 id="4）项目测试阶段"><a href="#4）项目测试阶段" class="headerlink" title="4）项目测试阶段"></a>4）项目测试阶段</h3><ul>
+<li>单元测试</li>
+<li>综合测试</li>
+<li>第三方测试</li>
+</ul>
+<h3 id="5）项目验收阶段"><a href="#5）项目验收阶段" class="headerlink" title="5）项目验收阶段"></a>5）项目验收阶段</h3><ul>
+<li>提交验收申请</li>
+<li>准备验收文档</li>
+<li>鉴定验收</li>
+</ul>
+<h3 id="6）项目售后服务"><a href="#6）项目售后服务" class="headerlink" title="6）项目售后服务"></a>6）项目售后服务</h3><ul>
+<li>继续进行用户培训</li>
+<li>定期巡查</li>
+<li>及时处置故障</li>
+<li>续保</li>
+</ul>
+<h3 id="7）培训阶段"><a href="#7）培训阶段" class="headerlink" title="7）培训阶段"></a>7）培训阶段</h3><h2 id="2-招投标过程"><a href="#2-招投标过程" class="headerlink" title="2.招投标过程"></a>2.招投标过程</h2><h3 id="1）招标代理机构选择"><a href="#1）招标代理机构选择" class="headerlink" title="1）招标代理机构选择"></a>1）招标代理机构选择</h3><h4 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h4><ul>
+<li>资质</li>
+<li>招标时限</li>
+<li>收费标准</li>
+</ul>
+<h3 id="2）招标文件编制与发布"><a href="#2）招标文件编制与发布" class="headerlink" title="2）招标文件编制与发布"></a>2）招标文件编制与发布</h3><h4 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h4><ul>
+<li>合法性</li>
+<li>完整性</li>
+<li>准确性</li>
+<li>公开性</li>
+</ul>
+<h3 id="3）投标这购买标书并投标"><a href="#3）投标这购买标书并投标" class="headerlink" title="3）投标这购买标书并投标"></a>3）投标这购买标书并投标</h3><h3 id="4）评标及确定中标者"><a href="#4）评标及确定中标者" class="headerlink" title="4）评标及确定中标者"></a>4）评标及确定中标者</h3><h1 id="第九章"><a href="#第九章" class="headerlink" title="第九章"></a>第九章</h1><blockquote>
+<p>物联网工程实施过程中及实施完毕后，需要对其进行测试，以检验物联网系统是否正常运行，是否实现了预期功能、达到了预期目标</p>
+</blockquote>
+<h2 id="1-物联网测试内容"><a href="#1-物联网测试内容" class="headerlink" title="1.物联网测试内容"></a>1.物联网测试内容</h2><h3 id="1-终端测试"><a href="#1-终端测试" class="headerlink" title="1.终端测试"></a>1.终端测试</h3><p>​    终端包括各种感知设备、控制设备、面向终端的供电设备和通信设备</p>
+<h3 id="2-通信线路测试"><a href="#2-通信线路测试" class="headerlink" title="2.通信线路测试"></a>2.通信线路测试</h3><h3 id="3-网络测试"><a href="#3-网络测试" class="headerlink" title="3.网络测试"></a>3.网络测试</h3><p>​    测试与其相连的通信线路的协同工作状态</p>
+<h3 id="4-数据中心设备测试"><a href="#4-数据中心设备测试" class="headerlink" title="4.数据中心设备测试"></a>4.数据中心设备测试</h3><p>​    数据中心设备包括各种服务器、数据存储设备及其软件系统</p>
+<h3 id="5-应用系统测试"><a href="#5-应用系统测试" class="headerlink" title="5.应用系统测试"></a>5.应用系统测试</h3><p>​    测试应用系统的功能、性能、可靠性等测试</p>
+<p>​    真实数据环境下进行</p>
+<h3 id="6-安全测试"><a href="#6-安全测试" class="headerlink" title="6.安全测试"></a>6.安全测试</h3><p>​    终端安全、网络安全、应用系统安全测试</p>
+<h2 id="2-测试方法"><a href="#2-测试方法" class="headerlink" title="2.测试方法"></a>2.测试方法</h2><h3 id="主动测试"><a href="#主动测试" class="headerlink" title="主动测试"></a>主动测试</h3><p>​    利用测试工具<strong>有目的地主动</strong>向被测网络注入测试流量，并根据这些测试流量的<strong>传送情况</strong>来<strong>分析网络技术参数</strong>的测试方法</p>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li><strong>具有良好的灵活性</strong>，可根据测试环境明确控制测量中所产生的测量流量的特性</li>
+</ul>
+<blockquote>
+<p>问题</p>
+</blockquote>
+<p>安全性</p>
+<ul>
+<li>是入侵式策略，会带来一定安全隐患</li>
+</ul>
+<h3 id="被动测量"><a href="#被动测量" class="headerlink" title="被动测量"></a>被动测量</h3><p>​    利用特定测试工具<strong>收集网络中活动的元素</strong>(路由器、交换机、服务器)的特定信息</p>
+<blockquote>
+<p>优点</p>
+</blockquote>
+<ul>
+<li>安全性</li>
+<li>不存在DDos、网络欺骗等安全隐患</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ul>
+<li>不够灵活</li>
+<li>局限性较大</li>
+</ul>
+<h2 id="3-测试工具"><a href="#3-测试工具" class="headerlink" title="3.测试工具"></a>3.测试工具</h2><h3 id="1）线缆测试仪"><a href="#1）线缆测试仪" class="headerlink" title="1）线缆测试仪"></a>1）线缆测试仪</h3><p>0 用于检测线缆质量</p>
+<h3 id="2）网络协议分析"><a href="#2）网络协议分析" class="headerlink" title="2）网络协议分析"></a>2）网络协议分析</h3><ul>
+<li>多用于网络的被动测试</li>
+</ul>
+<h3 id="3）网络测试仪"><a href="#3）网络测试仪" class="headerlink" title="3）网络测试仪"></a>3）网络测试仪</h3><ul>
+<li>多用于网络的主动测试</li>
+<li>是专用的软硬件结合的测试设备</li>
+</ul>
+<h2 id="4-测试计划"><a href="#4-测试计划" class="headerlink" title="4.测试计划"></a>4.测试计划</h2><h3 id="1）终端测试"><a href="#1）终端测试" class="headerlink" title="1）终端测试"></a>1）终端测试</h3><h3 id="2）通信线路测试"><a href="#2）通信线路测试" class="headerlink" title="2）通信线路测试"></a>2）通信线路测试</h3><h3 id="3）网络设备测试"><a href="#3）网络设备测试" class="headerlink" title="3）网络设备测试"></a>3）网络设备测试</h3><h2 id="5-网络系统综合测试"><a href="#5-网络系统综合测试" class="headerlink" title="5.网络系统综合测试"></a>5.网络系统综合测试</h2><h3 id="1）系统连通性"><a href="#1）系统连通性" class="headerlink" title="1）系统连通性"></a>1）系统连通性</h3><h3 id="2）链路传输速率"><a href="#2）链路传输速率" class="headerlink" title="2）链路传输速率"></a>2）链路传输速率</h3><h3 id="3）吞吐率"><a href="#3）吞吐率" class="headerlink" title="3）吞吐率"></a>3）吞吐率</h3><h3 id="4）传输时延"><a href="#4）传输时延" class="headerlink" title="4）传输时延"></a>4）传输时延</h3><h3 id="5）丢包率"><a href="#5）丢包率" class="headerlink" title="5）丢包率"></a>5）丢包率</h3>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E8%AF%95/" class="category-chain-item">考试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">#物联网</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>物联网工程设计与实施</div>
+      <div>https://ahaostillcoding.github.io/2024/06/27/物联网工程设计与实施/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>a_hao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/06/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" title="软件测试">
+                        <span class="hidden-mobile">软件测试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
