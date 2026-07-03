@@ -313,6 +313,11 @@
       margin-top: 22px;
     }
 
+    .principle-grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 920px;
+    }
+
     .principle {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -600,8 +605,7 @@
       <a class="brand" href="#slide-1">竞品分析 Skill 培训演示</a>
       <nav class="nav" aria-label="页面导航">
         <a href="#slide-2">思想</a>
-        <a href="#slide-3">架构</a>
-        <a href="#slide-4">流程</a>
+        <a href="#slide-3">架构流程</a>
         <a href="#slide-5">报告</a>
         <a href="#slide-6">案例</a>
         <a href="#slide-7">落地</a>
@@ -617,9 +621,9 @@
         <div>
           <div class="eyebrow">AI赋能产品经理 · 竞品分析 Skill 案例分享</div>
           <h1>把竞品调研方法，沉淀成团队可复用的 Skill</h1>
-          <p class="lead">5-7 分钟讲清一件事：AI 的价值不是替我们堆资料，而是把“理解我方 → 选择竞品 → 横向对比 → 形成取舍 → 转成优先级”的产品思考流程稳定复用。</p>
+          <p class="lead">AI 的价值不是替我们堆资料，而是把“理解我方 → 选择竞品 → 横向对比 → 形成取舍 → 转成优先级”的产品思考流程稳定复用。</p>
           <div class="meta-row">
-            <span class="pill blue">输入：系统入口 / 页面截图</span>
+            <span class="pill blue">输入：系统网址 / 页面截图</span>
             <span class="pill green">输出：Markdown + HTML 报告</span>
             <span class="pill amber">重点：流程与判断框架</span>
           </div>
@@ -631,38 +635,24 @@
       <div class="eyebrow">核心思想</div>
       <h2>竞品分析 Skill 的本质：把“资料搜集”升级为“决策流程”</h2>
       <p class="lead">产品经理真正需要的不是一份更长的报告，而是一套能稳定产出判断的流程：先看懂自己，再判断谁可比，最后回答我们下一步该做什么。</p>
-      <div class="principle-grid">
+      <div class="principle-grid two">
         <article class="principle"><span class="pill blue">原则 01</span><strong>先我方，后竞品</strong><p>用我方系统定位、目标用户、业务对象和核心流程，决定竞品选择范围。</p></article>
-        <article class="principle"><span class="pill green">原则 02</span><strong>先证据，后判断</strong><p>把信息区分为已确认、推测、待确认，避免把截图推断包装成事实。</p></article>
-        <article class="principle"><span class="pill amber">原则 03</span><strong>先取舍，后报告</strong><p>报告必须回答可借鉴、不照搬、先做什么，而不是输出功能百科。</p></article>
+        <article class="principle"><span class="pill amber">原则 02</span><strong>先取舍，后报告</strong><p>报告必须回答可借鉴、不照搬、先做什么，而不是输出功能百科。</p></article>
       </div>
       <div class="quote">一句话记忆：竞品分析不是看别人有什么，而是判断我们下一步该做什么、先做什么、哪些不做。</div>
     </section>
 
-    <section class="slide" id="slide-3" data-title="核心架构">
-      <div class="eyebrow">Skill 核心架构</div>
-      <h2>五层架构：从输入材料到组织级方法资产</h2>
+    <section class="slide" id="slide-3" data-title="核心架构与流程">
+      <div class="eyebrow">Skill 核心架构 + 核心流程</div>
+      <h2>五层架构对应七步执行：从输入材料到设定优先级</h2>
       <div class="architecture-stack" aria-label="Skill 五层架构图">
-        <article class="layer input"><div><b>输入层</b><span>系统入口、授权账号、页面截图、流程截图、重点模块。</span></div><span class="pill blue">A 操作 / B 截图</span></article>
-        <article class="layer boundary"><div><b>边界层</b><span>确认授权范围，不碰删除、付款、审批、发布等真实动作。</span></div><span class="pill red">安全合规</span></article>
-        <article class="layer model"><div><b>认知层</b><span>提炼定位、用户、业务对象、菜单结构、核心流程和数据能力。</span></div><span class="pill green">我方画像</span></article>
-        <article class="layer compare"><div><b>对比层</b><span>按可比性筛选竞品，用 4-6 个关键维度横向判断。</span></div><span class="pill violet">差异取舍</span></article>
-        <article class="layer output"><div><b>交付层</b><span>输出报告、P0/P1/P2 路线图和可转化需求。</span></div><span class="pill amber">资产沉淀</span></article>
+        <article class="layer input"><div><b>输入层</b><span>确认本次是操作系统分析，还是图片截图分析；明确系统入口、截图材料和重点模块。</span></div><span class="pill blue">1 确认输入</span></article>
+        <article class="layer boundary"><div><b>边界层</b><span>确认授权范围，不碰删除、付款、审批、发布等真实业务动作。</span></div><span class="pill red">2 授权边界</span></article>
+        <article class="layer model"><div><b>认知层</b><span>提炼我方定位、用户、业务对象、菜单结构、核心流程和数据能力。</span></div><span class="pill green">3 理解我方</span></article>
+        <article class="layer compare"><div><b>对比层</b><span>按可比性筛选竞品，再用 4-6 个关键维度横向对比，形成取舍判断。</span></div><span class="pill violet">4-6 筛选/对比/取舍</span></article>
+        <article class="layer output"><div><b>交付层</b><span>输出报告、P0/P1/P2 路线图和可转化需求，把分析沉淀成团队资产。</span></div><span class="pill amber">7 设定优先级</span></article>
       </div>
-    </section>
-
-    <section class="slide" id="slide-4" data-title="核心流程">
-      <div class="eyebrow">核心流程</div>
-      <h2>一条主线：先理解我方，再找竞品做决策</h2>
-      <div class="flow" aria-label="Skill 核心流程图">
-        <div class="flow-step"><div><b>确认输入</b><span>操作系统分析，或图片截图分析。</span></div><span class="pill blue">A / B</span></div>
-        <div class="flow-step"><div><b>授权边界</b><span>明确可看范围，不触发真实业务动作。</span></div><span class="pill red">合规</span></div>
-        <div class="flow-step"><div><b>理解我方</b><span>定位、用户、模块、流程、数据能力。</span></div><span class="pill green">画像</span></div>
-        <div class="flow-step"><div><b>筛选竞品</b><span>按定位、用户、流程、形态建立候选池。</span></div><span class="pill violet">可比</span></div>
-        <div class="flow-step"><div><b>横向对比</b><span>只保留影响产品方向的关键维度。</span></div><span class="pill amber">差异</span></div>
-        <div class="flow-step"><div><b>取舍判断</b><span>学什么、不学什么、为什么。</span></div><span class="pill green">决策</span></div>
-        <div class="flow-step"><div><b>优先级</b><span>转成 P0 / P1 / P2 建设路线。</span></div><span class="pill blue">落地</span></div>
-      </div>
+      <div class="quote">这页的讲解重点：架构不是抽象分层，每一层都对应一个动作；动作连起来，就是“先理解我方，再找竞品做决策”。</div>
     </section>
 
     <section class="slide" id="slide-5" data-title="报告框架">
@@ -676,7 +666,7 @@
             <tr><td>我方现状</td><td>已有基础、主要缺口、机会在哪里？</td><td>不展开完整菜单和字段。</td></tr>
             <tr><td>竞品范式</td><td>这些竞品分别代表什么路线？</td><td>优先聚合为 2-3 类范式。</td></tr>
             <tr><td>关键矩阵</td><td>差异会如何影响产品方向？</td><td>只保留 4-6 个关键维度。</td></tr>
-            <tr><td>建设优先级</td><td>先做什么，后做什么？</td><td>P0/P1/P2，总动作不超过 9 条。</td></tr>
+            <tr><td>设定优先级</td><td>先做什么，后做什么？</td><td>P0/P1/P2，总动作不超过 9 条。</td></tr>
           </tbody>
         </table>
       </div>
@@ -691,7 +681,7 @@
           <thead><tr><th>案例</th><th>输入方式</th><th>核心判断</th><th>转化动作</th></tr></thead>
           <tbody>
             <tr><td>小林智数 SQLBot</td><td>操作系统分析</td><td>从“智能问答工具”升级为“AI 驱动的数据分析平台”。</td><td>P0：仪表盘/报表编辑器；NL2SQL 准确率提升。</td></tr>
-            <tr><td>LINSY 海外 B2B 商城</td><td>截图分析</td><td>从“产品目录 + 询盘”升级为品牌直营 B2B 交易平台。</td><td>P0：交易闭环；英文 + USD；订单确认流程。</td></tr>
+            <tr><td>LINSY 海外 B2B 商城</td><td>截图分析</td><td>从“产品目录 + 询盘”升级为品牌直营 B2B 交易平台。</td><td>P0：交易闭环；订单确认流程。</td></tr>
           </tbody>
         </table>
       </div>
