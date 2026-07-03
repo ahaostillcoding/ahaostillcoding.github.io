@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>竞品对比分析报告：LINSY 林氏海外 B2B 商城</title>
+  <style>
+    :root {
+      --bg: #f6f8fb; --paper: #fff; --text: #152033; --muted: #667085; --line: #d9e0ea;
+      --blue: #2563eb; --green: #16a34a; --orange: #f97316; --purple: #7c3aed;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.6; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+    .topbar-inner, .page { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .topbar-inner { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { font-weight: 750; color: var(--text); text-decoration: none; }
+    .nav { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .print-btn { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 13px; }
+    .page { padding-top: 28px; padding-bottom: 48px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr); gap: 18px; margin-bottom: 18px; }
+    .hero-card, .side-panel, section, .summary-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 40px rgba(15,23,42,.06); }
+    .hero-card { padding: 30px; }
+    .side-panel, section, .summary-card { padding: 22px; }
+    .eyebrow { color: var(--blue); font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 14px; }
+    h2 { font-size: 22px; margin-bottom: 8px; }
+    h3 { font-size: 17px; margin-bottom: 8px; margin-top: 16px; }
+    .hero-subtitle, .section-head p, .muted { color: var(--muted); }
+    .hero-subtitle { font-size: 15px; line-height: 1.6; }
+    .decision-box { background: #eff6ff; border-left: 4px solid var(--blue); border-radius: 10px; padding: 14px; margin: 12px 0; font-size: 14px; }
+    .decision-box strong { display: block; margin-bottom: 4px; }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .kpi, .card, .roadmap-col { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+    .kpi b { display: block; font-size: 24px; }
+    .kpi span, .card p, .source-note, .roadmap-item span { color: var(--muted); font-size: 14px; }
+    section { margin-bottom: 16px; }
+    .section-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+    .section-head p { margin: 4px 0 0; font-size: 14px; }
+    .tag { display: inline-block; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 750; white-space: nowrap; }
+    .blue { background: #eff6ff; color: var(--blue); }
+    .green { background: #ecfdf3; color: var(--green); }
+    .orange { background: #fff7ed; color: var(--orange); }
+    .purple { background: #f5f3ff; color: var(--purple); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { border: 1px solid var(--line); padding: 12px; text-align: left; vertical-align: top; }
+    th { background: #f3f6fb; font-weight: 650; }
+    .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .roadmap-item { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+    .roadmap-item b, .roadmap-item span { display: block; }
+    .roadmap-item span { margin-top: 4px; }
+    .source-note { margin-top: 10px; }
+    .status-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+    .confirmed { background: #ecfdf3; color: #166534; }
+    .inferred { background: #fff7ed; color: #9a3412; }
+    .pending { background: #f3f4f6; color: #4b5563; }
+    @media (max-width: 820px) { .hero, .roadmap { grid-template-columns: 1fr; } .topbar-inner { align-items: flex-start; flex-direction: column; padding-top: 12px; padding-bottom: 12px; } h1 { font-size: 28px; } }
+    @media print { .topbar, .print-btn { display: none !important; } body { background: white; } .hero-card, .side-panel, section, .summary-card { box-shadow: none; break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">LINSY 林氏 B2B 竞品分析</a>
+      <nav class="nav">
+        <a href="#current">我方现状</a><a href="#paradigms">竞品范式</a><a href="#comparison">关键对比</a><a href="#directions">机会判断</a><a href="#roadmap">优先级</a>
+        <button class="print-btn" onclick="window.print()">打印 / 导出 PDF</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="page">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">图片截图分析 · 2026-07-01</div>
+        <h1>LINSY 林氏家居<br>海外 B2B 商城 竞品分析</h1>
+        <p class="hero-subtitle">基于 4 张我方系统截图（首页+主视觉、爆款推荐商品列表、居家生活分类页、风格与功能系列页），从产品经理视角理解系统定位与功能，选取 2 类竞品范式（品牌直营 B2B / 平台电商 B2B）、5 个代表产品进行横向对比，输出建设优先级建议。</p>
+      </div>
+      <aside class="side-panel">
+        <h2>核心判断</h2>
+        <div class="decision-box"><strong>须从"产品目录+询盘"升级为"品牌直营 B2B 交易平台"</strong>当前形态接近线上产品目录，缺少交易闭环、多币种多语言和经销商管理体系，与 Ashley B2B 等品牌直营范式差距明显。</div>
+        <div class="kpis">
+          <div class="kpi"><b>2</b><span>竞品范式</span></div>
+          <div class="kpi"><b>6</b><span>关键维度</span></div>
+          <div class="kpi"><b>6</b><span>优先动作</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="current">
+      <div class="section-head"><div><h2>一、我方现状与机会</h2><p>基于 4 张截图，LINSY 海外 B2B 商城已覆盖产品展示、分类导航、风格系列化和基础询盘能力，但交易闭环待打通。</p></div><span class="tag green">现状判断</span></div>
+      <div class="grid">
+        <article class="card">
+          <h3>品牌独立站骨架完整</h3>
+          <p><span class="status-badge confirmed">已确认</span>首页→分类→商品列表→个人中心导航链路完整；具备品牌主视觉区（BRICK MODULAR CABINET）和风格系列化能力。</p>
+        </article>
+        <article class="card">
+          <h3>B2B 基础信息已商品化</h3>
+          <p><span class="status-badge confirmed">已确认</span>商品编码（SKU）、预计交期（7-55天）、价格（CNY）已在列表中展示，具备 B2B 交易所需的数据字段基础。</p>
+        </article>
+        <article class="card">
+          <h3>核心缺口：交易闭环</h3>
+          <p><span class="status-badge inferred">推测</span>有意向清单但未见购物车/结算流程；价格仅展示 CNY 单一币种；未见到 MOQ 和库存信息——当前系统偏向"询盘工具"而非"交易平台"。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="paradigms">
+      <div class="section-head"><div><h2>二、竞品范式与代表产品</h2><p>根据 LINSY 品牌直营定位和海外 B2B 属性，选取 2 类范式共 5 个代表产品进行对比。</p></div><span class="tag blue">范式对比</span></div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag blue">范式 01</span>
+          <h3>品牌直营 B2B 范式</h3>
+          <p><b>代表：</b>Ashley Furniture B2B、IKEA for Business、Kuka Home Overseas<br>
+          <b>强项：</b>品牌信任度高、经销商管理体系成熟、多语言多币种完善、交易闭环完整<br>
+          <b>短板：</b>建设和运营成本高、流量依赖品牌自身影响力<br>
+          <b>可比理由：</b>与 LINSY 品牌直营的海外 B2B 定位完全一致，是最直接的可对标路线</p>
+        </article>
+        <article class="card">
+          <span class="tag orange">范式 02</span>
+          <h3>平台电商 B2B 范式</h3>
+          <p><b>代表：</b>Alibaba.com、Faire.com<br>
+          <b>强项：</b>交易系统成熟（支付/物流/金融/担保）、海量 SKU、买家流量大<br>
+          <b>短板：</b>品牌溢价低、竞争激烈、客户数据归平台不归品牌<br>
+          <b>可比理由：</b>LINSY 现有系统"商品列表+询盘"的逻辑接近平台模式，可借鉴其交易基建能力但不宜照搬开放入驻</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <div class="section-head"><div><h2>三、关键对比矩阵</h2><p>围绕 B2B 交易平台最关键的 6 个维度做横向对比。</p></div><span class="tag purple">横向对比</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>对比维度</th><th>我方系统</th><th>品牌直营 B2B</th><th>平台电商 B2B</th><th>机会判断</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>交易闭环</b></td>
+              <td><span class="status-badge inferred">推测</span>询盘→线下交易；有意向清单但无购物车/在线支付</td>
+              <td><span class="status-badge pending">待确认</span>在线下单 + 信用额度/分期支付</td>
+              <td><span class="status-badge pending">待确认</span>在线支付（信用卡/TT/LC）+ Escrow 担保</td>
+              <td><b>P0</b>：补交易闭环，先做"选品→报价单→订单确认→线下付款"半闭环</td>
+            </tr>
+            <tr>
+              <td><b>多语言多币种</b></td>
+              <td><span class="status-badge confirmed">已确认</span>仅 CNY + 中文界面</td>
+              <td><span class="status-badge pending">待确认</span>USD/EUR/GBP + 英语/西语/法语</td>
+              <td><span class="status-badge pending">待确认</span>多币种结算 + 界面多语言适配</td>
+              <td><b>P0</b>：海外 B2B 的基础门槛，优先英文 + USD</td>
+            </tr>
+            <tr>
+              <td><b>经销商分级</b></td>
+              <td><span class="status-badge inferred">推测</span>未见分级体系；个人中心可能有基础信息</td>
+              <td><span class="status-badge pending">待确认</span>Platinum/Gold/Silver 等级 + 专属价格</td>
+              <td><span class="status-badge pending">待确认</span>Faire 有信用体系；Alibaba 无分级定价</td>
+              <td><b>P1</b>：品牌直营的核心壁垒，拉开与平台差距的关键</td>
+            </tr>
+            <tr>
+              <td><b>库存与交期</b></td>
+              <td><span class="status-badge confirmed">已确认</span>交期展示（7/30/55天），无实时库存</td>
+              <td><span class="status-badge pending">待确认</span>实时库存 + 可承诺库存（ATP）</td>
+              <td><span class="status-badge pending">待确认</span>无库存展示，供应商自主发货</td>
+              <td><b>延续优势</b>：交期展示已是亮点，补充实时库存</td>
+            </tr>
+            <tr>
+              <td><b>产品系列化</b></td>
+              <td><span class="status-badge confirmed">已确认</span>灵感系列（PK/VG/UB 等）+ 风格分类</td>
+              <td><span class="status-badge pending">待确认</span>Room Planner / 3D 场景配置</td>
+              <td><span class="status-badge pending">待确认</span>纯品类搜索，无系列化能力</td>
+              <td><b>差异化优势</b>：将"灵感系列"做成 B2B 选货独特体验</td>
+            </tr>
+            <tr>
+              <td><b>售后与协同</b></td>
+              <td><span class="status-badge confirmed">已确认</span>客服电话 + 邮箱</td>
+              <td><span class="status-badge pending">待确认</span>经销商专属客服 + 在线工单 + 退货门户</td>
+              <td><span class="status-badge pending">待确认</span>即时通讯（TradeManager）+ 退货保障</td>
+              <td><b>P2</b>：先完成交易闭环，再补售后协同</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="directions">
+      <div class="section-head"><div><h2>四、机会判断</h2><p>从竞品差异转成我方产品方向，区分可借鉴与不建议照搬。</p></div><span class="tag orange">取舍建议</span></div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag green">可借鉴</span>
+          <h3>交易闭环半自动化</h3>
+          <p><b>依据：</b>Ashley B2B 的"选品→购物车→信用额度支付→订单跟踪"闭环显著提升转化率。<b>建议：</b>不必一步到位做全在线支付，先做"线上选品→生成报价单→确认→线下付款"，降低开发成本。</p>
+        </article>
+        <article class="card">
+          <span class="tag orange">不建议照搬</span>
+          <h3>开放平台模式</h3>
+          <p><b>依据：</b>Alibaba 家具类目竞争激烈、品牌溢价低、经销商忠诚度差。<b>建议：</b>坚持品牌直营路线，不做第三方供应商入驻；先夯实自营交易能力再考虑生态扩展。</p>
+        </article>
+        <article class="card">
+          <span class="tag green">可借鉴</span>
+          <h3>经销商等级可视化</h3>
+          <p><b>依据：</b>Kuka Home 海外 B2B 展示经销商等级与专属价格，有效激励升级采购。<b>建议：</b>从 2-3 个等级起步（标准/银牌/金牌），按年采购额自动升级，在个人中心展示进度。</p>
+        </article>
+        <article class="card">
+          <span class="tag orange">不建议照搬</span>
+          <h3>纯询盘撮合模式</h3>
+          <p><b>依据：</b>Made-in-China 等撮合平台客单价低、转化路径长、数据沉淀少。<b>建议：</b>"意向清单"保留但仅作为辅助入口，主交易路径应设计为自助式下单。</p>
+        </article>
+        <article class="card">
+          <span class="tag green">可借鉴</span>
+          <h3>MOQ + 阶梯定价透明化</h3>
+          <p><b>依据：</b>Faire 等平台透明展示批发价和零售建议价，减少沟通成本。<b>建议：</b>商品列表增加 MOQ 标识和"批量折扣"提示，降低无效询盘。</p>
+        </article>
+        <article class="card">
+          <span class="tag green">可借鉴</span>
+          <h3>场景化采购引导</h3>
+          <p><b>依据：</b>Ashley 的 Room Planner 让经销商以项目视角选品，客单价提升 20%+。<b>建议：</b>强化"灵感系列"品牌叙事，将系列页做成可分享的"选货指南"，引导经销商按风格采购。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-head"><div><h2>五、建设优先级</h2><p>从"能用"到"好用"再到"有壁垒"的三阶段路线。</p></div><span class="tag blue">Roadmap</span></div>
+      <div class="roadmap">
+        <div class="roadmap-col">
+          <span class="tag blue">P0 · 必须先做</span>
+          <h3>核心交易闭环 + 多语言</h3>
+          <div class="roadmap-item"><b>① 重构商品详情页</b><span>增加 MOQ、库存量、阶梯价格</span></div>
+          <div class="roadmap-item"><b>② 新增购物车+订单流程</b><span>从"询盘式"转向"自助下单"</span></div>
+          <div class="roadmap-item"><b>③ 英文版 + USD 结算</b><span>消除海外经销商使用障碍</span></div>
+          <div class="roadmap-item"><b>预期价值</b><span>订单转化率预计提升 50-100%</span></div>
+        </div>
+        <div class="roadmap-col">
+          <span class="tag orange">P1 · 形成效率</span>
+          <h3>经销商体系 + 库存可见</h3>
+          <div class="roadmap-item"><b>① 经销商 2-3 级分级</b><span>专属价格+权益展示</span></div>
+          <div class="roadmap-item"><b>② ERP 库存对接</b><span>实时库存 + 低库存预警</span></div>
+          <div class="roadmap-item"><b>③ 交期动态更新</b><span>到货预估日期自动计算</span></div>
+          <div class="roadmap-item"><b>预期价值</b><span>减少无效询盘，建立品牌忠诚度</span></div>
+        </div>
+        <div class="roadmap-col">
+          <span class="tag green">P2 · 建立壁垒</span>
+          <h3>场景化体验 + 售后协同</h3>
+          <div class="roadmap-item"><b>① 灵感系列专题页</b><span>以风格/场景为入口引导选货</span></div>
+          <div class="roadmap-item"><b>② 在线工单系统</b><span>售后申请 + 订单跟踪</span></div>
+          <div class="roadmap-item"><b>③ 选货清单分享</b><span>经销商间可分享选货方案</span></div>
+          <div class="roadmap-item"><b>预期价值</b><span>提升客单价，建立品牌差异化壁垒</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="summary-card">
+        <h2>最终结论</h2>
+        <p>LINSY 林氏海外 B2B 商城已有品牌展示、产品系列化和交期可视化的基础优势。当前最关键动作是<strong>从"线上产品目录+询盘工具"升级为"自闭环品牌直营 B2B 交易平台"</strong>：先补齐交易闭环和多语言多币种（P0），再建设经销商分级体系（P1），最后通过场景化采购体验建立竞争壁垒（P2）。对标 Ashley Furniture 的品牌直营路线，不走 Alibaba 的开放平台方向。</p>
+      </div>
+      <div class="source-note">
+        <p><strong>来源：</strong></p>
+        <ul>
+          <li>截图 1-4（LINSY 海外 B2B 商城，2026-07-01 采集）</li>
+          <li>Ashley Furniture B2B Portal（行业知识）</li>
+          <li>IKEA for Business（行业知识）</li>
+          <li>Kuka Home 海外 B2B 系统（行业知识）</li>
+          <li>Alibaba.com / Faire.com / Made-in-China.com（行业知识）</li>
+        </ul>
+        <p><strong>可信度：</strong></p>
+        <p><span class="status-badge confirmed">已确认</span>截图直接可见的页面结构、字段、导航、价格展示、交期信息<br>
+        <span class="status-badge inferred">推测</span>交易流程（购物车/支付）、订单状态、后台功能基于页面结构推断<br>
+        <span class="status-badge pending">待确认</span>竞品功能细节需访问官网验证，建议后续对 Ashley B2B 和 Kuka Home Overseas 系统进行实际操作</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

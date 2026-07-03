@@ -1,0 +1,763 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI赋能产品经理：竞品分析 Skill 培训演示</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --paper: #ffffff;
+      --ink: #142033;
+      --muted: #667085;
+      --line: #d9e1ec;
+      --blue: #1d5fd6;
+      --teal: #0f766e;
+      --green: #16803a;
+      --amber: #b45309;
+      --red: #b42318;
+      --violet: #6d28d9;
+      --shadow: 0 14px 36px rgba(20, 32, 51, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.58;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      max-width: 1280px;
+      min-height: 64px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 760;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .nav a { color: #38445a; }
+
+    .progress {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      z-index: 25;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--blue);
+      transition: width .2s ease;
+    }
+
+    .deck {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 64px;
+    }
+
+    .slide {
+      min-height: calc(100vh - 112px);
+      padding: 44px;
+      margin-bottom: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      scroll-margin-top: 88px;
+    }
+
+    .slide.compact { min-height: auto; }
+
+    .eyebrow {
+      color: var(--blue);
+      font-weight: 720;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h1 { font-size: 48px; max-width: 980px; }
+    h2 { font-size: 34px; margin-bottom: 18px; }
+    h3 { font-size: 20px; margin-bottom: 8px; }
+
+    p { margin: 0; }
+
+    .lead {
+      max-width: 920px;
+      margin-top: 18px;
+      color: #344054;
+      font-size: 20px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .hero-layout.single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-panel {
+      border-left: 4px solid var(--blue);
+      background: #f2f6ff;
+      padding: 24px;
+      border-radius: 8px;
+      align-self: center;
+    }
+
+    .hero-panel strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: #26354d;
+      background: #eef2f7;
+      font-size: 13px;
+      font-weight: 680;
+      white-space: nowrap;
+    }
+
+    .pill.blue { color: #174ea6; background: #e8f0ff; }
+    .pill.green { color: #166534; background: #e7f7ed; }
+    .pill.amber { color: #92400e; background: #fff4df; }
+    .pill.red { color: #9f1a13; background: #ffebe8; }
+    .pill.violet { color: #5b21b6; background: #f1eafe; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .panel.emphasis {
+      background: #f8fbff;
+      border-color: #bfd2f4;
+    }
+
+    .panel p, .table-note {
+      color: #475467;
+      font-size: 15px;
+    }
+
+    .number {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--blue);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(110px, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 158px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 10px;
+      height: 1px;
+      background: #a9b6c9;
+    }
+
+    .flow-step:last-child::after { display: none; }
+
+    .flow-step b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .flow-step span {
+      color: #58657a;
+      font-size: 14px;
+    }
+
+    .architecture-stack {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .layer {
+      min-height: 188px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .layer b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .layer span {
+      color: #58657a;
+      font-size: 14px;
+    }
+
+    .layer.input { border-top: 5px solid var(--blue); }
+    .layer.boundary { border-top: 5px solid var(--red); }
+    .layer.model { border-top: 5px solid var(--green); }
+    .layer.compare { border-top: 5px solid var(--violet); }
+    .layer.output { border-top: 5px solid var(--amber); }
+
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .principle {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .principle p {
+      color: #475467;
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .track {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .track-head {
+      padding: 18px;
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .track:nth-child(2) .track-head { background: var(--teal); }
+
+    .track-body {
+      padding: 18px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .check-list li {
+      padding-left: 22px;
+      position: relative;
+      color: #344054;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .track:nth-child(2) .check-list li::before { background: var(--teal); }
+
+    .matrix {
+      width: 100%;
+      margin-top: 20px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f2f5fa;
+      color: #26354d;
+      font-weight: 760;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+    th:last-child, td:last-child { border-right: 0; }
+
+    .quote {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--amber);
+      background: #fff8eb;
+      border-radius: 8px;
+      color: #374151;
+      font-size: 18px;
+      font-weight: 680;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .evidence {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .evidence img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: #eef2f7;
+    }
+
+    .evidence div { padding: 12px; }
+    .evidence b { display: block; margin-bottom: 4px; }
+    .evidence span { color: #667085; font-size: 13px; }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .roadmap-col {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .roadmap-col h3 { margin-top: 10px; }
+
+    .roadmap-col ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #475467;
+    }
+
+    .link-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .link-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .link-item span {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      min-height: 36px;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 6px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 720;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button-link:hover { text-decoration: none; background: #174ea6; }
+
+    .controls {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      gap: 8px;
+      z-index: 30;
+    }
+
+    .control-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 8px 22px rgba(20, 32, 51, .12);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .control-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+    .small {
+      color: #667085;
+      font-size: 13px;
+    }
+
+    .print-only { display: none; }
+
+    @media (max-width: 1080px) {
+      .hero-layout,
+      .split,
+      .grid.two { grid-template-columns: 1fr; }
+      .grid,
+      .grid.four,
+      .architecture-stack,
+      .principle-grid,
+      .evidence-grid,
+      .roadmap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow-step::after { display: none; }
+      h1 { font-size: 40px; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 16px; }
+      .progress { top: 92px; }
+      .deck { padding: 16px 12px 48px; }
+      .slide { min-height: auto; padding: 22px 16px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; }
+      .grid,
+      .grid.four,
+      .architecture-stack,
+      .principle-grid,
+      .evidence-grid,
+      .roadmap { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .link-item { grid-template-columns: 1fr; align-items: start; }
+      .controls { display: none; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .topbar, .progress, .controls { display: none; }
+      .deck { max-width: none; padding: 0; }
+      .slide {
+        min-height: auto;
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #d0d5dd;
+        margin: 0 0 14px;
+      }
+      .print-only { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#slide-1">竞品分析 Skill 培训演示</a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#slide-2">思想</a>
+        <a href="#slide-3">架构</a>
+        <a href="#slide-4">流程</a>
+        <a href="#slide-5">报告</a>
+        <a href="#slide-6">案例</a>
+        <a href="#slide-7">落地</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <main class="deck">
+    <section class="slide" id="slide-1" data-title="封面">
+      <div class="hero-layout single">
+        <div>
+          <div class="eyebrow">AI赋能产品经理 · 竞品分析 Skill 案例分享</div>
+          <h1>把竞品调研方法，沉淀成团队可复用的 Skill</h1>
+          <p class="lead">5-7 分钟讲清一件事：AI 的价值不是替我们堆资料，而是把“理解我方 → 选择竞品 → 横向对比 → 形成取舍 → 转成优先级”的产品思考流程稳定复用。</p>
+          <div class="meta-row">
+            <span class="pill blue">输入：系统入口 / 页面截图</span>
+            <span class="pill green">输出：Markdown + HTML 报告</span>
+            <span class="pill amber">重点：流程与判断框架</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" data-title="核心思想">
+      <div class="eyebrow">核心思想</div>
+      <h2>竞品分析 Skill 的本质：把“资料搜集”升级为“决策流程”</h2>
+      <p class="lead">产品经理真正需要的不是一份更长的报告，而是一套能稳定产出判断的流程：先看懂自己，再判断谁可比，最后回答我们下一步该做什么。</p>
+      <div class="principle-grid">
+        <article class="principle"><span class="pill blue">原则 01</span><strong>先我方，后竞品</strong><p>用我方系统定位、目标用户、业务对象和核心流程，决定竞品选择范围。</p></article>
+        <article class="principle"><span class="pill green">原则 02</span><strong>先证据，后判断</strong><p>把信息区分为已确认、推测、待确认，避免把截图推断包装成事实。</p></article>
+        <article class="principle"><span class="pill amber">原则 03</span><strong>先取舍，后报告</strong><p>报告必须回答可借鉴、不照搬、先做什么，而不是输出功能百科。</p></article>
+      </div>
+      <div class="quote">一句话记忆：竞品分析不是看别人有什么，而是判断我们下一步该做什么、先做什么、哪些不做。</div>
+    </section>
+
+    <section class="slide" id="slide-3" data-title="核心架构">
+      <div class="eyebrow">Skill 核心架构</div>
+      <h2>五层架构：从输入材料到组织级方法资产</h2>
+      <div class="architecture-stack" aria-label="Skill 五层架构图">
+        <article class="layer input"><div><b>输入层</b><span>系统入口、授权账号、页面截图、流程截图、重点模块。</span></div><span class="pill blue">A 操作 / B 截图</span></article>
+        <article class="layer boundary"><div><b>边界层</b><span>确认授权范围，不碰删除、付款、审批、发布等真实动作。</span></div><span class="pill red">安全合规</span></article>
+        <article class="layer model"><div><b>认知层</b><span>提炼定位、用户、业务对象、菜单结构、核心流程和数据能力。</span></div><span class="pill green">我方画像</span></article>
+        <article class="layer compare"><div><b>对比层</b><span>按可比性筛选竞品，用 4-6 个关键维度横向判断。</span></div><span class="pill violet">差异取舍</span></article>
+        <article class="layer output"><div><b>交付层</b><span>输出报告、P0/P1/P2 路线图和可转化需求。</span></div><span class="pill amber">资产沉淀</span></article>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-4" data-title="核心流程">
+      <div class="eyebrow">核心流程</div>
+      <h2>一条主线：先理解我方，再找竞品做决策</h2>
+      <div class="flow" aria-label="Skill 核心流程图">
+        <div class="flow-step"><div><b>确认输入</b><span>操作系统分析，或图片截图分析。</span></div><span class="pill blue">A / B</span></div>
+        <div class="flow-step"><div><b>授权边界</b><span>明确可看范围，不触发真实业务动作。</span></div><span class="pill red">合规</span></div>
+        <div class="flow-step"><div><b>理解我方</b><span>定位、用户、模块、流程、数据能力。</span></div><span class="pill green">画像</span></div>
+        <div class="flow-step"><div><b>筛选竞品</b><span>按定位、用户、流程、形态建立候选池。</span></div><span class="pill violet">可比</span></div>
+        <div class="flow-step"><div><b>横向对比</b><span>只保留影响产品方向的关键维度。</span></div><span class="pill amber">差异</span></div>
+        <div class="flow-step"><div><b>取舍判断</b><span>学什么、不学什么、为什么。</span></div><span class="pill green">决策</span></div>
+        <div class="flow-step"><div><b>优先级</b><span>转成 P0 / P1 / P2 建设路线。</span></div><span class="pill blue">落地</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" data-title="报告框架">
+      <div class="eyebrow">报告框架</div>
+      <h2>交付报告要服务产品决策，不做功能百科</h2>
+      <div class="matrix">
+        <table>
+          <thead><tr><th>报告模块</th><th>核心问题</th><th>控制原则</th></tr></thead>
+          <tbody>
+            <tr><td>核心判断</td><td>我方当前最大问题是什么？</td><td>先结论，120 字内说清方向。</td></tr>
+            <tr><td>我方现状</td><td>已有基础、主要缺口、机会在哪里？</td><td>不展开完整菜单和字段。</td></tr>
+            <tr><td>竞品范式</td><td>这些竞品分别代表什么路线？</td><td>优先聚合为 2-3 类范式。</td></tr>
+            <tr><td>关键矩阵</td><td>差异会如何影响产品方向？</td><td>只保留 4-6 个关键维度。</td></tr>
+            <tr><td>建设优先级</td><td>先做什么，后做什么？</td><td>P0/P1/P2，总动作不超过 9 条。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="quote">质量底线：已确认、推测、待确认要分开；账号、密码、Cookie、客户隐私不能写入报告。</div>
+    </section>
+
+    <section class="slide compact" id="slide-6" data-title="案例与链接">
+      <div class="eyebrow">案例简要整理</div>
+      <h2>案例只证明流程可复用，不是本次课程重点</h2>
+      <div class="matrix">
+        <table>
+          <thead><tr><th>案例</th><th>输入方式</th><th>核心判断</th><th>转化动作</th></tr></thead>
+          <tbody>
+            <tr><td>小林智数 SQLBot</td><td>操作系统分析</td><td>从“智能问答工具”升级为“AI 驱动的数据分析平台”。</td><td>P0：仪表盘/报表编辑器；NL2SQL 准确率提升。</td></tr>
+            <tr><td>LINSY 海外 B2B 商城</td><td>截图分析</td><td>从“产品目录 + 询盘”升级为品牌直营 B2B 交易平台。</td><td>P0：交易闭环；英文 + USD；订单确认流程。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="link-list">
+        <div class="link-item"><strong>本地案例 1</strong><span>小林智数 SQLBot · 操作系统分析 HTML</span><a class="button-link" href="cases/sqlbot.html" target="_blank" rel="noopener">打开</a></div>
+        <div class="link-item"><strong>本地案例 2</strong><span>LINSY 海外 B2B 商城 · 截图分析 HTML</span><a class="button-link" href="cases/linsy-b2b.html" target="_blank" rel="noopener">打开</a></div>
+        <div class="link-item"><strong>小龙虾案例</strong><span>操作系统分析在线分享页</span><a class="button-link" href="https://linsy-ai-data.linshimuye.com/prod/upload/ai/html-share/14760_%E8%B0%83%E7%94%A8%E6%8A%80%E8%83%BD%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%EF%BC%8C%E7%BD%91%E7%AB%99%E4%B8%BA%EF%BC%9Ahttps_sqlbot-2320bc2e-423d-4188-9f45-aba4f21ff41f.html" target="_blank" rel="noopener">打开</a></div>
+        <div class="link-item"><strong>小龙虾案例</strong><span>截图分析在线分享页</span><a class="button-link" href="https://linsy-ai-data.linshimuye.com/prod/upload/ai/html-share/14760_%E8%B0%83%E7%94%A8%E6%8A%80%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%8D%AE%E6%88%91%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%EF%BC%8C%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%B7%E5%A4%96B2B%E7%B3%BB%E7%BB%9F-e2a29a70-3be6-41cf-965a-29ae244249fb.html" target="_blank" rel="noopener">打开</a></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-7" data-title="落地建议">
+      <div class="eyebrow">产品经理怎么复用</div>
+      <h2>把 Skill 用到日常工作的 4 个动作</h2>
+      <div class="grid four">
+        <article class="panel"><span class="number">1</span><h3>先问清输入</h3><p>确认操作系统还是截图分析，明确材料、范围和重点模块。</p></article>
+        <article class="panel"><span class="number">2</span><h3>先理解我方</h3><p>让 AI 先提炼定位、用户、流程和缺口，再去找竞品。</p></article>
+        <article class="panel"><span class="number">3</span><h3>用优先级收束</h3><p>必须落到 P0/P1/P2，避免停留在“竞品有，我们也要有”。</p></article>
+        <article class="panel"><span class="number">4</span><h3>沉淀团队资产</h3><p>共享的是分析框架，不是某个案例；换系统也能复用。</p></article>
+      </div>
+      <div class="quote">收束句：Skill 的目标不是生成一次报告，而是让团队拥有可复用、可迭代、可规模化的产品分析能力。</div>
+    </section>
+  </main>
+
+  <div class="controls" aria-label="演示控制">
+    <button class="control-btn" type="button" id="prevSlide" aria-label="上一页">‹</button>
+    <button class="control-btn" type="button" id="nextSlide" aria-label="下一页">›</button>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const progressBar = document.getElementById("progressBar");
+    const prevButton = document.getElementById("prevSlide");
+    const nextButton = document.getElementById("nextSlide");
+
+    function currentIndex() {
+      const viewportMiddle = window.scrollY + window.innerHeight / 2;
+      let active = 0;
+      slides.forEach((slide, index) => {
+        if (slide.offsetTop <= viewportMiddle) active = index;
+      });
+      return active;
+    }
+
+    function go(delta) {
+      const next = Math.max(0, Math.min(slides.length - 1, currentIndex() + delta));
+      slides[next].scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function updateProgress() {
+      const index = currentIndex();
+      const percent = slides.length > 1 ? (index / (slides.length - 1)) * 100 : 100;
+      progressBar.style.width = `${percent}%`;
+      document.title = `${slides[index].dataset.title} · AI赋能产品经理：竞品分析 Skill 培训演示`;
+    }
+
+    prevButton.addEventListener("click", () => go(-1));
+    nextButton.addEventListener("click", () => go(1));
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    window.addEventListener("keydown", event => {
+      if (["ArrowRight", "PageDown"].includes(event.key)) go(1);
+      if (["ArrowLeft", "PageUp"].includes(event.key)) go(-1);
+    });
+    updateProgress();
+  </script>
+</body>
+</html>
+
